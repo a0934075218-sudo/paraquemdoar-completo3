@@ -22,7 +22,7 @@ def set_db(database):
 
 
 async def get_chat_id():
-    if not db:
+    if db is None:
         return None
     config = await db.config.find_one({"key": "telegram_chat_id"}, {"_id": 0})
     if config and config.get("value"):
