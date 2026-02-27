@@ -18,10 +18,8 @@ const HomePage = () => {
       <Header />
       <main>
         <HeroSection />
-        <div className="hidden md:block">
-          <InitiativesGrid />
-          <BlogSection />
-        </div>
+        <InitiativesGrid />
+        <BlogSection />
       </main>
       <Footer />
     </>
