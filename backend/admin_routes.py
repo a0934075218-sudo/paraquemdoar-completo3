@@ -24,6 +24,7 @@ db = None
 def set_db(database):
     global db
     db = database
+    set_telegram_db(database)
 
 class LoginRequest(BaseModel):
     username: str
