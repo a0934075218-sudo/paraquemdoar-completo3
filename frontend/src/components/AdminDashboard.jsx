@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { LogOut, RefreshCw, DollarSign, TrendingUp, Copy, Trash2, X } from 'lucide-react';
+import { LogOut, RefreshCw, DollarSign, TrendingUp, Copy, Trash2, X, Send } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -18,21 +18,26 @@ const AdminDashboard = () => {
   const [lastUpdate, setLastUpdate] = useState(null);
   const [modal, setModal] = useState(null);
   const [confirmClear, setConfirmClear] = useState(false);
+  const [telegramChatId, setTelegramChatId] = useState('');
+  const [telegramStatus, setTelegramStatus] = useState('');
+  const [detectingTelegram, setDetectingTelegram] = useState(false);
 
   const token = localStorage.getItem('admin_token');
 
   const fetchData = useCallback(async () => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const [donationsRes, statsRes, configRes] = await Promise.all([
+      const [donationsRes, statsRes, configRes, telegramRes] = await Promise.all([
         axios.get(`${API}/admin/donations`, { headers }),
         axios.get(`${API}/admin/stats`, { headers }),
-        axios.get(`${API}/admin/config`, { headers })
+        axios.get(`${API}/admin/config`, { headers }),
+        axios.get(`${API}/admin/config/telegram`, { headers }).catch(() => ({ data: { chat_id: '' } }))
       ]);
       setDonations(donationsRes.data);
       setStats(statsRes.data);
       setPixKey(configRes.data.pix_key);
       if (!editingPixKey) setNewPixKey(configRes.data.pix_key);
+      setTelegramChatId(telegramRes.data.chat_id || '');
       setLoading(false);
       setLastUpdate(new Date());
     } catch (error) {
@@ -74,6 +79,28 @@ const AdminDashboard = () => {
 
   const formatCurrency = (value) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
   const formatDate = (dateString) => new Date(dateString).toLocaleString('pt-BR');
+
+  const handleDetectTelegram = async () => {
+    setDetectingTelegram(true);
+    setTelegramStatus('');
+    try {
+      const res = await axios.post(`${API}/admin/config/telegram/detect`, {}, { headers: { Authorization: `Bearer ${token}` } });
+      setTelegramChatId(res.data.chat_id);
+      setTelegramStatus(res.data.message);
+    } catch (err) {
+      setTelegramStatus(err.response?.data?.detail || 'Erro ao detectar grupo');
+    }
+    setDetectingTelegram(false);
+  };
+
+  const handleTestTelegram = async () => {
+    try {
+      await axios.post(`${API}/admin/config/telegram/test`, {}, { headers: { Authorization: `Bearer ${token}` } });
+      setTelegramStatus('Mensagem de teste enviada!');
+    } catch (err) {
+      setTelegramStatus(err.response?.data?.detail || 'Erro ao enviar teste');
+    }
+  };
 
   if (loading) {
     return (
