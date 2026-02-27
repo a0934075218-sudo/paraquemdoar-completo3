@@ -18,10 +18,10 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center md:justify-center gap-2 md:gap-12 h-full pt-16 pb-6 md:py-16">
+        <div className="flex flex-col md:flex-row items-center md:justify-center gap-2 md:gap-12 h-full pt-14 pb-6 md:py-16">
           {/* Left Image - visible on all screens */}
-          <div className="flex-shrink-0 mt-2 md:mt-0">
-            <div className="w-[340px] h-[340px] md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl">
+          <div className="flex-shrink-0 mt-1 md:mt-0">
+            <div className="w-[85vw] h-[85vw] max-w-[380px] max-h-[380px] md:w-[520px] md:h-[520px] md:max-w-none md:max-h-none rounded-full overflow-hidden shadow-2xl">
               <img 
                 src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/2ltjm6aw_Base-para-bolinha-PQD-%2846%29.png" 
                 alt="Emergencia climatica em MG"
@@ -32,11 +32,11 @@ const HeroSection = () => {
 
           {/* Right Content */}
           <div className="text-white text-left md:text-left max-w-2xl w-full px-4 md:px-0">
-            <h1 className="text-[28px] md:text-[42px] font-bold leading-tight mb-1 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <h1 className="text-[30px] md:text-[42px] font-bold leading-tight mb-1 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Emergencia climatica
             </h1>
             
-            <p className="text-[19px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <p className="text-[21px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Conheca e doe para organizacoes
               <br className="md:hidden" />
               {' '}que apoiam as vitimas da tragedia
