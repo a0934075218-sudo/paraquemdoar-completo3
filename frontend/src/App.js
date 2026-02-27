@@ -8,6 +8,7 @@ import BlogSection from "./components/BlogSection";
 import Footer from "./components/Footer";
 import DonationPage from "./components/DonationPage";
 import DonationValuePage from "./components/DonationValuePage";
+import PixPaymentPage from "./components/PixPaymentPage";
 
 const HomePage = () => {
   return (
@@ -31,6 +32,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/doacao" element={<DonationPage />} />
           <Route path="/doacao/valor" element={<DonationValuePage />} />
+          <Route path="/doacao/pix" element={<PixPaymentPage />} />
         </Routes>
       </BrowserRouter>
     </div>
