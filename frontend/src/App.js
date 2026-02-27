@@ -7,6 +7,7 @@ import InitiativesGrid from "./components/InitiativesGrid";
 import BlogSection from "./components/BlogSection";
 import Footer from "./components/Footer";
 import DonationPage from "./components/DonationPage";
+import DonationValuePage from "./components/DonationValuePage";
 
 const HomePage = () => {
   return (
@@ -29,6 +30,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/doacao" element={<DonationPage />} />
+          <Route path="/doacao/valor" element={<DonationValuePage />} />
         </Routes>
       </BrowserRouter>
     </div>
