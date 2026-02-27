@@ -26,7 +26,7 @@ const LoginPage = () => {
 
       localStorage.setItem('admin_token', response.data.token);
       localStorage.setItem('admin_username', response.data.username);
-      navigate('/admin/dashboard');
+      navigate('/donaspainel/dashboard');
     } catch (err) {
       setError('Credenciais inválidas');
     } finally {

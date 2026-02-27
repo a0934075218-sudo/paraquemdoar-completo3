@@ -20,7 +20,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     if (!token) {
-      navigate('/admin/login');
+      navigate('/donaspainel');
       return;
     }
 
