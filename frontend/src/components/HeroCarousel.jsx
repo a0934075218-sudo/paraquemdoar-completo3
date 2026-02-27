@@ -92,12 +92,6 @@ const HeroCarousel = () => {
             <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
               {slide.description}
             </p>
-            {slide.subtitle && (
-              <div className="mt-4 md:mt-6">
-                <h3 className="text-xl md:text-2xl font-semibold mb-2">{slide.subtitle}</h3>
-                <p className="text-base md:text-lg opacity-90">{slide.subtitleDesc}</p>
-              </div>
-            )}
             <Button 
               className="mt-6 md:mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-10 md:px-12 py-5 md:py-6 text-base md:text-lg font-normal border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
               onClick={() => window.open(slide.buttonLink, '_blank')}
