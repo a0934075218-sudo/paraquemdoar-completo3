@@ -32,11 +32,11 @@ const DonationPage = () => {
             {/* Mobile: Globo left | Desktop: Back + Logo */}
             <div className="flex items-center space-x-3">
               {/* Globo icon - mobile only - cropped to icon */}
-              <div className="md:hidden w-8 h-8 overflow-hidden flex-shrink-0">
+              <div className="md:hidden w-6 h-7 overflow-hidden flex-shrink-0">
                 <img 
                   src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/xr4t0foz_globo-roxo.png" 
                   alt="Globo" 
-                  className="h-8 object-contain object-left"
+                  className="h-7"
                 />
               </div>
               {/* Back + Logo - desktop only */}
