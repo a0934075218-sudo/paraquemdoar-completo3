@@ -18,7 +18,7 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center md:justify-center gap-2 md:gap-12 h-full pt-14 pb-6 md:py-16">
+        <div className="flex flex-col md:flex-row items-center md:justify-center gap-6 md:gap-12 h-full pt-14 pb-6 md:py-16">
           {/* Left Image - visible on all screens */}
           <div className="flex-shrink-0 mt-1 md:mt-0">
             <div className="w-[85vw] h-[85vw] max-w-[380px] max-h-[380px] md:w-[520px] md:h-[520px] md:max-w-none md:max-h-none rounded-full overflow-hidden shadow-2xl">
@@ -33,13 +33,13 @@ const HeroSection = () => {
           {/* Right Content - same width as image on mobile */}
           <div className="text-white text-left md:text-left max-w-2xl w-[85vw] max-w-[380px] md:max-w-2xl md:w-auto px-0 md:px-0">
             <h1 className="text-[31px] md:text-[42px] font-bold leading-tight mb-1 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              Emergencia climatica
+              Emergência climática
             </h1>
             
             <p className="text-[20px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              Conheca e doe para organizacoes
+              Conheça e doe para organizações
               <br className="md:hidden" />
-              {' '}que apoiam as vitimas da tragedia
+              {' '}que apoiam as vítimas da tragédia
               <br className="md:hidden" />
               {' '}em MG
             </p>
