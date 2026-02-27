@@ -36,7 +36,7 @@ const HeroSection = () => {
               Emergencia climatica
             </h1>
             
-            <p className="text-[21px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <p className="text-[19px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Conheca e doe para organizacoes
               <br className="md:hidden" />
               {' '}que apoiam as vitimas da tragedia
