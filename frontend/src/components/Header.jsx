@@ -41,11 +41,11 @@ const Header = () => {
           {/* Globo Logo */}
           <div className="flex items-center space-x-3">
             <span className="text-sm text-gray-600">Iniciativa:</span>
-            <img 
-              src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/k4hfr65d_globo.png" 
-              alt="Globo" 
-              className="h-8"
-            />
+            <svg width="80" height="32" viewBox="0 0 80 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="16" cy="16" r="12" fill="#1a1a1a"/>
+              <circle cx="16" cy="16" r="8" fill="white"/>
+              <text x="35" y="22" fontFamily="Arial, sans-serif" fontSize="18" fontWeight="bold" fill="#1a1a1a">globo</text>
+            </svg>
           </div>
         </div>
       </div>

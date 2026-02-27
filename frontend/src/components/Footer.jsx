@@ -15,11 +15,11 @@ const Footer = () => {
           {/* Column 1 - Globo */}
           <div>
             <h3 className="text-lg font-semibold mb-4">Um projeto</h3>
-            <img 
-              src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/k4hfr65d_globo.png" 
-              alt="Globo" 
-              className="h-10 brightness-0 invert"
-            />
+            <svg width="120" height="48" viewBox="0 0 120 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="24" cy="24" r="18" fill="white"/>
+              <circle cx="24" cy="24" r="12" fill="#FF6B35"/>
+              <text x="52" y="32" fontFamily="Arial, sans-serif" fontSize="24" fontWeight="bold" fill="white">globo</text>
+            </svg>
           </div>
 
           {/* Column 2 - Benfeitoria */}
