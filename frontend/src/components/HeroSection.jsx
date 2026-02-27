@@ -19,11 +19,11 @@ const HeroSection = () => {
           {/* Left Image - Hidden on mobile, visible on desktop */}
           <div className="hidden md:flex w-full md:w-4/12 justify-center items-center order-2 md:order-1">
             <div className="relative w-full max-w-[280px] md:max-w-[380px]">
-              {/* Circular container - smaller */}
+              {/* Circular container */}
               <div className="relative w-full" style={{ paddingBottom: '100%' }}>
                 <div className="absolute inset-0 rounded-full overflow-hidden shadow-2xl border-4 md:border-6 border-white/30">
                   <img 
-                    src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/30bb6cu7_imagem-%284%29.png" 
+                    src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/2ltjm6aw_Base-para-bolinha-PQD-%2846%29.png" 
                     alt="Emergência climática em MG"
                     className="w-full h-full object-cover"
                   />
@@ -32,15 +32,15 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Content */}
+          {/* Right Content - Smaller text */}
           <div className="w-full md:w-7/12 text-white order-1 md:order-2 text-center md:text-left">
-            {/* Título - médio, bold */}
-            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: '56px' }}>
+            {/* Título - menor */}
+            <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: '42px' }}>
               Emergência climática
             </h1>
             
-            {/* Descrição - tamanho similar ao título, mais fino, linhas mais largas */}
-            <p className="text-3xl md:text-4xl font-light leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 300, fontSize: '48px', lineHeight: '1.4' }}>
+            {/* Descrição - menor */}
+            <p className="text-2xl md:text-3xl font-light leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 300, fontSize: '36px', lineHeight: '1.4' }}>
               Conheça e doe para organizações que<br />
               apoiam as vítimas da tragédia em MG
             </p>
