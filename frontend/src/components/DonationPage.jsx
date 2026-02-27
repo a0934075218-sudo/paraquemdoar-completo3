@@ -126,7 +126,7 @@ const DonationPage = () => {
 
             {/* Description */}
             <p className="text-lg text-gray-700 leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              A HUMUS atua com a prevenção em comunidades em áreas de risco iminente e com resposta emergencial em desastres relacionadas a eventos naturais extremos.
+              A HUMUS atua na prevenção em comunidades situadas em áreas de risco iminente e, em situações de desastre, realiza resposta emergencial diante de eventos naturais extremos. Atualmente, acompanhamos com urgência a situação em Juiz de Fora, MG.
             </p>
 
             {/* Donation Button */}
@@ -140,7 +140,7 @@ const DonationPage = () => {
             {/* Benfeitoria Info */}
             <div className="mt-8 p-6 bg-pink-50 rounded-2xl">
               <p className="text-sm text-pink-600 leading-relaxed mb-4">
-                *Sua doação será feita através da plataforma da Benfeitoria, parceira do ParaQuemDoar. A Globo não retém nenhum valor da sua doação, nem seus dados pessoais. Atuamos conectando quem se importa, com quem faz.
+                Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.
               </p>
               
               <div className="flex items-center justify-between">
