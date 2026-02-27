@@ -138,7 +138,7 @@ const AdminDashboard = () => {
           <div data-testid="stat-total-donations" className="bg-white rounded-xl shadow-md p-5">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Total de Doacoes</p>
+                <p className="text-sm text-gray-600 mb-1">Total de Doações</p>
                 <p data-testid="stat-total-donations-count" className="text-2xl md:text-3xl font-bold text-purple-500">{stats.total_donations}</p>
               </div>
               <TrendingUp className="w-10 h-10 text-purple-500 opacity-20" />
@@ -148,7 +148,7 @@ const AdminDashboard = () => {
           <div data-testid="stat-copied-count" className="bg-white rounded-xl shadow-md p-5">
             <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm text-gray-600 mb-1">Codigos Copiados</p>
+                <p className="text-sm text-gray-600 mb-1">Códigos Copiados</p>
                 <p data-testid="stat-copied-count-value" className="text-2xl md:text-3xl font-bold text-green-500">{stats.copied_count}</p>
               </div>
               <Copy className="w-10 h-10 text-green-500 opacity-20" />
@@ -203,7 +203,7 @@ const AdminDashboard = () => {
 
         {/* Donations Table */}
         <div data-testid="donations-table-container" className="bg-white rounded-xl shadow-md p-5">
-          <h2 className="text-lg font-bold text-gray-800 mb-4">Doacoes Geradas</h2>
+          <h2 className="text-lg font-bold text-gray-800 mb-4">Doações Geradas</h2>
 
           <div className="overflow-x-auto">
             <table className="w-full" data-testid="donations-table">
@@ -212,7 +212,7 @@ const AdminDashboard = () => {
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Data/Hora</th>
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Valor</th>
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Codigo PIX</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Código PIX</th>
                 </tr>
               </thead>
               <tbody>
@@ -256,7 +256,7 @@ const AdminDashboard = () => {
         </div>
 
         <p data-testid="auto-refresh-indicator" className="text-center text-sm text-gray-500 mt-4">
-          Atualizacao automatica a cada 10 segundos
+          Atualização automática a cada 10 segundos
         </p>
       </div>
     </div>

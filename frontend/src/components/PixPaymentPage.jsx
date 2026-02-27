@@ -111,11 +111,11 @@ const PixPaymentPage = () => {
           {/* Header */}
           <div className="mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              Falta pouco! Sua colaboracao sera confirmada apos a transferencia PIX
+              Falta pouco! Sua colaboração será confirmada após a transferência PIX
             </h1>
             <div className="h-1 w-20 bg-pink-500 mb-6"></div>
             <p className="text-lg text-gray-700 mb-2">
-              Escolha uma das opcoes para concluir seu pagamento de <span className="font-bold">R$ {donationValue.toFixed(2).replace('.', ',')}</span>
+              Escolha uma das opções para concluir seu pagamento de <span className="font-bold">R$ {donationValue.toFixed(2).replace('.', ',')}</span>
             </p>
             <div className="mt-4">
               <p className="text-base text-gray-600 font-semibold">Aguardando pagamento</p>
@@ -161,7 +161,7 @@ const PixPaymentPage = () => {
                 )}
               </div>
 
-              <p className="text-sm text-gray-600 text-center">Codigo valido por 24hrs</p>
+              <p className="text-sm text-gray-600 text-center">Código válido por 24hrs</p>
             </div>
 
             {/* Right Column - PIX Copia e Cola */}
@@ -171,7 +171,7 @@ const PixPaymentPage = () => {
               <div className="mb-6">
                 <p className="flex mb-4">
                   <span className="text-pink-500 font-bold mr-2">1.</span>
-                  <span className="text-gray-700">Copie o codigo abaixo</span>
+                  <span className="text-gray-700">Copie o código abaixo</span>
                 </p>
 
                 <p className="text-sm text-gray-600 mb-2">CODIGO:</p>
@@ -208,11 +208,11 @@ const PixPaymentPage = () => {
                 </li>
                 <li className="flex">
                   <span className="text-pink-500 font-bold mr-2">4.</span>
-                  <span>Cole o codigo e confirme o pagamento.</span>
+                  <span>Cole o código e confirme o pagamento.</span>
                 </li>
               </ol>
 
-              <p className="text-sm text-gray-600 mb-6">Codigo valido por 24hrs</p>
+              <p className="text-sm text-gray-600 mb-6">Código válido por 24hrs</p>
 
               {/* QR Code mobile (aparece apenas no mobile) */}
               <div className="md:hidden bg-white p-6 rounded-xl flex justify-center mb-6" data-testid="qr-code-mobile">
