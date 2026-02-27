@@ -35,8 +35,8 @@ function App() {
           <Route path="/doacao" element={<DonationPage />} />
           <Route path="/doacao/valor" element={<DonationValuePage />} />
           <Route path="/doacao/pix" element={<PixPaymentPage />} />
-          <Route path="/admin/login" element={<LoginPage />} />
-          <Route path="/admin/dashboard" element={<AdminDashboard />} />
+          <Route path="/donaspainel" element={<LoginPage />} />
+          <Route path="/donaspainel/dashboard" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
