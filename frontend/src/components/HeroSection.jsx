@@ -1,7 +1,10 @@
 import React from 'react';
 import { Button } from './ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const HeroSection = () => {
+  const navigate = useNavigate();
+  
   return (
     <div className="relative h-[80vh] max-h-[800px] overflow-hidden">
       {/* Background Image */}
@@ -41,7 +44,7 @@ const HeroSection = () => {
             <Button 
               className="mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-12 py-6 text-lg border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
               style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700 }}
-              onClick={() => alert('Redirecionando para doação...')}
+              onClick={() => navigate('/doacao')}
             >
               Quero Doar
             </Button>
