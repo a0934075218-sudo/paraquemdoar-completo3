@@ -10,7 +10,9 @@ const DonationPage = () => {
   const images = [
     'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/50dt1aei_3.jpg',
     'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/64kfg5us_2.jpg',
-    'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/2ltjm6aw_Base-para-bolinha-PQD-%2846%29.png'
+    'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/1wf5mua3_image.png',
+    'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/h1tzga7g_57945240-125e-11f1-9120-a910fc22c6ac.jpg.webp',
+    'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/721yh39x_1.jpg'
   ];
 
   const nextImage = () => {
@@ -145,9 +147,9 @@ const DonationPage = () => {
                 <div>
                   <p className="text-sm text-gray-600 mb-2">Esta iniciativa tem o endosso de:</p>
                   <img 
-                    src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/i0z2us06_benfeitoria.png" 
+                    src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/xkljwwsb_benfeitoria-logo%20%281%29.png" 
                     alt="Benfeitoria" 
-                    className="h-8"
+                    className="h-10"
                   />
                 </div>
                 <Button 
