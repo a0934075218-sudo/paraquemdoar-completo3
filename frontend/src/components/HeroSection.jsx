@@ -6,7 +6,7 @@ const HeroSection = () => {
   const navigate = useNavigate();
   
   return (
-    <div className="relative h-[80vh] max-h-[800px] overflow-hidden">
+    <div className="relative min-h-screen md:h-[80vh] md:max-h-[800px] overflow-hidden">
       {/* Background Image */}
       <div className="absolute inset-0">
         <img 
