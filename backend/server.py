@@ -1,4 +1,4 @@
-from fastapi import FastAPI, APIRouter
+from fastapi import FastAPI, APIRouter, Request
 from dotenv import load_dotenv
 from starlette.middleware.cors import CORSMiddleware
 from motor.motor_asyncio import AsyncIOMotorClient
@@ -9,6 +9,11 @@ from pydantic import BaseModel, Field, ConfigDict
 from typing import List
 import uuid
 from datetime import datetime, timezone
+
+# Import admin routes
+import sys
+sys.path.insert(0, str(Path(__file__).parent))
+from admin_routes import router as admin_router
 
 
 ROOT_DIR = Path(__file__).parent
