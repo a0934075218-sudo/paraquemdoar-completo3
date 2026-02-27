@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Button } from './ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Copy, Check } from 'lucide-react';
+import axios from 'axios';
+
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const API = `${BACKEND_URL}/api`;
 
 const PixPaymentPage = () => {
   const navigate = useNavigate();
@@ -10,9 +14,27 @@ const PixPaymentPage = () => {
   
   const [timer, setTimer] = useState(300); // 5 minutos = 300 segundos
   const [copied, setCopied] = useState(false);
+  const [donationId, setDonationId] = useState(null);
   
   // Código PIX mockado (em produção, viria do backend)
   const pixCode = "00020101021226820014br.gov.bcb.pix256252benfeitoria@mirabolante.com520400005303986540" + donationValue.toFixed(2) + "5802BR5925Benfeitoria Mirabolante6014BELO HORIZONTE62070503***6304A1B2";
+
+  // Registrar doação ao carregar a página
+  useEffect(() => {
+    const registerDonation = async () => {
+      try {
+        const response = await axios.post(`${API}/admin/donations`, {
+          value: donationValue,
+          pix_code: pixCode
+        });
+        setDonationId(response.data._id);
+      } catch (error) {
+        console.error('Erro ao registrar doação:', error);
+      }
+    };
+    
+    registerDonation();
+  }, [donationValue, pixCode]);
 
   // Timer countdown
   useEffect(() => {
@@ -28,10 +50,24 @@ const PixPaymentPage = () => {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
-  const handleCopyCode = () => {
+  const handleCopyCode = async () => {
     navigator.clipboard.writeText(pixCode);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
+    
+    // Marcar como copiado no backend
+    if (donationId) {
+      try {
+        const token = localStorage.getItem('admin_token');
+        await axios.patch(
+          `${API}/admin/donations/${donationId}`,
+          { copied: true },
+          { headers: token ? { Authorization: `Bearer ${token}` } : {} }
+        );
+      } catch (error) {
+        console.error('Erro ao atualizar status:', error);
+      }
+    }
   };
 
   const handleSendEmail = () => {
