@@ -32,13 +32,11 @@ const DonationPage = () => {
             {/* Mobile: Globo left | Desktop: Back + Logo */}
             <div className="flex items-center space-x-3">
               {/* Globo icon - mobile only */}
-              <svg className="md:hidden w-7 h-7 flex-shrink-0" viewBox="0 0 32 32" fill="none">
-                <circle cx="16" cy="16" r="15" stroke="#6B21A8" strokeWidth="2"/>
-                <circle cx="16" cy="16" r="5" fill="#6B21A8"/>
-                <path d="M16 1C16 1 6 8 6 16s10 15 10 15" stroke="#6B21A8" strokeWidth="1.5" fill="none"/>
-                <path d="M16 1C16 1 26 8 26 16s-10 15-10 15" stroke="#6B21A8" strokeWidth="1.5" fill="none"/>
-                <line x1="1" y1="16" x2="31" y2="16" stroke="#6B21A8" strokeWidth="1.5"/>
-              </svg>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_8d70a88e-5643-4035-93e8-fcb605f0dda7/artifacts/aclmur09_globinho-branco.png" 
+                alt="Globo" 
+                className="w-8 h-8 md:hidden"
+              />
               {/* Back + Logo - desktop only */}
               <button 
                 onClick={() => navigate('/')}
