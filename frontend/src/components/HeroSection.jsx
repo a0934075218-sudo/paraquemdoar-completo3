@@ -16,8 +16,8 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between h-full py-24 md:py-16">
-          {/* Left Image - Smaller Circular */}
-          <div className="w-full md:w-4/12 flex justify-center items-center order-2 md:order-1 mb-8 md:mb-0">
+          {/* Left Image - Hidden on mobile, visible on desktop */}
+          <div className="hidden md:flex w-full md:w-4/12 justify-center items-center order-2 md:order-1">
             <div className="relative w-full max-w-[280px] md:max-w-[380px]">
               {/* Circular container - smaller */}
               <div className="relative w-full" style={{ paddingBottom: '100%' }}>
@@ -46,11 +46,11 @@ const HeroSection = () => {
             </p>
             
             <Button 
-              className="mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-12 py-6 text-lg font-light border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
-              style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 400 }}
+              className="mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-12 py-6 text-lg border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
+              style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700 }}
               onClick={() => alert('Redirecionando para doação...')}
             >
-              quero doar
+              Quero Doar
             </Button>
           </div>
         </div>
