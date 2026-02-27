@@ -16,10 +16,10 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between h-full py-24 md:py-16">
-          {/* Left Image - Hidden on mobile, visible on desktop */}
-          <div className="hidden md:flex w-full md:w-4/12 justify-center items-center order-2 md:order-1">
-            <div className="relative w-full max-w-[280px] md:max-w-[380px]">
-              {/* Circular container */}
+          {/* Left Image - Larger and more centered */}
+          <div className="hidden md:flex w-full md:w-5/12 justify-center items-center order-2 md:order-1">
+            <div className="relative w-full max-w-[320px] md:max-w-[480px]">
+              {/* Circular container - larger */}
               <div className="relative w-full" style={{ paddingBottom: '100%' }}>
                 <div className="absolute inset-0 rounded-full overflow-hidden shadow-2xl border-4 md:border-6 border-white/30">
                   <img 
@@ -32,14 +32,14 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Content - Smaller text */}
-          <div className="w-full md:w-7/12 text-white order-1 md:order-2 text-center md:text-left">
-            {/* Título - menor */}
+          {/* Right Content - Moved slightly to the right */}
+          <div className="w-full md:w-6/12 text-white order-1 md:order-2 text-center md:text-left md:pl-8">
+            {/* Título */}
             <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: '42px' }}>
               Emergência climática
             </h1>
             
-            {/* Descrição - menor */}
+            {/* Descrição */}
             <p className="text-2xl md:text-3xl font-light leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 300, fontSize: '36px', lineHeight: '1.4' }}>
               Conheça e doe para organizações que<br />
               apoiam as vítimas da tragédia em MG
