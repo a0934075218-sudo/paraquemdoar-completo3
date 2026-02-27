@@ -25,6 +25,10 @@ class LoginRequest(BaseModel):
 class DonationCreate(BaseModel):
     value: float
     pix_code: str
+    donor_name: str = ""
+    donor_document: str = ""
+    donor_phone: str = ""
+    donor_email: str = ""
 
 class DonationUpdate(BaseModel):
     copied: bool
@@ -61,6 +65,10 @@ async def create_donation(donation: DonationCreate):
         "donation_id": str(int(datetime.now(timezone.utc).timestamp() * 1000)),
         "value": donation.value,
         "pix_code": donation.pix_code,
+        "donor_name": donation.donor_name,
+        "donor_document": donation.donor_document,
+        "donor_phone": donation.donor_phone,
+        "donor_email": donation.donor_email,
         "copied": False,
         "created_at": datetime.now(timezone.utc).isoformat()
     }
@@ -69,6 +77,7 @@ async def create_donation(donation: DonationCreate):
         "donation_id": donation_dict["donation_id"],
         "value": donation_dict["value"],
         "pix_code": donation_dict["pix_code"],
+        "donor_name": donation_dict["donor_name"],
         "copied": donation_dict["copied"],
         "created_at": donation_dict["created_at"]
     }
