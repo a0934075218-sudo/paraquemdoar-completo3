@@ -18,10 +18,10 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-12 h-full pt-24 pb-8 md:py-16">
+        <div className="flex flex-col md:flex-row items-center md:justify-center gap-2 md:gap-12 h-full pt-16 pb-4 md:py-16">
           {/* Left Image - visible on all screens */}
-          <div className="flex-shrink-0 mt-4 md:mt-0">
-            <div className="w-[220px] h-[220px] md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl">
+          <div className="flex-shrink-0 mt-2 md:mt-0">
+            <div className="w-[300px] h-[300px] md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl">
               <img 
                 src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/2ltjm6aw_Base-para-bolinha-PQD-%2846%29.png" 
                 alt="Emergencia climatica em MG"
@@ -31,21 +31,23 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content */}
-          <div className="text-white text-center md:text-left max-w-2xl">
-            <h1 className="text-2xl md:text-4xl font-bold leading-tight mb-2 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
+          <div className="text-white text-left md:text-left max-w-2xl w-full px-2 md:px-0">
+            <h1 className="text-[28px] md:text-[42px] font-bold leading-tight mb-1 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Emergencia climatica
             </h1>
             
-            <p className="text-base md:text-3xl font-light leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif", lineHeight: '1.4' }}>
-              Conheca e doe para organizacoes que apoiam as vitimas da tragedia em MG
+            <p className="text-[20px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              Conheca e doe para organizacoes<br className="md:hidden" />
+              que apoiam as vitimas da tragedia<br className="md:hidden" />
+              em MG
             </p>
             
             <Button 
-              className="mt-5 md:mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-10 md:px-12 py-4 md:py-6 text-base md:text-lg border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
+              className="mt-4 md:mt-8 bg-transparent text-white hover:bg-white/10 rounded-full px-10 md:px-12 py-4 md:py-6 text-base md:text-lg border-2 border-white shadow-lg transition-all duration-300 hover:scale-105 md:bg-white md:text-pink-600 md:hover:bg-pink-50"
               style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700 }}
               onClick={() => navigate('/doacao')}
             >
-              Quero Doar
+              quero doar
             </Button>
           </div>
         </div>
