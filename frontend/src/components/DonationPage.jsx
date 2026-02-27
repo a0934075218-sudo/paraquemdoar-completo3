@@ -133,7 +133,7 @@ const DonationPage = () => {
             <div className="py-4">
               <Button 
                 className="w-full md:w-auto bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full px-12 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105"
-                onClick={() => window.open('https://benfeitoria.com', '_blank')}
+                onClick={() => navigate('/doacao/valor')}
               >
                 Fazer doação
               </Button>
