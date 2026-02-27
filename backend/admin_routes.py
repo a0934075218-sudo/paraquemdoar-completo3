@@ -9,7 +9,7 @@ import os
 router = APIRouter(prefix="/api/admin")
 security = HTTPBearer()
 
-SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'your-secret-key-change-in-production')
+SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'doar-brasil-secret-key-2026')
 
 # Modelos
 class LoginRequest(BaseModel):
@@ -30,6 +30,10 @@ class PixKeyUpdate(BaseModel):
 ADMIN_USERNAME = "donas"
 ADMIN_PASSWORD = "Seinao10@@"
 
+# Função para obter o banco (será sobrescrito pelo server.py)
+async def get_db():
+    pass
+
 # Função para verificar token
 def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
@@ -49,13 +53,17 @@ async def login(request: LoginRequest):
 
 # Listar todas as doações
 @router.get("/donations")
-async def get_donations(user = Depends(verify_token), db = Depends(lambda: db)):
+async def get_donations(user = Depends(verify_token)):
+    from server import db
     donations = await db.donations.find().sort("created_at", -1).to_list(1000)
+    for donation in donations:
+        donation['_id'] = str(donation['_id'])
     return donations
 
-# Criar nova doação
+# Criar nova doação (sem autenticação para permitir registro público)
 @router.post("/donations")
-async def create_donation(donation: DonationCreate, db = Depends(lambda: db)):
+async def create_donation(donation: DonationCreate):
+    from server import db
     donation_dict = {
         "value": donation.value,
         "pix_code": donation.pix_code,
@@ -66,18 +74,25 @@ async def create_donation(donation: DonationCreate, db = Depends(lambda: db)):
     donation_dict["_id"] = str(result.inserted_id)
     return donation_dict
 
-# Marcar doação como copiada
+# Marcar doação como copiada (sem autenticação)
 @router.patch("/donations/{donation_id}")
-async def update_donation(donation_id: str, update: DonationUpdate, user = Depends(verify_token), db = Depends(lambda: db)):
-    await db.donations.update_one(
-        {"_id": donation_id},
-        {"$set": {"copied": update.copied}}
-    )
-    return {"message": "Doação atualizada"}
+async def update_donation(donation_id: str, update: DonationUpdate):
+    from server import db
+    from bson import ObjectId
+    
+    try:
+        await db.donations.update_one(
+            {"_id": ObjectId(donation_id)},
+            {"$set": {"copied": update.copied}}
+        )
+        return {"message": "Doação atualizada"}
+    except:
+        raise HTTPException(status_code=404, detail="Doação não encontrada")
 
 # Obter configurações (chave PIX)
 @router.get("/config")
-async def get_config(user = Depends(verify_token), db = Depends(lambda: db)):
+async def get_config(user = Depends(verify_token)):
+    from server import db
     config = await db.config.find_one({"key": "pix_key"})
     if not config:
         return {"pix_key": ""}
@@ -85,7 +100,8 @@ async def get_config(user = Depends(verify_token), db = Depends(lambda: db)):
 
 # Atualizar chave PIX
 @router.put("/config/pix-key")
-async def update_pix_key(data: PixKeyUpdate, user = Depends(verify_token), db = Depends(lambda: db)):
+async def update_pix_key(data: PixKeyUpdate, user = Depends(verify_token)):
+    from server import db
     await db.config.update_one(
         {"key": "pix_key"},
         {"$set": {"value": data.pix_key}},
@@ -95,7 +111,8 @@ async def update_pix_key(data: PixKeyUpdate, user = Depends(verify_token), db = 
 
 # Obter estatísticas
 @router.get("/stats")
-async def get_stats(user = Depends(verify_token), db = Depends(lambda: db)):
+async def get_stats(user = Depends(verify_token)):
+    from server import db
     donations = await db.donations.find().to_list(1000)
     total = sum(d.get("value", 0) for d in donations)
     copied_count = sum(1 for d in donations if d.get("copied", False))
