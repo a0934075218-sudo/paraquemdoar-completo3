@@ -39,8 +39,8 @@ const DonationValuePage = () => {
       return;
     }
     
-    // Aqui você pode redirecionar para a próxima etapa ou processar a doação
-    alert(`Valor selecionado: R$ ${finalValue.toFixed(2)}`);
+    // Navegar para a página PIX com o valor
+    navigate('/doacao/pix', { state: { value: finalValue } });
   };
 
   return (
