@@ -29,6 +29,7 @@ class DonationCreate(BaseModel):
     donor_document: str = ""
     donor_phone: str = ""
     donor_email: str = ""
+    device: str = ""
 
 class DonationUpdate(BaseModel):
     copied: bool
