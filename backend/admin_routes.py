@@ -124,6 +124,64 @@ async def update_pix_key(data: PixKeyUpdate, user=Depends(verify_token)):
     )
     return {"message": "Chave PIX atualizada"}
 
+class TelegramConfig(BaseModel):
+    chat_id: str
+
+@router.get("/config/telegram")
+async def get_telegram_config(user=Depends(verify_token)):
+    config = await db.config.find_one({"key": "telegram_chat_id"}, {"_id": 0})
+    chat_id = config.get("value", "") if config else ""
+    return {"chat_id": chat_id, "bot_configured": bool(BOT_TOKEN)}
+
+@router.put("/config/telegram")
+async def update_telegram_config(data: TelegramConfig, user=Depends(verify_token)):
+    await db.config.update_one(
+        {"key": "telegram_chat_id"},
+        {"$set": {"value": data.chat_id}},
+        upsert=True
+    )
+    return {"message": "Telegram configurado"}
+
+@router.post("/config/telegram/detect")
+async def detect_telegram_chat(user=Depends(verify_token)):
+    """Detecta automaticamente o chat_id do grupo onde o bot foi adicionado."""
+    if not BOT_TOKEN:
+        raise HTTPException(status_code=400, detail="Token do bot nao configurado")
+    import httpx
+    async with httpx.AsyncClient() as client:
+        r = await client.get(f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates")
+        data = r.json()
+    if not data.get("ok") or not data.get("result"):
+        raise HTTPException(status_code=404, detail="Nenhuma mensagem encontrada. Envie uma mensagem no grupo primeiro.")
+    chats = {}
+    for update in data["result"]:
+        msg = update.get("message") or update.get("my_chat_member", {}).get("chat")
+        if msg:
+            chat = msg.get("chat") or msg
+            if chat.get("type") in ("group", "supergroup"):
+                chats[str(chat["id"])] = chat.get("title", "Grupo")
+    if not chats:
+        raise HTTPException(status_code=404, detail="Bot nao foi adicionado a nenhum grupo ainda.")
+    chat_id = list(chats.keys())[0]
+    chat_name = chats[chat_id]
+    await db.config.update_one(
+        {"key": "telegram_chat_id"},
+        {"$set": {"value": chat_id}},
+        upsert=True
+    )
+    return {"chat_id": chat_id, "chat_name": chat_name, "message": f"Grupo '{chat_name}' detectado e configurado!"}
+
+@router.post("/config/telegram/test")
+async def test_telegram(user=Depends(verify_token)):
+    """Envia mensagem de teste no grupo."""
+    from telegram_bot import send_message
+    chat_id = await get_chat_id()
+    if not chat_id:
+        raise HTTPException(status_code=400, detail="Chat ID nao configurado")
+    await send_message("✅ <b>Teste de conexão</b>\n\nBot ParaQuemDoar conectado com sucesso!")
+    return {"message": "Mensagem de teste enviada"}
+
+
 @router.get("/stats")
 async def get_stats(user=Depends(verify_token)):
     donations = await db.donations.find({}, {"_id": 0}).to_list(1000)
