@@ -69,6 +69,22 @@ async def get_status_checks():
 # Include the router in the main app
 app.include_router(api_router)
 
+# Include admin routes with db dependency
+from fastapi import Request
+
+@app.middleware("http")
+async def add_db_to_request(request: Request, call_next):
+    request.state.db = db
+    response = await call_next(request)
+    return response
+
+# Override db dependency for admin routes
+def get_db():
+    return db
+
+admin_router.dependency_overrides[lambda: db] = get_db
+app.include_router(admin_router)
+
 app.add_middleware(
     CORSMiddleware,
     allow_credentials=True,
