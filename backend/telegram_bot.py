@@ -1,10 +1,10 @@
 """
 Módulo de notificações via Telegram Bot API.
-Envia mensagens quando doações são geradas ou códigos PIX são copiados.
+Envia mensagem quando doação é gerada e edita o status quando copiada.
 """
 import os
 import httpx
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 
 BOT_TOKEN = None
 
@@ -33,6 +33,28 @@ async def get_chat_id():
 async def send_message(text: str):
     token = _get_token()
     if not token:
+        return None
+    chat_id = await get_chat_id()
+    if not chat_id:
+        return None
+    try:
+        async with httpx.AsyncClient() as client:
+            r = await client.post(
+                f"https://api.telegram.org/bot{token}/sendMessage",
+                json={"chat_id": chat_id, "text": text, "parse_mode": "HTML"},
+                timeout=10,
+            )
+            data = r.json()
+            if data.get("ok"):
+                return data["result"]["message_id"]
+    except Exception as e:
+        print(f"Erro ao enviar Telegram: {e}")
+    return None
+
+
+async def edit_message(message_id: int, text: str):
+    token = _get_token()
+    if not token:
         return
     chat_id = await get_chat_id()
     if not chat_id:
@@ -40,49 +62,48 @@ async def send_message(text: str):
     try:
         async with httpx.AsyncClient() as client:
             await client.post(
-                f"https://api.telegram.org/bot{token}/sendMessage",
-                json={
-                    "chat_id": chat_id,
-                    "text": text,
-                    "parse_mode": "HTML",
-                },
+                f"https://api.telegram.org/bot{token}/editMessageText",
+                json={"chat_id": chat_id, "message_id": message_id, "text": text, "parse_mode": "HTML"},
                 timeout=10,
             )
     except Exception as e:
-        print(f"Erro ao enviar Telegram: {e}")
+        print(f"Erro ao editar Telegram: {e}")
 
 
 def _format_now():
-    now = datetime.now(timezone.utc)
-    # Converter para horário de Brasília (UTC-3)
-    from datetime import timedelta
-    br_time = now - timedelta(hours=3)
+    br_time = datetime.now(timezone.utc) - timedelta(hours=3)
     return br_time.strftime("%d/%m/%Y %H:%M:%S")
 
 
-async def notify_donation_created(value: float, donor_name: str, device: str):
+def _build_message(value, donor_name, status_emoji, status_text):
     nome = donor_name if donor_name else "Anônimo"
     data = _format_now()
-    text = (
+    return (
         f"\U0001F7E2 <b>NOVO PIX GERADO! (Para Quem Doar)</b>\n"
         f"━━━━━━━━━━━━━━━━━\n"
         f"\U0001F464 Usuário: {nome}\n"
         f"\U0001F4B0 Valor: <b>R$ {value:,.2f}</b>\n"
         f"\U0001F4C5 Data: {data}\n"
-        f"\U0001F4CA Status: \u23F3 Gerado"
+        f"\U0001F4CA Status: {status_emoji} {status_text}"
     )
-    await send_message(text)
 
 
-async def notify_donation_copied(value: float, donor_name: str):
-    nome = donor_name if donor_name else "Anônimo"
-    data = _format_now()
-    text = (
-        f"\U0001F7E2 <b>PIX COPIADO! (Para Quem Doar)</b>\n"
-        f"━━━━━━━━━━━━━━━━━\n"
-        f"\U0001F464 Usuário: {nome}\n"
-        f"\U0001F4B0 Valor: <b>R$ {value:,.2f}</b>\n"
-        f"\U0001F4C5 Data: {data}\n"
-        f"\U0001F4CA Status: \u2705 Copiado"
+async def notify_donation_created(value: float, donor_name: str, device: str):
+    text = _build_message(value, donor_name, "\u23F3", "Gerado")
+    message_id = await send_message(text)
+    return message_id
+
+
+async def notify_donation_copied(donation_id: str):
+    if db is None:
+        return
+    donation = await db.donations.find_one({"donation_id": donation_id}, {"_id": 0})
+    if not donation or not donation.get("telegram_message_id"):
+        return
+    text = _build_message(
+        donation.get("value", 0),
+        donation.get("donor_name", ""),
+        "\u2705",
+        "Copiado"
     )
-    await send_message(text)
+    await edit_message(donation["telegram_message_id"], text)
