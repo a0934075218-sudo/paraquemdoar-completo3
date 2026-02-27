@@ -31,8 +31,8 @@ const DonationPage = () => {
           <div className="flex items-center justify-between relative">
             {/* Mobile: Globo left | Desktop: Back + Logo */}
             <div className="flex items-center space-x-3">
-              {/* Globo icon - mobile only - cropped to icon */}
-              <div className="md:hidden w-6 h-7 overflow-hidden flex-shrink-0">
+              {/* Globo icon - mobile only - cropped to circle icon */}
+              <div className="md:hidden w-5 h-7 overflow-hidden flex-shrink-0">
                 <img 
                   src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/xr4t0foz_globo-roxo.png" 
                   alt="Globo" 

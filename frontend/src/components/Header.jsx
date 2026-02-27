@@ -11,8 +11,8 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Mobile: Globo Left | Desktop: Logo Left */}
           <div className="flex items-center">
-            {/* Globo icon - mobile only (left) - cropped to show only icon */}
-            <div className="md:hidden w-6 h-7 overflow-hidden flex-shrink-0">
+            {/* Globo icon - mobile only (left) - cropped to show only circle icon */}
+            <div className="md:hidden w-5 h-7 overflow-hidden flex-shrink-0">
               <img 
                 src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/y6iwz76t_globo.png" 
                 alt="Globo" 
