@@ -209,17 +209,19 @@ const AdminDashboard = () => {
             <table className="w-full" data-testid="donations-table">
               <thead>
                 <tr className="border-b-2 border-gray-200">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Data/Hora</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Doador</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Nome</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">CPF/CNPJ</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Telefone</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">E-mail</th>
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Valor</th>
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Código PIX</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Data/Hora</th>
                 </tr>
               </thead>
               <tbody>
                 {donations.length === 0 ? (
                   <tr>
-                    <td colSpan="5" data-testid="no-donations-message" className="text-center py-8 text-gray-500">
+                    <td colSpan="7" data-testid="no-donations-message" className="text-center py-8 text-gray-500">
                       Nenhuma doação registrada ainda
                     </td>
                   </tr>
@@ -227,10 +229,16 @@ const AdminDashboard = () => {
                   donations.map((donation, index) => (
                     <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className="border-b border-gray-100 hover:bg-gray-50">
                       <td className="py-3 px-4 text-sm text-gray-700">
-                        {formatDate(donation.created_at)}
+                        {donation.donor_name || <span className="text-gray-400 italic">Anônimo</span>}
                       </td>
                       <td className="py-3 px-4 text-sm text-gray-700">
-                        {donation.donor_name || <span className="text-gray-400 italic">Anônimo</span>}
+                        {donation.donor_document || '-'}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-gray-700">
+                        {donation.donor_phone || '-'}
+                      </td>
+                      <td className="py-3 px-4 text-sm text-gray-700">
+                        {donation.donor_email || '-'}
                       </td>
                       <td className="py-3 px-4">
                         <span className="font-bold text-pink-500">
@@ -248,8 +256,8 @@ const AdminDashboard = () => {
                           </span>
                         )}
                       </td>
-                      <td className="py-3 px-4 text-xs text-gray-500 font-mono max-w-xs truncate">
-                        {donation.pix_code ? donation.pix_code.substring(0, 50) + '...' : '-'}
+                      <td className="py-3 px-4 text-sm text-gray-700">
+                        {formatDate(donation.created_at)}
                       </td>
                     </tr>
                   ))
