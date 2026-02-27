@@ -27,7 +27,7 @@ const PixPaymentPage = () => {
           value: donationValue,
           pix_code: pixCode
         });
-        setDonationId(response.data._id);
+        setDonationId(response.data.donation_id);
       } catch (error) {
         console.error('Erro ao registrar doação:', error);
       }
