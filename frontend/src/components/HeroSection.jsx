@@ -15,10 +15,10 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-center gap-8 h-full py-20 md:py-12">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-12 h-full py-20 md:py-12">
           {/* Left Image - Larger, no border, closer to text */}
-          <div className="hidden md:flex justify-center items-center order-2 md:order-1">
-            <div className="relative w-full max-w-[500px]">
+          <div className="hidden md:block order-2 md:order-1">
+            <div className="relative w-full max-w-[520px]">
               {/* Circular container - no border */}
               <div className="relative w-full" style={{ paddingBottom: '100%' }}>
                 <div className="absolute inset-0 rounded-full overflow-hidden shadow-2xl">
@@ -33,7 +33,7 @@ const HeroSection = () => {
           </div>
 
           {/* Right Content - Closer to image */}
-          <div className="w-full md:w-auto text-white order-1 md:order-2 text-center md:text-left">
+          <div className="w-full md:w-auto text-white order-1 md:order-2 text-center md:text-left max-w-2xl">
             {/* Título */}
             <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-4" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: '42px' }}>
               Emergência climática
