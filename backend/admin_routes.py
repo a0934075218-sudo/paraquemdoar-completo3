@@ -1,9 +1,10 @@
-from fastapi import APIRouter, HTTPException, Depends
+from fastapi import APIRouter, HTTPException, Depends, Query
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from datetime import datetime, timezone
 import jwt
 import os
+from pix_generator import generate_pix_payload
 
 router = APIRouter(prefix="/api/admin")
 security = HTTPBearer()
