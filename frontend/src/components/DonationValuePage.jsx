@@ -118,7 +118,7 @@ const DonationValuePage = () => {
           {/* Description Text */}
           <div className="bg-white rounded-2xl p-8 mb-8 shadow-sm">
             <p className="text-gray-700 text-center leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              Apoiando a HUMUS, você colabora com nossa missão de promover prevenção e resposta emergencial em comunidades situadas em áreas de risco, através de tecnologias e iniciativas poderosas como o ParaQuemDoar.
+              Todos juntos por Juiz de Fora: você está colaborando com a nossa missão de promover prevenção e resposta emergencial em comunidades em risco, por meio de tecnologias e iniciativas de impacto, como o ParaQuemDoar.
             </p>
           </div>
 
