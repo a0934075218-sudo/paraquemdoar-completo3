@@ -151,7 +151,7 @@ const DonationPage = () => {
 
             {/* Description */}
             <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              A HUMUS atua com a prevenção em comunidades em áreas de risco iminente e com resposta emergencial em desastres relacionadas a eventos naturais extremos
+              A HUMUS atua na prevenção em comunidades em áreas de risco e, durante desastres, oferece resposta emergencial. Estamos atuando em Juiz de Fora, MG, para apoiar quem precisa.
             </p>
 
             {/* Donation Button */}
