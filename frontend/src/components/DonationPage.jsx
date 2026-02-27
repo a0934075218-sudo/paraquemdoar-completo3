@@ -111,38 +111,38 @@ const DonationPage = () => {
             </div>
           </div>
 
-          {/* Right Column - Initiative Info */}
-          <div className="space-y-6">
+          {/* Right Column - Initiative Info - Compact */}
+          <div className="space-y-3">
             {/* Tag Emergências */}
             <div className="flex items-center space-x-2 text-gray-600">
-              <MapPin className="w-5 h-5" />
-              <span className="text-base">Emergências</span>
+              <MapPin className="w-4 h-4" />
+              <span className="text-sm">Emergências</span>
             </div>
 
             {/* Title */}
-            <h1 className="text-6xl md:text-7xl font-bold text-pink-500" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <h1 className="text-6xl md:text-7xl font-bold text-pink-500 mb-3" style={{ fontFamily: "'Nunito', sans-serif" }}>
               HUMUS
             </h1>
 
-            {/* Description */}
-            <p className="text-lg text-gray-700 leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            {/* Description - First Part */}
+            <p className="text-base text-gray-700 leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
               A HUMUS atua na prevenção em comunidades situadas em áreas de risco iminente e, em situações de desastre, realiza resposta emergencial diante de eventos naturais extremos. Atualmente, acompanhamos com urgência a situação em Juiz de Fora, MG.
             </p>
 
-            {/* Donation Button */}
-            <Button 
-              className="w-full md:w-auto bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full px-12 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105"
-              onClick={() => window.open('https://benfeitoria.com', '_blank')}
-            >
-              Fazer doação
-            </Button>
-
-            {/* Info Text - Simplified */}
-            <div className="mt-6">
-              <p className="text-sm text-pink-500 leading-relaxed">
-                * Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.
-              </p>
+            {/* Donation Button - As divider */}
+            <div className="py-3">
+              <Button 
+                className="w-full md:w-auto bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full px-12 py-5 text-base font-semibold transition-all duration-300 hover:scale-105"
+                onClick={() => window.open('https://benfeitoria.com', '_blank')}
+              >
+                Fazer doação
+              </Button>
             </div>
+
+            {/* Info Text - Second Part */}
+            <p className="text-xs text-pink-500 leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              * Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.
+            </p>
           </div>
         </div>
       </div>
