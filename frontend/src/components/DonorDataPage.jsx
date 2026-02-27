@@ -15,6 +15,8 @@ const DonorDataPage = () => {
     email: ''
   });
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const handleChange = (field, value) => {
     setFormData(prev => ({ ...prev, [field]: value }));
   };
@@ -50,21 +52,27 @@ const DonorDataPage = () => {
 
   const handleContinue = () => {
     if (!isFormValid) return;
-    navigate('/doacao/pix', { 
-      state: { 
-        value: donationValue, 
-        donor: formData 
-      } 
-    });
+    setIsLoading(true);
+    setTimeout(() => {
+      navigate('/doacao/pix', { 
+        state: { 
+          value: donationValue, 
+          donor: formData 
+        } 
+      });
+    }, 800);
   };
 
   const handleAnonymous = () => {
-    navigate('/doacao/pix', { 
-      state: { 
-        value: donationValue, 
-        donor: null 
-      } 
-    });
+    setIsLoading(true);
+    setTimeout(() => {
+      navigate('/doacao/pix', { 
+        state: { 
+          value: donationValue, 
+          donor: null 
+        } 
+      });
+    }, 800);
   };
 
   return (
