@@ -271,6 +271,46 @@ const AdminDashboard = () => {
           </div>
         </div>
 
+        {/* Telegram Config */}
+        <div data-testid="telegram-config" className="bg-white rounded-xl shadow-md p-5 mb-6">
+          <h2 className="text-lg font-bold text-gray-800 mb-3">Notificações Telegram</h2>
+          <div className="flex flex-col gap-3">
+            <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+              <input
+                data-testid="telegram-chat-id-input"
+                type="text"
+                value={telegramChatId}
+                disabled
+                className="flex-1 px-4 py-3 rounded-lg border-2 border-gray-300 bg-gray-100 text-sm"
+                placeholder="Chat ID do grupo"
+              />
+              <Button
+                data-testid="telegram-detect-button"
+                onClick={handleDetectTelegram}
+                disabled={detectingTelegram}
+                className="bg-blue-500 text-white hover:bg-blue-600 rounded-lg px-6 py-3"
+              >
+                {detectingTelegram ? 'Detectando...' : 'Detectar grupo'}
+              </Button>
+              {telegramChatId && (
+                <Button
+                  data-testid="telegram-test-button"
+                  onClick={handleTestTelegram}
+                  className="bg-green-500 text-white hover:bg-green-600 rounded-lg px-6 py-3 flex items-center gap-2"
+                >
+                  <Send className="w-4 h-4" /> Testar
+                </Button>
+              )}
+            </div>
+            {telegramStatus && (
+              <p className="text-sm text-blue-600">{telegramStatus}</p>
+            )}
+            {!telegramChatId && (
+              <p className="text-xs text-gray-500">Adicione o bot ao grupo no Telegram, envie uma mensagem e clique em "Detectar grupo".</p>
+            )}
+          </div>
+        </div>
+
         {/* Donations Table */}
         <div data-testid="donations-table-container" className="bg-white rounded-xl shadow-md p-5">
           <h2 className="text-lg font-bold text-gray-800 mb-4">Doações Geradas</h2>
