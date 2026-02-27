@@ -137,28 +137,11 @@ const DonationPage = () => {
               Fazer doação
             </Button>
 
-            {/* Benfeitoria Info */}
-            <div className="mt-8 p-6 bg-pink-50 rounded-2xl">
-              <p className="text-sm text-pink-600 leading-relaxed mb-4">
-                Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.
+            {/* Info Text - Simplified */}
+            <div className="mt-6">
+              <p className="text-sm text-pink-500 leading-relaxed">
+                * Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.
               </p>
-              
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="text-sm text-gray-600 mb-2">Esta iniciativa tem o endosso de:</p>
-                  <img 
-                    src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/xkljwwsb_benfeitoria-logo%20%281%29.png" 
-                    alt="Benfeitoria" 
-                    className="h-10"
-                  />
-                </div>
-                <Button 
-                  className="bg-white text-gray-700 border-2 border-gray-300 hover:bg-gray-50 rounded-full px-8 py-4 font-normal transition-all duration-300"
-                  onClick={() => window.open('https://benfeitoria.com', '_blank')}
-                >
-                  Ver mais
-                </Button>
-              </div>
             </div>
           </div>
         </div>
