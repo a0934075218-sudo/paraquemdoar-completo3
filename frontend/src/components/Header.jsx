@@ -9,16 +9,30 @@ const Header = () => {
     <header className="absolute top-0 left-0 right-0 z-50">
       <div className="container mx-auto px-4 md:px-6 py-4 md:py-6">
         <div className="flex items-center justify-between">
-          {/* Logo ParaQuemDoar - Left - Smaller */}
+          {/* Mobile: Globo Left | Desktop: Logo Left */}
           <div className="flex items-center">
+            {/* Globo icon - mobile only (left) */}
+            <img 
+              src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/y6iwz76t_globo.png" 
+              alt="Globo" 
+              className="h-7 brightness-0 invert md:hidden"
+            />
+            {/* ParaQuemDoar logo - desktop only (left) */}
             <img 
               src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/zxsfbrbt_logo-horizontal.png" 
               alt="ParaQuemDoar" 
-              className="h-10 md:h-14 brightness-0 invert"
+              className="hidden md:block h-14 brightness-0 invert"
             />
           </div>
 
-          {/* Search Bar - Center */}
+          {/* Center: ParaQuemDoar on mobile | Search on desktop */}
+          <div className="md:hidden absolute left-1/2 transform -translate-x-1/2">
+            <img 
+              src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/zxsfbrbt_logo-horizontal.png" 
+              alt="ParaQuemDoar" 
+              className="h-6 brightness-0 invert"
+            />
+          </div>
           <div className="hidden md:flex flex-1 max-w-xl mx-8">
             <div className="relative w-full">
               <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-orange-400 w-5 h-5" />
@@ -32,21 +46,21 @@ const Header = () => {
             </div>
           </div>
 
-          {/* Search Icon - Mobile */}
-          <div className="md:hidden">
-            <button className="text-white p-2">
-              <Search className="w-6 h-6" />
+          {/* Right: Search on mobile | Globo on desktop */}
+          <div className="flex items-center">
+            {/* Search icon - mobile */}
+            <button className="text-white p-1 md:hidden">
+              <Search className="w-5 h-5" />
             </button>
-          </div>
-
-          {/* Globo Logo - Right */}
-          <div className="flex items-center space-x-2 md:space-x-3">
-            <span className="hidden md:block text-sm md:text-base text-white font-light">Iniciativa:</span>
-            <img 
-              src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/y6iwz76t_globo.png" 
-              alt="Globo" 
-              className="h-8 md:h-10 brightness-0 invert"
-            />
+            {/* Globo + label - desktop */}
+            <div className="hidden md:flex items-center space-x-3">
+              <span className="text-sm md:text-base text-white font-light">Iniciativa:</span>
+              <img 
+                src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/y6iwz76t_globo.png" 
+                alt="Globo" 
+                className="h-10 brightness-0 invert"
+              />
+            </div>
           </div>
         </div>
       </div>
