@@ -10,10 +10,7 @@ from typing import List
 import uuid
 from datetime import datetime, timezone
 
-# Import admin routes
-import sys
-sys.path.insert(0, str(Path(__file__).parent))
-from admin_routes import router as admin_router
+from admin_routes import router as admin_router, set_db as set_admin_db
 
 
 ROOT_DIR = Path(__file__).parent
