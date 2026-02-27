@@ -1,23 +1,35 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import InitiativesGrid from "./components/InitiativesGrid";
 import BlogSection from "./components/BlogSection";
 import Footer from "./components/Footer";
+import DonationPage from "./components/DonationPage";
+
+const HomePage = () => {
+  return (
+    <>
+      <Header />
+      <main>
+        <HeroSection />
+        <InitiativesGrid />
+        <BlogSection />
+      </main>
+      <Footer />
+    </>
+  );
+};
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Header />
-        <main>
-          <HeroSection />
-          <InitiativesGrid />
-          <BlogSection />
-        </main>
-        <Footer />
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/doacao" element={<DonationPage />} />
+        </Routes>
       </BrowserRouter>
     </div>
   );
