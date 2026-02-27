@@ -109,3 +109,27 @@ async def get_stats(user=Depends(verify_token)):
         "total_donations": len(donations),
         "copied_count": copied_count
     }
+
+
+# ============ ENDPOINTS PUBLICOS (sem auth) ============
+
+# Gerar payload PIX valido
+@router.get("/pix/generate")
+async def generate_pix(value: float = Query(..., gt=0)):
+    config = await db.config.find_one({"key": "pix_key"}, {"_id": 0})
+    pix_key = config.get("value", "") if config else ""
+    if not pix_key:
+        raise HTTPException(status_code=400, detail="Chave PIX nao configurada no painel")
+
+    payload = generate_pix_payload(
+        pix_key=pix_key,
+        amount=value,
+    )
+    return {"pix_code": payload, "pix_key": pix_key}
+
+# Obter chave PIX publica (sem detalhes sensíveis, apenas se existe)
+@router.get("/pix/status")
+async def pix_status():
+    config = await db.config.find_one({"key": "pix_key"}, {"_id": 0})
+    has_key = bool(config and config.get("value"))
+    return {"configured": has_key}
