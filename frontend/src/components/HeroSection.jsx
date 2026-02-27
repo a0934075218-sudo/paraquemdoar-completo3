@@ -34,14 +34,15 @@ const HeroSection = () => {
 
           {/* Right Content */}
           <div className="w-full md:w-6/12 text-white space-y-4 md:space-y-6 order-1 md:order-2 text-center md:text-left">
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-wide">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-extralight leading-tight tracking-wide" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 200 }}>
               Emergência climática
             </h1>
-            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
+            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 300 }}>
               Conheça e doe para organizações que apoiam as vítimas da tragédia em MG
             </p>
             <Button 
-              className="mt-6 md:mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-10 md:px-12 py-5 md:py-6 text-base md:text-lg font-normal border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
+              className="mt-6 md:mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-10 md:px-12 py-5 md:py-6 text-base md:text-lg font-light border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
+              style={{ fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 300 }}
               onClick={() => alert('Redirecionando para doação...')}
             >
               quero doar
