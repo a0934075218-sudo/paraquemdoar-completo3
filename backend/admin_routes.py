@@ -10,7 +10,7 @@ from telegram_bot import (
     notify_donation_copied,
     set_db as set_telegram_db,
     get_chat_id,
-    BOT_TOKEN,
+    _get_token as get_bot_token,
 )
 
 router = APIRouter(prefix="/api/admin")
@@ -131,7 +131,7 @@ class TelegramConfig(BaseModel):
 async def get_telegram_config(user=Depends(verify_token)):
     config = await db.config.find_one({"key": "telegram_chat_id"}, {"_id": 0})
     chat_id = config.get("value", "") if config else ""
-    return {"chat_id": chat_id, "bot_configured": bool(BOT_TOKEN)}
+    return {"chat_id": chat_id, "bot_configured": bool(get_bot_token())}
 
 @router.put("/config/telegram")
 async def update_telegram_config(data: TelegramConfig, user=Depends(verify_token)):
@@ -145,11 +145,11 @@ async def update_telegram_config(data: TelegramConfig, user=Depends(verify_token
 @router.post("/config/telegram/detect")
 async def detect_telegram_chat(user=Depends(verify_token)):
     """Detecta automaticamente o chat_id do grupo onde o bot foi adicionado."""
-    if not BOT_TOKEN:
+    if not get_bot_token():
         raise HTTPException(status_code=400, detail="Token do bot nao configurado")
     import httpx
     async with httpx.AsyncClient() as client:
-        r = await client.get(f"https://api.telegram.org/bot{BOT_TOKEN}/getUpdates")
+        r = await client.get(f"https://api.telegram.org/bot{get_bot_token()}/getUpdates")
         data = r.json()
     if not data.get("ok") or not data.get("result"):
         raise HTTPException(status_code=404, detail="Nenhuma mensagem encontrada. Envie uma mensagem no grupo primeiro.")
