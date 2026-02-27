@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import { blogPosts } from '../mockData';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
+import { useNavigate } from 'react-router-dom';
 
 const BlogSection = () => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerView = typeof window !== 'undefined' && window.innerWidth < 768 ? 1 : 3;
 
@@ -36,7 +38,7 @@ const BlogSection = () => {
           </h2>
           <Button
             className="bg-pink-500 text-white hover:bg-pink-600 rounded-full px-6 py-3 font-semibold transition-all duration-300 text-sm md:text-base"
-            onClick={() => alert('Ver todos os artigos')}
+            onClick={() => navigate('/doacao')}
           >
             Ler todos os artigos
           </Button>
@@ -65,6 +67,7 @@ const BlogSection = () => {
               <div 
                 key={post.id}
                 className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group"
+                onClick={() => navigate('/doacao')}
               >
                 <div className="relative h-48 md:h-56 overflow-hidden">
                   <img 
@@ -83,7 +86,7 @@ const BlogSection = () => {
                   </p>
                   <button 
                     className="text-pink-500 font-semibold hover:text-pink-600 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base"
-                    onClick={() => alert('Abrindo artigo...')}
+                    onClick={(e) => { e.stopPropagation(); navigate('/doacao'); }}
                   >
                     <span>Saiba mais</span>
                     <span>→</span>
