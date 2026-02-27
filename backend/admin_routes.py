@@ -119,6 +119,12 @@ async def get_stats(user=Depends(verify_token)):
         "copied_count": copied_count
     }
 
+@router.delete("/donations")
+async def clear_donations(user=Depends(verify_token)):
+    result = await db.donations.delete_many({})
+    return {"message": f"{result.deleted_count} doações removidas"}
+
+
 
 # ============ ENDPOINTS PUBLICOS (sem auth) ============
 
