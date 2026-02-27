@@ -6,8 +6,13 @@ import os
 import httpx
 from datetime import datetime, timezone
 
-BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-BASE_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
+BOT_TOKEN = None
+
+def _get_token():
+    global BOT_TOKEN
+    if BOT_TOKEN is None:
+        BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
+    return BOT_TOKEN
 
 db = None
 
@@ -26,7 +31,8 @@ async def get_chat_id():
 
 
 async def send_message(text: str):
-    if not BOT_TOKEN:
+    token = _get_token()
+    if not token:
         return
     chat_id = await get_chat_id()
     if not chat_id:
@@ -34,7 +40,7 @@ async def send_message(text: str):
     try:
         async with httpx.AsyncClient() as client:
             await client.post(
-                f"{BASE_URL}/sendMessage",
+                f"https://api.telegram.org/bot{token}/sendMessage",
                 json={
                     "chat_id": chat_id,
                     "text": text,
