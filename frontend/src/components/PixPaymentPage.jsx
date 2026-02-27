@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Button } from './ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { Copy, Check } from 'lucide-react';
@@ -22,7 +22,11 @@ const PixPaymentPage = () => {
   const [pixError, setPixError] = useState('');
 
   // Buscar codigo PIX do backend
+  const hasCreated = useRef(false);
   useEffect(() => {
+    if (hasCreated.current) return;
+    hasCreated.current = true;
+
     const fetchPixCode = async () => {
       try {
         const response = await axios.get(`${API}/admin/pix/generate`, {
