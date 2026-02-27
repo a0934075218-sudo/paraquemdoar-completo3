@@ -34,20 +34,20 @@ const HeroSection = () => {
 
           {/* Right Content */}
           <div className="w-full md:w-7/12 text-white order-1 md:order-2 text-center md:text-left">
-            {/* Título - mais curto */}
-            <h1 className="text-5xl md:text-6xl lg:text-7xl font-semibold leading-tight mb-5 md:mb-6" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 600 }}>
+            {/* Título - médio, bold */}
+            <h1 className="text-4xl md:text-5xl font-bold leading-tight mb-4" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700, fontSize: '56px' }}>
               Emergência climática
             </h1>
             
-            {/* Descrição - linhas mais largas que o título */}
-            <p className="text-lg md:text-xl font-light leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 300 }}>
+            {/* Descrição - tamanho similar ao título, mais fino, linhas mais largas */}
+            <p className="text-3xl md:text-4xl font-light leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 300, fontSize: '48px', lineHeight: '1.4' }}>
               Conheça e doe para organizações que<br />
               apoiam as vítimas da tragédia em MG
             </p>
             
             <Button 
-              className="mt-6 md:mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-10 md:px-12 py-5 md:py-6 text-base font-light border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
-              style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 300 }}
+              className="mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-12 py-6 text-lg font-light border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
+              style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 400 }}
               onClick={() => alert('Redirecionando para doação...')}
             >
               quero doar
