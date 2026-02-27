@@ -34,20 +34,30 @@ const HeroCarousel = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Gradient Background - matching the reference image */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} transition-all duration-1000`}>
-        {/* Large Decorative Circles - matching reference positions */}
-        <div className="absolute -top-32 -left-40 w-[600px] h-[600px] rounded-full bg-red-500 opacity-60"></div>
-        <div className="absolute top-1/4 -right-40 w-[500px] h-[500px] rounded-full bg-purple-600 opacity-50"></div>
-        <div className="absolute -bottom-48 -left-48 w-[700px] h-[700px] rounded-full bg-orange-500 opacity-70"></div>
-        <div className="absolute bottom-32 right-32 w-[400px] h-[400px] rounded-full bg-pink-600 opacity-45"></div>
-        <div className="absolute top-1/2 right-1/4 w-[350px] h-[350px] rounded-full bg-purple-700 opacity-40"></div>
-        
-        {/* Small decorative circles */}
-        <div className="absolute top-1/3 right-1/3 w-32 h-40 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 opacity-70"></div>
-        <div className="absolute bottom-1/3 left-1/4 w-24 h-32 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 opacity-75"></div>
-        <div className="absolute top-2/3 right-10 w-28 h-36 rounded-full bg-gradient-to-br from-green-300 to-teal-400 opacity-65"></div>
-      </div>
+      {/* Background - use custom background image if available, otherwise gradient */}
+      {slide.backgroundImage ? (
+        <div className="absolute inset-0 transition-all duration-1000">
+          <img 
+            src={slide.backgroundImage} 
+            alt="Background"
+            className="w-full h-full object-cover"
+          />
+        </div>
+      ) : (
+        <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} transition-all duration-1000`}>
+          {/* Large Decorative Circles - matching reference positions */}
+          <div className="absolute -top-32 -left-40 w-[600px] h-[600px] rounded-full bg-red-500 opacity-60"></div>
+          <div className="absolute top-1/4 -right-40 w-[500px] h-[500px] rounded-full bg-purple-600 opacity-50"></div>
+          <div className="absolute -bottom-48 -left-48 w-[700px] h-[700px] rounded-full bg-orange-500 opacity-70"></div>
+          <div className="absolute bottom-32 right-32 w-[400px] h-[400px] rounded-full bg-pink-600 opacity-45"></div>
+          <div className="absolute top-1/2 right-1/4 w-[350px] h-[350px] rounded-full bg-purple-700 opacity-40"></div>
+          
+          {/* Small decorative circles */}
+          <div className="absolute top-1/3 right-1/3 w-32 h-40 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 opacity-70"></div>
+          <div className="absolute bottom-1/3 left-1/4 w-24 h-32 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 opacity-75"></div>
+          <div className="absolute top-2/3 right-10 w-28 h-36 rounded-full bg-gradient-to-br from-green-300 to-teal-400 opacity-65"></div>
+        </div>
+      )}
 
       {/* Content */}
       <div className="relative min-h-screen container mx-auto px-4 md:px-6">
