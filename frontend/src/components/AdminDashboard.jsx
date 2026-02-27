@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { LogOut, RefreshCw, DollarSign, TrendingUp, Check, Copy } from 'lucide-react';
+import { LogOut, RefreshCw, DollarSign, TrendingUp, Copy, Trash2, X } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -16,6 +16,8 @@ const AdminDashboard = () => {
   const [loading, setLoading] = useState(true);
   const [editingPixKey, setEditingPixKey] = useState(false);
   const [lastUpdate, setLastUpdate] = useState(null);
+  const [modal, setModal] = useState(null);
+  const [confirmClear, setConfirmClear] = useState(false);
 
   const token = localStorage.getItem('admin_token');
 
@@ -42,12 +44,9 @@ const AdminDashboard = () => {
   }, [token, navigate, editingPixKey]);
 
   useEffect(() => {
-    if (!token) {
-      navigate('/donaspainel');
-      return;
-    }
+    if (!token) { navigate('/donaspainel'); return; }
     fetchData();
-    const interval = setInterval(fetchData, 10000);
+    const interval = setInterval(fetchData, 60000);
     return () => clearInterval(interval);
   }, [token, navigate, fetchData]);
 
@@ -59,28 +58,22 @@ const AdminDashboard = () => {
 
   const handleUpdatePixKey = async () => {
     try {
-      await axios.put(
-        `${API}/admin/config/pix-key`,
-        { pix_key: newPixKey },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      await axios.put(`${API}/admin/config/pix-key`, { pix_key: newPixKey }, { headers: { Authorization: `Bearer ${token}` } });
       setPixKey(newPixKey);
       setEditingPixKey(false);
-    } catch (error) {
-      console.error('Erro ao atualizar chave PIX');
-    }
+    } catch (error) { console.error('Erro ao atualizar chave PIX'); }
   };
 
-  const formatCurrency = (value) => {
-    return new Intl.NumberFormat('pt-BR', {
-      style: 'currency',
-      currency: 'BRL'
-    }).format(value);
+  const handleClearData = async () => {
+    try {
+      await axios.delete(`${API}/admin/donations`, { headers: { Authorization: `Bearer ${token}` } });
+      setConfirmClear(false);
+      fetchData();
+    } catch (error) { console.error('Erro ao limpar dados'); }
   };
 
-  const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleString('pt-BR');
-  };
+  const formatCurrency = (value) => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(value);
+  const formatDate = (dateString) => new Date(dateString).toLocaleString('pt-BR');
 
   if (loading) {
     return (
@@ -90,8 +83,72 @@ const AdminDashboard = () => {
     );
   }
 
+  const copiedDonations = donations.filter(d => d.copied);
+
   return (
     <div data-testid="admin-dashboard" className="min-h-screen bg-gray-50">
+      {/* Modal */}
+      {modal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setModal(null)}>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-5 border-b">
+              <h3 className="text-lg font-bold text-gray-800">{modal.title}</h3>
+              <button onClick={() => setModal(null)} className="text-gray-400 hover:text-gray-600" data-testid="modal-close-button">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-5 overflow-y-auto max-h-[60vh]">
+              {modal.items.length === 0 ? (
+                <p className="text-gray-500 text-center py-8">Nenhum registro encontrado</p>
+              ) : (
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b-2 border-gray-200">
+                      <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Nome</th>
+                      <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Valor</th>
+                      <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Data/Hora</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {modal.items.map((d, i) => (
+                      <tr key={i} className="border-b border-gray-100">
+                        <td className="py-2 px-3 text-sm text-gray-700">{d.donor_name || <span className="text-gray-400 italic">Anônimo</span>}</td>
+                        <td className="py-2 px-3 font-bold text-pink-500 text-sm">{formatCurrency(d.value)}</td>
+                        <td className="py-2 px-3 text-sm text-gray-500">{formatDate(d.created_at)}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+              {modal.items.length > 0 && (
+                <div className="border-t-2 border-gray-200 mt-3 pt-3 text-right">
+                  <span className="text-sm text-gray-600">Total: </span>
+                  <span className="font-bold text-pink-500 text-lg">{formatCurrency(modal.items.reduce((sum, d) => sum + d.value, 0))}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirm Clear Modal */}
+      {confirmClear && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setConfirmClear(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-sm w-full" onClick={e => e.stopPropagation()}>
+            <h3 className="text-lg font-bold text-gray-800 mb-2">Limpar todos os dados?</h3>
+            <p className="text-gray-600 text-sm mb-6">Esta ação é irreversível. Todas as doações registradas serão removidas.</p>
+            <div className="flex gap-3">
+              <Button onClick={handleClearData} className="flex-1 bg-red-500 text-white hover:bg-red-600 rounded-lg py-3" data-testid="confirm-clear-button">
+                Sim, limpar tudo
+              </Button>
+              <Button onClick={() => setConfirmClear(false)} className="flex-1 bg-gray-200 text-gray-700 hover:bg-gray-300 rounded-lg py-3" data-testid="cancel-clear-button">
+                Cancelar
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 md:px-6 py-4">
           <div className="flex items-center justify-between">
@@ -102,18 +159,14 @@ const AdminDashboard = () => {
                   Atualizado: {lastUpdate.toLocaleTimeString('pt-BR')}
                 </span>
               )}
-              <Button
-                data-testid="refresh-button"
-                onClick={fetchData}
-                className="bg-blue-500 text-white hover:bg-blue-600 rounded-lg px-3 py-2 flex items-center gap-1"
-              >
+              <Button data-testid="clear-data-button" onClick={() => setConfirmClear(true)} className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-3 py-2 flex items-center gap-1">
+                <Trash2 className="w-4 h-4" />
+                <span className="hidden md:inline">Limpar dados</span>
+              </Button>
+              <Button data-testid="refresh-button" onClick={fetchData} className="bg-blue-500 text-white hover:bg-blue-600 rounded-lg px-3 py-2 flex items-center gap-1">
                 <RefreshCw className="w-4 h-4" />
               </Button>
-              <Button
-                data-testid="logout-button"
-                onClick={handleLogout}
-                className="bg-red-500 text-white hover:bg-red-600 rounded-lg px-4 py-2 flex items-center gap-2"
-              >
+              <Button data-testid="logout-button" onClick={handleLogout} className="bg-red-500 text-white hover:bg-red-600 rounded-lg px-4 py-2 flex items-center gap-2">
                 <LogOut className="w-4 h-4" />
                 <span className="hidden md:inline">Sair</span>
               </Button>
@@ -125,7 +178,11 @@ const AdminDashboard = () => {
       <div className="container mx-auto px-4 md:px-6 py-6">
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
-          <div data-testid="stat-total-value" className="bg-white rounded-xl shadow-md p-5">
+          <div
+            data-testid="stat-total-value"
+            className="bg-white rounded-xl shadow-md p-5 cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => setModal({ title: 'Detalhes - Total Arrecadado', items: donations })}
+          >
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Total Arrecadado</p>
@@ -145,7 +202,11 @@ const AdminDashboard = () => {
             </div>
           </div>
 
-          <div data-testid="stat-copied-count" className="bg-white rounded-xl shadow-md p-5">
+          <div
+            data-testid="stat-copied-count"
+            className="bg-white rounded-xl shadow-md p-5 cursor-pointer hover:shadow-lg transition-shadow"
+            onClick={() => setModal({ title: 'Detalhes - Códigos Copiados', items: copiedDonations })}
+          >
             <div className="flex items-center justify-between">
               <div>
                 <p className="text-sm text-gray-600 mb-1">Códigos Copiados</p>
@@ -171,32 +232,11 @@ const AdminDashboard = () => {
             />
             {editingPixKey ? (
               <div className="flex gap-2">
-                <Button
-                  data-testid="pix-key-save-button"
-                  onClick={handleUpdatePixKey}
-                  className="bg-green-500 text-white hover:bg-green-600 rounded-lg px-6 py-3"
-                >
-                  Salvar
-                </Button>
-                <Button
-                  data-testid="pix-key-cancel-button"
-                  onClick={() => {
-                    setEditingPixKey(false);
-                    setNewPixKey(pixKey);
-                  }}
-                  className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-6 py-3"
-                >
-                  Cancelar
-                </Button>
+                <Button data-testid="pix-key-save-button" onClick={handleUpdatePixKey} className="bg-green-500 text-white hover:bg-green-600 rounded-lg px-6 py-3">Salvar</Button>
+                <Button data-testid="pix-key-cancel-button" onClick={() => { setEditingPixKey(false); setNewPixKey(pixKey); }} className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-6 py-3">Cancelar</Button>
               </div>
             ) : (
-              <Button
-                data-testid="pix-key-edit-button"
-                onClick={() => setEditingPixKey(true)}
-                className="bg-pink-500 text-white hover:bg-pink-600 rounded-lg px-6 py-3"
-              >
-                Editar
-              </Button>
+              <Button data-testid="pix-key-edit-button" onClick={() => setEditingPixKey(true)} className="bg-pink-500 text-white hover:bg-pink-600 rounded-lg px-6 py-3">Editar</Button>
             )}
           </div>
         </div>
@@ -204,7 +244,6 @@ const AdminDashboard = () => {
         {/* Donations Table */}
         <div data-testid="donations-table-container" className="bg-white rounded-xl shadow-md p-5">
           <h2 className="text-lg font-bold text-gray-800 mb-4">Doações Geradas</h2>
-
           <div className="overflow-x-auto">
             <table className="w-full" data-testid="donations-table">
               <thead>
@@ -228,37 +267,19 @@ const AdminDashboard = () => {
                 ) : (
                   donations.map((donation, index) => (
                     <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className="border-b border-gray-100 hover:bg-gray-50">
-                      <td className="py-3 px-4 text-sm text-gray-700">
-                        {donation.donor_name || <span className="text-gray-400 italic">Anônimo</span>}
-                      </td>
-                      <td className="py-3 px-4 text-sm text-gray-700">
-                        {donation.donor_document || '-'}
-                      </td>
-                      <td className="py-3 px-4 text-sm text-gray-700">
-                        {donation.donor_phone || '-'}
-                      </td>
-                      <td className="py-3 px-4 text-sm text-gray-700">
-                        {donation.donor_email || '-'}
-                      </td>
-                      <td className="py-3 px-4">
-                        <span className="font-bold text-pink-500">
-                          {formatCurrency(donation.value)}
-                        </span>
-                      </td>
+                      <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_name || <span className="text-gray-400 italic">Anônimo</span>}</td>
+                      <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_document || '-'}</td>
+                      <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_phone || '-'}</td>
+                      <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_email || '-'}</td>
+                      <td className="py-3 px-4"><span className="font-bold text-pink-500">{formatCurrency(donation.value)}</span></td>
                       <td className="py-3 px-4">
                         {donation.copied ? (
-                          <span data-testid={`donation-status-copied-${index}`} className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">
-                            Copiado
-                          </span>
+                          <span data-testid={`donation-status-copied-${index}`} className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Copiado</span>
                         ) : (
-                          <span data-testid={`donation-status-pending-${index}`} className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold">
-                            Pendente
-                          </span>
+                          <span data-testid={`donation-status-pending-${index}`} className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold">Pendente</span>
                         )}
                       </td>
-                      <td className="py-3 px-4 text-sm text-gray-700">
-                        {formatDate(donation.created_at)}
-                      </td>
+                      <td className="py-3 px-4 text-sm text-gray-700">{formatDate(donation.created_at)}</td>
                     </tr>
                   ))
                 )}
@@ -268,7 +289,7 @@ const AdminDashboard = () => {
         </div>
 
         <p data-testid="auto-refresh-indicator" className="text-center text-sm text-gray-500 mt-4">
-          Atualização automática a cada 10 segundos
+          Atualização automática a cada 60 segundos
         </p>
       </div>
     </div>
