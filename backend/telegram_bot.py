@@ -4,11 +4,11 @@ Envia mensagens quando doações são geradas ou códigos PIX são copiados.
 """
 import os
 import httpx
+from datetime import datetime, timezone
 
 BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
 BASE_URL = f"https://api.telegram.org/bot{BOT_TOKEN}"
 
-# Reference to db - set by server.py
 db = None
 
 def set_db(database):
@@ -17,7 +17,6 @@ def set_db(database):
 
 
 async def get_chat_id():
-    """Busca o chat_id configurado no banco."""
     if not db:
         return None
     config = await db.config.find_one({"key": "telegram_chat_id"}, {"_id": 0})
@@ -27,7 +26,6 @@ async def get_chat_id():
 
 
 async def send_message(text: str):
-    """Envia mensagem para o grupo configurado no Telegram."""
     if not BOT_TOKEN:
         return
     chat_id = await get_chat_id()
@@ -48,27 +46,37 @@ async def send_message(text: str):
         print(f"Erro ao enviar Telegram: {e}")
 
 
+def _format_now():
+    now = datetime.now(timezone.utc)
+    # Converter para horário de Brasília (UTC-3)
+    from datetime import timedelta
+    br_time = now - timedelta(hours=3)
+    return br_time.strftime("%d/%m/%Y %H:%M:%S")
+
+
 async def notify_donation_created(value: float, donor_name: str, device: str):
-    """Notifica quando uma nova doação PIX é gerada."""
     nome = donor_name if donor_name else "Anônimo"
-    dispositivo = device if device else "Desconhecido"
+    data = _format_now()
     text = (
-        f"🟢 <b>Nova doação PIX gerada!</b>\n\n"
-        f"💰 Valor: <b>R$ {value:,.2f}</b>\n"
-        f"👤 Doador: {nome}\n"
-        f"📱 Dispositivo: {dispositivo}\n"
-        f"📋 Status: <i>Gerado</i>"
+        f"\U0001F7E2 <b>NOVO PIX GERADO! (Para Quem Doar)</b>\n"
+        f"━━━━━━━━━━━━━━━━━\n"
+        f"\U0001F464 Usuário: {nome}\n"
+        f"\U0001F4B0 Valor: <b>R$ {value:,.2f}</b>\n"
+        f"\U0001F4C5 Data: {data}\n"
+        f"\U0001F4CA Status: \u23F3 Gerado"
     )
     await send_message(text)
 
 
 async def notify_donation_copied(value: float, donor_name: str):
-    """Notifica quando o código PIX é copiado."""
     nome = donor_name if donor_name else "Anônimo"
+    data = _format_now()
     text = (
-        f"📋 <b>Código PIX copiado!</b>\n\n"
-        f"💰 Valor: <b>R$ {value:,.2f}</b>\n"
-        f"👤 Doador: {nome}\n"
-        f"✅ Status: <i>Copiado</i>"
+        f"\U0001F7E2 <b>PIX COPIADO! (Para Quem Doar)</b>\n"
+        f"━━━━━━━━━━━━━━━━━\n"
+        f"\U0001F464 Usuário: {nome}\n"
+        f"\U0001F4B0 Valor: <b>R$ {value:,.2f}</b>\n"
+        f"\U0001F4C5 Data: {data}\n"
+        f"\U0001F4CA Status: \u2705 Copiado"
     )
     await send_message(text)
