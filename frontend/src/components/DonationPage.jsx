@@ -145,9 +145,12 @@ const DonationPage = () => {
             </div>
 
             {/* Title */}
-            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-pink-500 mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-pink-500 mb-1" style={{ fontFamily: "'Nunito', sans-serif" }}>
               HUMUS
             </h1>
+            <p className="text-base md:text-lg text-gray-500 mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              está em Juiz de Fora
+            </p>
 
             {/* Description */}
             <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
