@@ -12,6 +12,7 @@ const PixPaymentPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const donationValue = location.state?.value || 50;
+  const donor = location.state?.donor || null;
 
   const [timer, setTimer] = useState(300);
   const [copied, setCopied] = useState(false);
@@ -35,7 +36,11 @@ const PixPaymentPage = () => {
         try {
           const donRes = await axios.post(`${API}/admin/donations`, {
             value: donationValue,
-            pix_code: code
+            pix_code: code,
+            donor_name: donor?.name || '',
+            donor_document: donor?.document || '',
+            donor_phone: donor?.phone || '',
+            donor_email: donor?.email || ''
           });
           setDonationId(donRes.data.donation_id);
         } catch (err) {
