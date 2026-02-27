@@ -30,13 +30,13 @@ const HeroSection = () => {
             </div>
           </div>
 
-          {/* Right Content */}
-          <div className="text-white text-left md:text-left max-w-2xl w-full px-4 md:px-0">
-            <h1 className="text-[30px] md:text-[42px] font-bold leading-tight mb-1 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
+          {/* Right Content - same width as image on mobile */}
+          <div className="text-white text-left md:text-left max-w-2xl w-[85vw] max-w-[380px] md:max-w-2xl md:w-auto px-0 md:px-0">
+            <h1 className="text-[34px] md:text-[42px] font-bold leading-tight mb-1 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Emergencia climatica
             </h1>
             
-            <p className="text-[20px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <p className="text-[22px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Conheca e doe para organizacoes
               <br className="md:hidden" />
               {' '}que apoiam as vitimas da tragedia
