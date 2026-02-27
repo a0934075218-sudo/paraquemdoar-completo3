@@ -5,6 +5,13 @@ from datetime import datetime, timezone
 import jwt
 import os
 from pix_generator import generate_pix_payload
+from telegram_bot import (
+    notify_donation_created,
+    notify_donation_copied,
+    set_db as set_telegram_db,
+    get_chat_id,
+    BOT_TOKEN,
+)
 
 router = APIRouter(prefix="/api/admin")
 security = HTTPBearer()
