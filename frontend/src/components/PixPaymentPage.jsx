@@ -227,11 +227,11 @@ const PixPaymentPage = () => {
               </div>
 
               <Button
-                onClick={handleSendEmail}
+                onClick={() => navigate('/doacao/valor')}
                 className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-4 font-semibold transition-all duration-300"
-                data-testid="send-qr-email-button"
+                data-testid="donate-again-button"
               >
-                ME ENVIE O QR CODE POR E-MAIL
+                DOAR NOVAMENTE
               </Button>
             </div>
           </div>
