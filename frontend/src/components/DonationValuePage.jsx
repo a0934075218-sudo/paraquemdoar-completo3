@@ -40,7 +40,7 @@ const DonationValuePage = () => {
     }
     
     // Navegar para a página PIX com o valor
-    navigate('/doacao/pix', { state: { value: finalValue } });
+    navigate('/doacao/dados', { state: { value: finalValue } });
   };
 
   return (

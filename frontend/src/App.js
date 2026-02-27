@@ -12,6 +12,8 @@ import PixPaymentPage from "./components/PixPaymentPage";
 import LoginPage from "./components/LoginPage";
 import AdminDashboard from "./components/AdminDashboard";
 
+import DonorDataPage from "./components/DonorDataPage";
+
 const HomePage = () => {
   return (
     <>
@@ -34,6 +36,7 @@ function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/doacao" element={<DonationPage />} />
           <Route path="/doacao/valor" element={<DonationValuePage />} />
+          <Route path="/doacao/dados" element={<DonorDataPage />} />
           <Route path="/doacao/pix" element={<PixPaymentPage />} />
           <Route path="/donaspainel" element={<LoginPage />} />
           <Route path="/donaspainel/dashboard" element={<AdminDashboard />} />
