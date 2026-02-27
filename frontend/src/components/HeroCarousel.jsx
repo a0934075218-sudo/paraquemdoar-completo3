@@ -34,32 +34,52 @@ const HeroCarousel = () => {
 
   return (
     <div className="relative min-h-screen overflow-hidden">
-      {/* Gradient Background */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${slide.gradient} transition-all duration-1000`}>
-        {/* Large Decorative Circles - More prominent */}
-        <div className="absolute -top-20 -left-20 w-96 h-96 rounded-full bg-pink-600 opacity-50"></div>
-        <div className="absolute top-1/4 -right-32 w-[500px] h-[500px] rounded-full bg-purple-600 opacity-40"></div>
-        <div className="absolute -bottom-40 -left-32 w-[600px] h-[600px] rounded-full bg-orange-500 opacity-45"></div>
-        <div className="absolute bottom-20 right-20 w-80 h-80 rounded-full bg-blue-400 opacity-35"></div>
+      {/* Gradient Background - matching the reference image */}
+      <div className={`absolute inset-0 bg-gradient-to-r ${slide.gradient} transition-all duration-1000`}>
+        {/* Large Decorative Circles - matching reference positions */}
+        <div className="absolute -top-32 -left-40 w-[600px] h-[600px] rounded-full bg-red-500 opacity-60"></div>
+        <div className="absolute top-1/4 -right-40 w-[500px] h-[500px] rounded-full bg-purple-600 opacity-50"></div>
+        <div className="absolute -bottom-48 -left-48 w-[700px] h-[700px] rounded-full bg-orange-500 opacity-70"></div>
+        <div className="absolute bottom-32 right-32 w-[400px] h-[400px] rounded-full bg-pink-600 opacity-45"></div>
+        <div className="absolute top-1/2 right-1/4 w-[350px] h-[350px] rounded-full bg-purple-700 opacity-40"></div>
         
         {/* Small decorative circles */}
-        <div className="absolute top-1/3 left-1/4 w-32 h-40 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 opacity-70"></div>
-        <div className="absolute bottom-1/3 right-1/3 w-24 h-32 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 opacity-75"></div>
-        <div className="absolute top-2/3 left-10 w-28 h-36 rounded-full bg-gradient-to-br from-green-300 to-teal-400 opacity-65"></div>
-        <div className="absolute top-1/4 right-1/4 w-20 h-24 rounded-full bg-white opacity-80"></div>
-        <div className="absolute bottom-1/4 left-1/2 w-16 h-20 rounded-full bg-purple-400 opacity-70"></div>
-        <div className="absolute top-1/2 right-10 w-36 h-44 rounded-full bg-gradient-to-br from-pink-400 to-red-500 opacity-60"></div>
+        <div className="absolute top-1/3 right-1/3 w-32 h-40 rounded-full bg-gradient-to-br from-cyan-400 to-blue-500 opacity-70"></div>
+        <div className="absolute bottom-1/3 left-1/4 w-24 h-32 rounded-full bg-gradient-to-br from-yellow-300 to-orange-400 opacity-75"></div>
+        <div className="absolute top-2/3 right-10 w-28 h-36 rounded-full bg-gradient-to-br from-green-300 to-teal-400 opacity-65"></div>
       </div>
 
       {/* Content */}
       <div className="relative min-h-screen container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center justify-between min-h-screen py-24 md:py-0">
-          {/* Left Content - Mobile top, Desktop left */}
-          <div className="w-full md:w-5/12 text-white space-y-4 md:space-y-6 mb-8 md:mb-0 text-center md:text-left animate-fade-in">
-            <h1 className="text-4xl md:text-6xl font-bold leading-tight">
+        <div className="flex flex-col md:flex-row items-center justify-between min-h-screen py-32 md:py-0">
+          {/* Left Image - Larger oval */}
+          <div className="w-full md:w-6/12 flex justify-center items-center order-2 md:order-1 mb-8 md:mb-0">
+            <div className="relative w-full max-w-[400px] md:max-w-[550px]">
+              {/* Oval container */}
+              <div className="relative w-full" style={{ paddingBottom: '145%' }}>
+                <div className="absolute inset-0 rounded-[50%] overflow-hidden shadow-2xl border-4 md:border-8 border-white/40 backdrop-blur-sm">
+                  <img 
+                    src={slide.image} 
+                    alt={slide.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              
+              {/* Small decorative circles around image */}
+              <div className="absolute -bottom-10 -left-10 md:-bottom-16 md:-left-16 w-24 h-24 md:w-36 md:h-36 rounded-full bg-pink-500 opacity-80"></div>
+              <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-20 h-20 md:w-28 md:h-28 rounded-full bg-blue-400 opacity-75"></div>
+              <div className="absolute top-1/4 -right-8 md:-right-12 w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-teal-300 to-cyan-400 opacity-80"></div>
+              <div className="absolute bottom-1/3 -left-8 md:-left-12 w-14 h-14 md:w-20 md:h-20 rounded-full bg-purple-500 opacity-75"></div>
+            </div>
+          </div>
+
+          {/* Right Content */}
+          <div className="w-full md:w-5/12 text-white space-y-4 md:space-y-6 order-1 md:order-2 text-center md:text-left animate-fade-in">
+            <h1 className="text-4xl md:text-6xl lg:text-7xl font-light leading-tight tracking-wide">
               {slide.title}
             </h1>
-            <p className="text-lg md:text-xl leading-relaxed opacity-95">
+            <p className="text-lg md:text-xl lg:text-2xl leading-relaxed font-light">
               {slide.description}
             </p>
             {slide.subtitle && (
@@ -69,33 +89,11 @@ const HeroCarousel = () => {
               </div>
             )}
             <Button 
-              className="mt-6 md:mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-8 md:px-10 py-5 md:py-6 text-base md:text-lg font-semibold shadow-lg transition-all duration-300 hover:scale-105 border-2 border-white"
+              className="mt-6 md:mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-10 md:px-12 py-5 md:py-6 text-base md:text-lg font-normal border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
               onClick={() => window.open(slide.buttonLink, '_blank')}
             >
               {slide.buttonText}
             </Button>
-          </div>
-
-          {/* Right Image - Larger oval shape */}
-          <div className="w-full md:w-6/12 flex justify-center items-center">
-            <div className="relative w-full max-w-[500px] md:max-w-[650px]">
-              {/* Oval container with proper aspect ratio */}
-              <div className="relative w-full" style={{ paddingBottom: '140%' }}>
-                <div className="absolute inset-0 rounded-[50%] overflow-hidden shadow-2xl border-4 md:border-8 border-white/30 backdrop-blur-sm">
-                  <img 
-                    src={slide.image} 
-                    alt={slide.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-              </div>
-              
-              {/* Decorative circles around image - matching original */}
-              <div className="absolute -bottom-8 -left-8 md:-bottom-12 md:-left-12 w-20 h-20 md:w-32 md:h-32 rounded-full bg-pink-500 opacity-80"></div>
-              <div className="absolute -top-4 -right-4 md:-top-6 md:-right-6 w-16 h-16 md:w-24 md:h-24 rounded-full bg-blue-400 opacity-70"></div>
-              <div className="absolute top-1/4 -right-6 md:-right-10 w-14 h-14 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-teal-300 to-cyan-400 opacity-75"></div>
-              <div className="absolute bottom-1/3 -left-6 md:-left-10 w-12 h-12 md:w-16 md:h-16 rounded-full bg-purple-500 opacity-70"></div>
-            </div>
           </div>
         </div>
       </div>
