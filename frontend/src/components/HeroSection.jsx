@@ -32,16 +32,16 @@ const HeroSection = () => {
 
           {/* Right Content */}
           <div className="text-white text-left md:text-left max-w-2xl w-full px-4 md:px-0">
-            <h1 className="text-[32px] md:text-[42px] font-bold leading-tight mb-1 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            <h1 className="text-[28px] md:text-[42px] font-bold leading-tight mb-1 md:mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Emergencia climatica
             </h1>
             
-            <p className="text-[22px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              Conheca e doe para organizacoes {' '}
+            <p className="text-[21px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              Conheca e doe para organizacoes
               <br className="md:hidden" />
-              que apoiam as vitimas da tragedia {' '}
+              {' '}que apoiam as vitimas da tragedia
               <br className="md:hidden" />
-              em MG
+              {' '}em MG
             </p>
             
             <Button 
