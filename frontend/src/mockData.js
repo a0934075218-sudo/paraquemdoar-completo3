@@ -11,13 +11,12 @@ export const heroSlides = [
   {
     id: 2,
     title: "Emergência climática",
-    description: "Conheça e doe para organizações que apoiam as vitimas da tragédia em MG",
+    description: "Conheça e doe para organizações que apoiam as vítimas da tragédia em MG",
     buttonText: "quero doar",
     buttonLink: "#",
-    subtitle: "PIX Solidariedade Minas Gerais",
-    subtitleDesc: "Fortaleça todas organizações apoiadas pela campanha. Doe pela chave pix paraquemdoar@benfeitoria.com",
-    image: "https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/16vwq4nb_Base-para-bolinha-PQD-%2846%29.png",
-    gradient: "from-pink-500 via-purple-500 to-blue-400"
+    image: "https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/30bb6cu7_imagem-%284%29.png",
+    backgroundImage: "https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/mu01vg4k_Frame-31-%281%29%5B1%5D%5B1%5D%5B1%5D.png",
+    gradient: "from-pink-500 via-orange-400 to-purple-600"
   },
   {
     id: 3,
