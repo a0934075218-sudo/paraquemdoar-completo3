@@ -31,14 +31,14 @@ const DonationPage = () => {
           <div className="flex items-center justify-between relative">
             {/* Mobile: Globo left | Desktop: Back + Logo */}
             <div className="flex items-center space-x-3">
-              {/* Globo icon - mobile only - cropped to circle icon */}
-              <div className="md:hidden w-5 h-7 overflow-hidden flex-shrink-0">
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/xr4t0foz_globo-roxo.png" 
-                  alt="Globo" 
-                  className="h-7"
-                />
-              </div>
+              {/* Globo icon - mobile only */}
+              <svg className="md:hidden w-7 h-7 flex-shrink-0" viewBox="0 0 32 32" fill="none">
+                <circle cx="16" cy="16" r="15" stroke="#6B21A8" strokeWidth="2"/>
+                <circle cx="16" cy="16" r="5" fill="#6B21A8"/>
+                <path d="M16 1C16 1 6 8 6 16s10 15 10 15" stroke="#6B21A8" strokeWidth="1.5" fill="none"/>
+                <path d="M16 1C16 1 26 8 26 16s-10 15-10 15" stroke="#6B21A8" strokeWidth="1.5" fill="none"/>
+                <line x1="1" y1="16" x2="31" y2="16" stroke="#6B21A8" strokeWidth="1.5"/>
+              </svg>
               {/* Back + Logo - desktop only */}
               <button 
                 onClick={() => navigate('/')}

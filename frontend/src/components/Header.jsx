@@ -11,14 +11,14 @@ const Header = () => {
         <div className="flex items-center justify-between">
           {/* Mobile: Globo Left | Desktop: Logo Left */}
           <div className="flex items-center">
-            {/* Globo icon - mobile only (left) - cropped to show only circle icon */}
-            <div className="md:hidden w-5 h-7 overflow-hidden flex-shrink-0">
-              <img 
-                src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/y6iwz76t_globo.png" 
-                alt="Globo" 
-                className="h-7 brightness-0 invert"
-              />
-            </div>
+            {/* Globo icon - mobile only (left) */}
+            <svg className="md:hidden w-7 h-7 flex-shrink-0" viewBox="0 0 32 32" fill="none">
+              <circle cx="16" cy="16" r="15" stroke="white" strokeWidth="2"/>
+              <circle cx="16" cy="16" r="5" fill="white"/>
+              <path d="M16 1C16 1 6 8 6 16s10 15 10 15" stroke="white" strokeWidth="1.5" fill="none"/>
+              <path d="M16 1C16 1 26 8 26 16s-10 15-10 15" stroke="white" strokeWidth="1.5" fill="none"/>
+              <line x1="1" y1="16" x2="31" y2="16" stroke="white" strokeWidth="1.5"/>
+            </svg>
             {/* ParaQuemDoar logo - desktop only (left) */}
             <img 
               src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/zxsfbrbt_logo-horizontal.png" 
