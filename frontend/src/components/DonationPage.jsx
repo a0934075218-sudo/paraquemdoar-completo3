@@ -8,11 +8,11 @@ const DonationPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
+    'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/hp1bs1oi_desastre-em-juiz-de-fora.jpg.webp',
     'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/50dt1aei_3.jpg',
     'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/64kfg5us_2.jpg',
     'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/1wf5mua3_image.png',
-    'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/h1tzga7g_57945240-125e-11f1-9120-a910fc22c6ac.jpg.webp',
-    'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/721yh39x_1.jpg'
+    'https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/h1tzga7g_57945240-125e-11f1-9120-a910fc22c6ac.jpg.webp'
   ];
 
   const nextImage = () => {
