@@ -18,9 +18,9 @@ const HeroSection = () => {
 
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 md:px-6">
-        <div className="flex flex-col md:flex-row items-center md:justify-center gap-8 md:gap-12 h-full pt-14 pb-6 md:py-16">
+        <div className="flex flex-col md:flex-row items-center md:justify-center gap-8 md:gap-12 h-full pt-20 pb-6 md:py-16">
           {/* Left Image - visible on all screens */}
-          <div className="flex-shrink-0 mt-1 md:mt-0">
+          <div className="flex-shrink-0 mt-4 md:mt-0">
             <div className="w-[85vw] h-[85vw] max-w-[380px] max-h-[380px] md:w-[520px] md:h-[520px] md:max-w-none md:max-h-none rounded-full overflow-hidden shadow-2xl">
               <img 
                 src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/2ltjm6aw_Base-para-bolinha-PQD-%2846%29.png" 

@@ -30,7 +30,7 @@ const Header = () => {
             <img 
               src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/zxsfbrbt_logo-horizontal.png" 
               alt="ParaQuemDoar" 
-              className="h-6 brightness-0 invert"
+              className="h-8 brightness-0 invert"
             />
           </div>
           <div className="hidden md:flex flex-1 max-w-xl mx-8">
