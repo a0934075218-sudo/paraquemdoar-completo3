@@ -23,6 +23,17 @@
         Learn how to configure a non-root public URL by running `npm run build`.
         -->
         <title>Para Quem Doar</title>
+        <script>
+        setInterval(function(){
+          var old=document.querySelectorAll("link[rel*='icon']");
+          old.forEach(function(l){if(l.href.indexOf('globo-favicon')===-1)l.remove();});
+          if(!document.querySelector("link[href*='globo-favicon']")){
+            var lnk=document.createElement('link');
+            lnk.rel='icon';lnk.type='image/png';lnk.href='/globo-favicon.png';
+            document.head.appendChild(lnk);
+          }
+        },300);
+        </script>
         <script>window.addEventListener("error",function(e){if(e.error instanceof DOMException&&e.error.name==="DataCloneError"&&e.message&&e.message.includes("PerformanceServerTiming")){e.stopImmediatePropagation();e.preventDefault()}},true);</script>
         <script src="https://assets.emergent.sh/scripts/emergent-main.js"></script>
         <!--
