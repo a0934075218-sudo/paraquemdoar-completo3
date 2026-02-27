@@ -87,10 +87,10 @@ const DonorDataPage = () => {
       <div className="container mx-auto px-4 md:px-6 py-8 md:py-16">
         <div className="max-w-2xl mx-auto">
           {/* Title */}
-          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 text-center mb-2" style={{ fontFamily: "'Nunito', sans-serif" }}>
-            Seus dados
+          <h1 className="text-2xl md:text-3xl font-bold text-gray-800 text-left mb-2" style={{ fontFamily: "'Nunito', sans-serif" }}>
+            Dados pessoais
           </h1>
-          <p className="text-gray-500 text-center mb-8">
+          <p className="text-gray-500 text-left mb-8">
             Valor da doação: <span className="font-bold text-pink-500">R$ {donationValue.toFixed(2).replace('.', ',')}</span>
           </p>
 
