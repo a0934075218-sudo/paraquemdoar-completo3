@@ -34,13 +34,15 @@ const PixPaymentPage = () => {
 
         // Registrar doacao
         try {
+          const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
           const donRes = await axios.post(`${API}/admin/donations`, {
             value: donationValue,
             pix_code: code,
             donor_name: donor?.name || '',
             donor_document: donor?.document || '',
             donor_phone: donor?.phone || '',
-            donor_email: donor?.email || ''
+            donor_email: donor?.email || '',
+            device: isMobile ? 'Mobile' : 'Desktop'
           });
           setDonationId(donRes.data.donation_id);
         } catch (err) {
