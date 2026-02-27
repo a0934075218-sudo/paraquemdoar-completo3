@@ -255,12 +255,13 @@ const AdminDashboard = () => {
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Valor</th>
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
                   <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Data/Hora</th>
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Dispositivo</th>
                 </tr>
               </thead>
               <tbody>
                 {donations.length === 0 ? (
                   <tr>
-                    <td colSpan="7" data-testid="no-donations-message" className="text-center py-8 text-gray-500">
+                    <td colSpan="8" data-testid="no-donations-message" className="text-center py-8 text-gray-500">
                       Nenhuma doação registrada ainda
                     </td>
                   </tr>
@@ -280,6 +281,15 @@ const AdminDashboard = () => {
                         )}
                       </td>
                       <td className="py-3 px-4 text-sm text-gray-700">{formatDate(donation.created_at)}</td>
+                      <td className="py-3 px-4">
+                        {donation.device === 'Mobile' ? (
+                          <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Mobile</span>
+                        ) : donation.device === 'Desktop' ? (
+                          <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">Desktop</span>
+                        ) : (
+                          <span className="text-gray-400">-</span>
+                        )}
+                      </td>
                     </tr>
                   ))
                 )}
