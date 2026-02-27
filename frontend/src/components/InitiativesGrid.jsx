@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 import { initiatives } from '../mockData';
 import { Button } from './ui/button';
 import { ChevronLeft, ChevronRight, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
-const InitiativeCard = ({ initiative }) => {
+const InitiativeCard = ({ initiative, onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -11,6 +12,7 @@ const InitiativeCard = ({ initiative }) => {
       className="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
+      onClick={onClick}
     >
       {/* Image - Square aspect ratio */}
       <div className="relative w-full" style={{ paddingBottom: '100%' }}>
@@ -43,7 +45,7 @@ const InitiativeCard = ({ initiative }) => {
         {/* Button */}
         <Button 
           className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-4 font-semibold transition-all duration-300"
-          onClick={() => alert('Redirecionando para a página da iniciativa...')}
+          onClick={(e) => { e.stopPropagation(); onClick(); }}
         >
           Conheça a iniciativa
         </Button>
@@ -53,6 +55,7 @@ const InitiativeCard = ({ initiative }) => {
 };
 
 const InitiativesGrid = () => {
+  const navigate = useNavigate();
   const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerView = 4;
 
@@ -102,7 +105,7 @@ const InitiativesGrid = () => {
         {/* Cards Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {visibleInitiatives.map((initiative) => (
-            <InitiativeCard key={initiative.id} initiative={initiative} />
+            <InitiativeCard key={initiative.id} initiative={initiative} onClick={() => navigate('/doacao')} />
           ))}
         </div>
       </div>
