@@ -35,7 +35,7 @@ const DonationPage = () => {
               <img 
                 src="https://customer-assets.emergentagent.com/job_8d70a88e-5643-4035-93e8-fcb605f0dda7/artifacts/aclmur09_globinho-branco.png" 
                 alt="Globo" 
-                className="w-8 h-8 md:hidden"
+                className="w-8 h-8 md:hidden invert"
               />
               {/* Back + Logo - desktop only */}
               <button 
