@@ -9,6 +9,8 @@ import Footer from "./components/Footer";
 import DonationPage from "./components/DonationPage";
 import DonationValuePage from "./components/DonationValuePage";
 import PixPaymentPage from "./components/PixPaymentPage";
+import LoginPage from "./components/LoginPage";
+import AdminDashboard from "./components/AdminDashboard";
 
 const HomePage = () => {
   return (
@@ -33,6 +35,8 @@ function App() {
           <Route path="/doacao" element={<DonationPage />} />
           <Route path="/doacao/valor" element={<DonationValuePage />} />
           <Route path="/doacao/pix" element={<PixPaymentPage />} />
+          <Route path="/admin/login" element={<LoginPage />} />
+          <Route path="/admin/dashboard" element={<AdminDashboard />} />
         </Routes>
       </BrowserRouter>
     </div>
