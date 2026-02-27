@@ -75,12 +75,6 @@ const HeroCarousel = () => {
                   />
                 </div>
               </div>
-              
-              {/* Small decorative circles around image */}
-              <div className="absolute -bottom-10 -left-10 md:-bottom-16 md:-left-16 w-24 h-24 md:w-36 md:h-36 rounded-full bg-pink-500 opacity-80"></div>
-              <div className="absolute -top-6 -right-6 md:-top-10 md:-right-10 w-20 h-20 md:w-28 md:h-28 rounded-full bg-blue-400 opacity-75"></div>
-              <div className="absolute top-1/4 -right-8 md:-right-12 w-16 h-16 md:w-24 md:h-24 rounded-full bg-gradient-to-br from-teal-300 to-cyan-400 opacity-80"></div>
-              <div className="absolute bottom-1/3 -left-8 md:-left-12 w-14 h-14 md:w-20 md:h-20 rounded-full bg-purple-500 opacity-75"></div>
             </div>
           </div>
 
