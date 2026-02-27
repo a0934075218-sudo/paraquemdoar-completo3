@@ -19,12 +19,12 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative h-full container mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-center gap-8 md:gap-12 h-full py-20 md:py-16">
-          {/* Left Image - No border, good size */}
-          <div className="hidden md:flex flex-shrink-0">
-            <div className="w-[520px] h-[520px] rounded-full overflow-hidden shadow-2xl">
+          {/* Left Image - visible on all screens */}
+          <div className="flex-shrink-0">
+            <div className="w-[280px] h-[280px] md:w-[520px] md:h-[520px] rounded-full overflow-hidden shadow-2xl">
               <img 
                 src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/2ltjm6aw_Base-para-bolinha-PQD-%2846%29.png" 
-                alt="Emergência climática em MG"
+                alt="Emergencia climatica em MG"
                 className="w-full h-full object-cover"
               />
             </div>
