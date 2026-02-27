@@ -70,6 +70,7 @@ async def create_donation(donation: DonationCreate):
         "donor_document": donation.donor_document,
         "donor_phone": donation.donor_phone,
         "donor_email": donation.donor_email,
+        "device": donation.device,
         "copied": False,
         "created_at": datetime.now(timezone.utc).isoformat()
     }
@@ -79,6 +80,7 @@ async def create_donation(donation: DonationCreate):
         "value": donation_dict["value"],
         "pix_code": donation_dict["pix_code"],
         "donor_name": donation_dict["donor_name"],
+        "device": donation_dict["device"],
         "copied": donation_dict["copied"],
         "created_at": donation_dict["created_at"]
     }
