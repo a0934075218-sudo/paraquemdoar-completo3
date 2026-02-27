@@ -152,7 +152,10 @@ const AdminDashboard = () => {
       <header className="bg-white shadow-sm">
         <div className="container mx-auto px-4 md:px-6 py-4">
           <div className="flex items-center justify-between">
-            <h1 className="text-xl md:text-2xl font-bold text-gray-800">Painel Administrativo</h1>
+            <div className="flex items-center gap-3">
+              <img src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/54mac6cp_logo-horizontal%20%281%29.png" alt="ParaQuemDoar" className="h-8 hidden md:block" />
+              <h1 className="text-xl md:text-2xl font-bold text-gray-800">Painel Administrativo</h1>
+            </div>
             <div className="flex items-center gap-3">
               {lastUpdate && (
                 <span data-testid="last-update-time" className="text-xs text-gray-400 hidden md:block">
