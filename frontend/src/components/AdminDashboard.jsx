@@ -158,7 +158,7 @@ const AdminDashboard = () => {
 
         {/* Chave PIX Config */}
         <div data-testid="pix-key-config" className="bg-white rounded-xl shadow-md p-5 mb-6">
-          <h2 className="text-lg font-bold text-gray-800 mb-3">Configuracao da Chave PIX</h2>
+          <h2 className="text-lg font-bold text-gray-800 mb-3">Configuração da Chave PIX</h2>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
             <input
               data-testid="pix-key-input"
@@ -219,7 +219,7 @@ const AdminDashboard = () => {
                 {donations.length === 0 ? (
                   <tr>
                     <td colSpan="4" data-testid="no-donations-message" className="text-center py-8 text-gray-500">
-                      Nenhuma doacao registrada ainda
+                      Nenhuma doação registrada ainda
                     </td>
                   </tr>
                 ) : (

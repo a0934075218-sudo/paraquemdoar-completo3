@@ -141,7 +141,7 @@ const DonationPage = () => {
             {/* Tag */}
             <div className="flex items-center space-x-2 text-gray-600">
               <MapPin className="w-5 h-5" />
-              <span className="text-base">Emergencias</span>
+              <span className="text-base">Emergências</span>
             </div>
 
             {/* Title */}
@@ -151,7 +151,7 @@ const DonationPage = () => {
 
             {/* Description */}
             <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              A HUMUS atua com a prevencao em comunidades em areas de risco iminente e com resposta emergencial em desastres relacionadas a eventos naturais extremos
+              A HUMUS atua com a prevenção em comunidades em áreas de risco iminente e com resposta emergencial em desastres relacionadas a eventos naturais extremos
             </p>
 
             {/* Donation Button */}
@@ -160,13 +160,13 @@ const DonationPage = () => {
                 className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full px-12 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105"
                 onClick={() => navigate('/doacao/valor')}
               >
-                Fazer doacao
+                Fazer doação
               </Button>
             </div>
 
             {/* Info Text */}
             <p className="text-sm text-pink-500 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              * Sua doacao sera realizada por meio da plataforma parceira ParaQuemDoar. A Globo nao retem nenhum valor nem dados pessoais; todo o recurso arrecadado sera destinado a assistencia a populacao atingida pela tragedia em Juiz de Fora, MG.
+              * Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.
             </p>
           </div>
         </div>

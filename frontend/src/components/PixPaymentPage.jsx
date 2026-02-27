@@ -43,7 +43,7 @@ const PixPaymentPage = () => {
         }
       } catch (error) {
         console.error('Erro ao gerar PIX:', error);
-        setPixError('Chave PIX nao configurada. Contate o administrador.');
+        setPixError('Chave PIX não configurada. Contate o administrador.');
         setLoadingPix(false);
       }
     };
