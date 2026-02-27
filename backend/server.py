@@ -71,7 +71,8 @@ async def get_status_checks():
 # Include the router in the main app
 app.include_router(api_router)
 
-# Include admin routes
+# Include admin routes with db reference
+set_admin_db(db)
 app.include_router(admin_router)
 
 app.add_middleware(
