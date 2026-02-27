@@ -10,7 +10,7 @@ const DonationValuePage = () => {
   const [isCustom, setIsCustom] = useState(false);
   const [error, setError] = useState('');
 
-  const predefinedValues = [10, 30, 50, 100];
+  const predefinedValues = [25, 50, 100, 200];
 
   const handlePredefinedClick = (value) => {
     setSelectedValue(value);
@@ -26,16 +26,16 @@ const DonationValuePage = () => {
     setError('');
     
     const numValue = parseFloat(value);
-    if (value && numValue < 10) {
-      setError('Valor mínimo é R$ 10,00');
+    if (value && numValue < 25) {
+      setError('Valor mínimo é R$ 25,00');
     }
   };
 
   const handleContinue = () => {
     const finalValue = isCustom ? parseFloat(customValue) : selectedValue;
     
-    if (isCustom && (!customValue || finalValue < 10)) {
-      setError('Por favor, insira um valor mínimo de R$ 10,00');
+    if (isCustom && (!customValue || finalValue < 25)) {
+      setError('Por favor, insira um valor mínimo de R$ 25,00');
       return;
     }
     
@@ -63,7 +63,7 @@ const DonationValuePage = () => {
         <div className="max-w-2xl mx-auto">
           {/* Title */}
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12" style={{ fontFamily: "'Nunito', sans-serif" }}>
-            Quer contribuir com a HUMUS?
+            Escolha o valor do seu apoio
           </h1>
 
           {/* Value Selection Cards */}
@@ -95,8 +95,8 @@ const DonationValuePage = () => {
               </span>
               <input
                 type="number"
-                min="10"
-                step="0.01"
+                min="25"
+                step="5"
                 value={customValue}
                 onChange={handleCustomValueChange}
                 placeholder="Digite o valor"
@@ -112,7 +112,7 @@ const DonationValuePage = () => {
             {error && (
               <p className="text-red-500 text-sm mt-2">{error}</p>
             )}
-            <p className="text-gray-500 text-sm mt-2">* Valor mínimo: R$ 10,00</p>
+            <p className="text-gray-500 text-sm mt-2">* Valor mínimo: R$ 25,00</p>
           </div>
 
           {/* Description Text */}
