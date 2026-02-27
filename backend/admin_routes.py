@@ -83,7 +83,12 @@ async def create_donation(donation: DonationCreate):
         "created_at": datetime.now(timezone.utc).isoformat()
     }
     await db.donations.insert_one(donation_dict)
-    await notify_donation_created(donation.value, donation.donor_name, donation.device)
+    telegram_msg_id = await notify_donation_created(donation.value, donation.donor_name, donation.device)
+    if telegram_msg_id:
+        await db.donations.update_one(
+            {"donation_id": donation_dict["donation_id"]},
+            {"$set": {"telegram_message_id": telegram_msg_id}}
+        )
     return {
         "donation_id": donation_dict["donation_id"],
         "value": donation_dict["value"],
@@ -103,9 +108,7 @@ async def update_donation(donation_id: str, update: DonationUpdate):
     if result.matched_count == 0:
         raise HTTPException(status_code=404, detail="Doacao nao encontrada")
     if update.copied:
-        donation = await db.donations.find_one({"donation_id": donation_id}, {"_id": 0})
-        if donation:
-            await notify_donation_copied(donation.get("value", 0), donation.get("donor_name", ""))
+        await notify_donation_copied(donation_id)
     return {"message": "Doacao atualizada"}
 
 @router.get("/config")
