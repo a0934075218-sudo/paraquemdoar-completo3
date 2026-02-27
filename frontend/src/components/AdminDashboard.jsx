@@ -49,7 +49,7 @@ const AdminDashboard = () => {
     } catch (error) {
       if (error.response?.status === 401) {
         localStorage.removeItem('admin_token');
-        navigate('/admin/login');
+        navigate('/donaspainel');
       }
     }
   };
@@ -57,7 +57,7 @@ const AdminDashboard = () => {
   const handleLogout = () => {
     localStorage.removeItem('admin_token');
     localStorage.removeItem('admin_username');
-    navigate('/admin/login');
+    navigate('/donaspainel');
   };
 
   const handleUpdatePixKey = async () => {
