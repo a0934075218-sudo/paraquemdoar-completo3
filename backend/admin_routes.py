@@ -9,7 +9,7 @@ from pix_generator import generate_pix_payload
 router = APIRouter(prefix="/api/admin")
 security = HTTPBearer()
 
-SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'doar-brasil-secret-key-2026')
+SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'doar-brasil-secret-key-2026-secure-token')
 
 # Reference to db - set by server.py
 db = None
