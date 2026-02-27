@@ -37,8 +37,10 @@ const HeroSection = () => {
             </h1>
             
             <p className="text-[20px] md:text-[36px] font-light leading-snug md:leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              Conheca e doe para organizacoes<br className="md:hidden" />
-              que apoiam as vitimas da tragedia<br className="md:hidden" />
+              Conheca e doe para organizacoes {' '}
+              <br className="md:hidden" />
+              que apoiam as vitimas da tragedia {' '}
+              <br className="md:hidden" />
               em MG
             </p>
             
