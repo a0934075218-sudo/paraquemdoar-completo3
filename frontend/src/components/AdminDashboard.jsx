@@ -269,11 +269,12 @@ const AdminDashboard = () => {
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Data/Hora</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Dispositivo</th>
+                      <th className="text-left py-3 px-2 text-sm font-semibold text-gray-700"></th>
                     </tr>
                   </thead>
                   <tbody>
                     {donations.length === 0 ? (
-                      <tr><td colSpan="8" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
+                      <tr><td colSpan="9" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
                     ) : (
                       donations.map((donation, index) => (
                         <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className="border-b border-gray-100 hover:bg-gray-50">
@@ -296,6 +297,15 @@ const AdminDashboard = () => {
                             ) : donation.device === 'Desktop' ? (
                               <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">Desktop</span>
                             ) : <span className="text-gray-400">-</span>}
+                          </td>
+                          <td className="py-3 px-2">
+                            <button
+                              data-testid={`delete-donation-${index}`}
+                              onClick={() => handleDeleteDonation(donation.donation_id)}
+                              className="text-gray-400 hover:text-red-500 transition-colors p-1"
+                            >
+                              <Trash2 className="w-4 h-4" />
+                            </button>
                           </td>
                         </tr>
                       ))
