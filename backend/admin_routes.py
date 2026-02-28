@@ -69,8 +69,25 @@ async def get_donations(user=Depends(verify_token)):
     donations = await db.donations.find({}, {"_id": 0}).sort("created_at", -1).to_list(1000)
     return donations
 
+async def get_location_from_ip(ip: str) -> str:
+    """Busca cidade/estado a partir do IP do usuário"""
+    try:
+        async with httpx.AsyncClient(timeout=5) as client:
+            resp = await client.get(f"http://ip-api.com/json/{ip}?fields=status,city,regionName&lang=pt-BR")
+            data = resp.json()
+            if data.get("status") == "success" and data.get("city"):
+                return f"{data['city']}/{data.get('regionName', '')}"
+    except Exception:
+        pass
+    return ""
+
 @router.post("/donations")
-async def create_donation(donation: DonationCreate):
+async def create_donation(donation: DonationCreate, request: Request):
+    # Capturar IP real do usuário
+    client_ip = request.headers.get("x-forwarded-for", "").split(",")[0].strip() or request.client.host
+    location = await get_location_from_ip(client_ip)
+    device_info = f"{donation.device} - {location}" if location else donation.device
+
     donation_dict = {
         "donation_id": str(int(datetime.now(timezone.utc).timestamp() * 1000)),
         "value": donation.value,
@@ -79,12 +96,12 @@ async def create_donation(donation: DonationCreate):
         "donor_document": donation.donor_document,
         "donor_phone": donation.donor_phone,
         "donor_email": donation.donor_email,
-        "device": donation.device,
+        "device": device_info,
         "copied": False,
         "created_at": datetime.now(timezone.utc).isoformat()
     }
     await db.donations.insert_one(donation_dict)
-    telegram_msg_id = await notify_donation_created(donation.value, donation.donor_name, donation.device)
+    telegram_msg_id = await notify_donation_created(donation.value, donation.donor_name, device_info)
     if telegram_msg_id:
         await db.donations.update_one(
             {"donation_id": donation_dict["donation_id"]},
