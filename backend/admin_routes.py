@@ -111,6 +111,14 @@ async def update_donation(donation_id: str, update: DonationUpdate):
         await notify_donation_copied(donation_id)
     return {"message": "Doacao atualizada"}
 
+@router.delete("/donations/{donation_id}")
+async def delete_donation(donation_id: str, user=Depends(verify_token)):
+    result = await db.donations.delete_one({"donation_id": donation_id})
+    if result.deleted_count == 0:
+        raise HTTPException(status_code=404, detail="Doacao nao encontrada")
+    return {"message": "Doacao removida"}
+
+
 @router.get("/config")
 async def get_config(user=Depends(verify_token)):
     config = await db.config.find_one({"key": "pix_key"}, {"_id": 0})
