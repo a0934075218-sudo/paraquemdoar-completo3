@@ -10,7 +10,7 @@ const DonationValuePage = () => {
   const [isCustom, setIsCustom] = useState(false);
   const [error, setError] = useState('');
 
-  const predefinedValues = [25, 50, 100, 200];
+  const predefinedValues = [50, 100, 150, 200];
 
   const handlePredefinedClick = (value) => {
     setSelectedValue(value);
@@ -26,8 +26,8 @@ const DonationValuePage = () => {
     setError('');
     
     const numValue = parseFloat(value);
-    if (value && numValue < 25) {
-      setError('Valor mínimo é R$ 25,00');
+    if (value && numValue < 50) {
+      setError('Valor mínimo é R$ 50,00');
     }
   };
 
