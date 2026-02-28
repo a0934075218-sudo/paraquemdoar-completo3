@@ -87,6 +87,7 @@ const PixPaymentPage = () => {
   const [pixCode, setPixCode] = useState('');
   const [loadingPix, setLoadingPix] = useState(true);
   const [pixError, setPixError] = useState('');
+  const endTimeRef = useRef(Date.now() + 300 * 1000);
 
   // Buscar codigo PIX do backend
   const hasCreated = useRef(false);
