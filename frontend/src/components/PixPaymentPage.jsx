@@ -196,10 +196,13 @@ const PixPaymentPage = () => {
     return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
   };
 
+  const [copiedVisual, setCopiedVisual] = useState(false);
+
   const handleCopyCode = async () => {
     navigator.clipboard.writeText(pixCode);
     setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setCopiedVisual(true);
+    setTimeout(() => setCopiedVisual(false), 2000);
 
     if (donationId) {
       try {
