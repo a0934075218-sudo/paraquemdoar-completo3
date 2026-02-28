@@ -257,9 +257,10 @@ const DonorDataPage = () => {
                   value={formData.email}
                   onChange={(e) => handleChange('email', e.target.value)}
                   placeholder="seu@email.com"
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-300 focus:border-pink-500 focus:outline-none transition-colors text-base"
+                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 ${errors.email ? 'border-red-400' : 'border-gray-300'} focus:border-pink-500 focus:outline-none transition-colors text-base`}
                 />
               </div>
+              {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
             </div>
           </div>
 
