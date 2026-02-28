@@ -106,7 +106,7 @@ const SuccessPage = ({ navigate }) => {
 
             {/* Back link */}
             <button
-              onClick={() => navigate('/doar')}
+              onClick={() => navigate('/doacao')}
               className="text-blue-600 underline text-base hover:text-blue-800 transition-colors"
               data-testid="back-to-campaign"
               style={{ fontFamily: "'Nunito', sans-serif" }}
