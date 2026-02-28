@@ -271,7 +271,6 @@ const AdminDashboard = () => {
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Nome</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">CPF/CNPJ</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Telefone</th>
-                      <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">E-mail</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Valor</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Status</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Data/Hora</th>
