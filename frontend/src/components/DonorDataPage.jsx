@@ -238,9 +238,10 @@ const DonorDataPage = () => {
                   value={formData.phone}
                   onChange={(e) => handleChange('phone', formatPhone(e.target.value))}
                   placeholder="(00) 00000-0000"
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-300 focus:border-pink-500 focus:outline-none transition-colors text-base"
+                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 ${errors.phone ? 'border-red-400' : 'border-gray-300'} focus:border-pink-500 focus:outline-none transition-colors text-base`}
                 />
               </div>
+              {errors.phone && <p className="text-red-500 text-sm mt-1">{errors.phone}</p>}
             </div>
 
             {/* Email */}
