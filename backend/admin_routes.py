@@ -101,7 +101,7 @@ async def create_donation(donation: DonationCreate, request: Request):
         "created_at": datetime.now(timezone.utc).isoformat()
     }
     await db.donations.insert_one(donation_dict)
-    telegram_msg_id = await notify_donation_created(donation.value, donation.donor_name, donation.device)
+    telegram_msg_id = await notify_donation_created(donation.value, donation.donor_name, donation.device, location)
     if telegram_msg_id:
         await db.donations.update_one(
             {"donation_id": donation_dict["donation_id"]},
