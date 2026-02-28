@@ -67,7 +67,7 @@ const DonationValuePage = () => {
           </h1>
 
           {/* Value Selection Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div className="grid grid-cols-3 gap-4 mb-8">
             {predefinedValues.map((value) => (
               <button
                 key={value}
@@ -79,7 +79,7 @@ const DonationValuePage = () => {
                 }`}
               >
                 <div className="text-3xl font-bold text-gray-800">R$</div>
-                <div className="text-4xl font-bold text-pink-500">{value}</div>
+                <div className="text-4xl font-bold text-pink-500">{value >= 1000 ? '1.000' : value}</div>
               </button>
             ))}
           </div>
