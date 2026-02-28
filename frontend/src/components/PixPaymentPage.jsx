@@ -128,6 +128,7 @@ const PixPaymentPage = () => {
 
   const [timer, setTimer] = useState(300);
   const [copied, setCopied] = useState(false);
+  const [showSuccess, setShowSuccess] = useState(false);
   const [donationId, setDonationId] = useState(null);
   const [pixCode, setPixCode] = useState('');
   const [loadingPix, setLoadingPix] = useState(true);
