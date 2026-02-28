@@ -130,12 +130,27 @@ const PixPaymentPage = () => {
     fetchPixCode();
   }, [donationValue]);
 
-  // Timer countdown
+  // Timer countdown using real timestamps (works even when tab is backgrounded on mobile)
   useEffect(() => {
-    const interval = setInterval(() => {
-      setTimer((prev) => (prev > 0 ? prev - 1 : 0));
-    }, 1000);
-    return () => clearInterval(interval);
+    const updateTimer = () => {
+      const remaining = Math.max(0, Math.round((endTimeRef.current - Date.now()) / 1000));
+      setTimer(remaining);
+    };
+
+    const interval = setInterval(updateTimer, 1000);
+
+    // When user returns to the tab, immediately recalculate
+    const handleVisibility = () => {
+      if (document.visibilityState === 'visible') {
+        updateTimer();
+      }
+    };
+    document.addEventListener('visibilitychange', handleVisibility);
+
+    return () => {
+      clearInterval(interval);
+      document.removeEventListener('visibilitychange', handleVisibility);
+    };
   }, []);
 
   // Show success page when timer ends AND code was copied
