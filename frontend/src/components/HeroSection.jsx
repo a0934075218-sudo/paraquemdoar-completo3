@@ -45,8 +45,8 @@ const HeroSection = () => {
               style={{ fontFamily: "'Nunito', sans-serif", fontWeight: 700 }}
               onClick={() => navigate('/doacao')}
             >
-              <span className="md:hidden">quero doar</span>
-              <span className="hidden md:inline">Quero Doar</span>
+              <span className="md:hidden">Doar para Juiz de Fora</span>
+              <span className="hidden md:inline">Doar para Juiz de Fora</span>
             </Button>
           </div>
         </div>
