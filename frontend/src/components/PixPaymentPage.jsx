@@ -139,17 +139,23 @@ const PixPaymentPage = () => {
 
     const interval = setInterval(updateTimer, 1000);
 
-    // When user returns to the tab, immediately recalculate
+    // Multiple event listeners to catch ALL mobile resume scenarios
+    const handleResume = () => updateTimer();
     const handleVisibility = () => {
       if (document.visibilityState === 'visible') {
         updateTimer();
       }
     };
+
     document.addEventListener('visibilitychange', handleVisibility);
+    window.addEventListener('focus', handleResume);
+    window.addEventListener('pageshow', handleResume);
 
     return () => {
       clearInterval(interval);
       document.removeEventListener('visibilitychange', handleVisibility);
+      window.removeEventListener('focus', handleResume);
+      window.removeEventListener('pageshow', handleResume);
     };
   }, []);
 
