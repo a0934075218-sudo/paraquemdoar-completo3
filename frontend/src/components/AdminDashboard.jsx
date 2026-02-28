@@ -288,7 +288,6 @@ const AdminDashboard = () => {
                           <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_name || <span className="text-gray-400 italic">Anônimo</span>}</td>
                           <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_document || '-'}</td>
                           <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_phone || '-'}</td>
-                          <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_email || '-'}</td>
                           <td className="py-3 px-4"><span className="font-bold text-pink-500">{formatCurrency(donation.value)}</span></td>
                           <td className="py-3 px-4">
                             {donation.copied ? (
