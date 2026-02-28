@@ -108,6 +108,8 @@ async def notify_donation_copied(donation_id: str):
         donation.get("value", 0),
         donation.get("donor_name", ""),
         "\u2705",
-        "Copiado"
+        "Copiado",
+        donation.get("device", ""),
+        donation.get("location", "")
     )
     await edit_message(donation["telegram_message_id"], text)
