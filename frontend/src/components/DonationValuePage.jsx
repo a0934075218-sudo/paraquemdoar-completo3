@@ -34,8 +34,8 @@ const DonationValuePage = () => {
   const handleContinue = () => {
     const finalValue = isCustom ? parseFloat(customValue) : selectedValue;
     
-    if (isCustom && (!customValue || finalValue < 25)) {
-      setError('Por favor, insira um valor mínimo de R$ 25,00');
+    if (isCustom && (!customValue || finalValue < 50)) {
+      setError('Por favor, insira um valor mínimo de R$ 50,00');
       return;
     }
     
@@ -95,7 +95,7 @@ const DonationValuePage = () => {
               </span>
               <input
                 type="number"
-                min="25"
+                min="50"
                 step="5"
                 value={customValue}
                 onChange={handleCustomValueChange}
@@ -112,7 +112,7 @@ const DonationValuePage = () => {
             {error && (
               <p className="text-red-500 text-sm mt-2">{error}</p>
             )}
-            <p className="text-gray-500 text-sm mt-2">* Valor mínimo: R$ 25,00</p>
+            <p className="text-gray-500 text-sm mt-2">* Valor mínimo: R$ 50,00</p>
           </div>
 
           {/* Description Text */}
