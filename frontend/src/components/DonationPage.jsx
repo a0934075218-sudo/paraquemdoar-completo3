@@ -149,7 +149,7 @@ const DonationPage = () => {
 
             {/* Description */}
             <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              A HUMUS atua na prevenção em comunidades em áreas de risco e, durante desastres, oferece resposta emergencial. Estamos atuando em Juiz de Fora, MG, para apoiar quem precisa.
+              A HUMUS está comprometida em apoiar as comunidades de áreas de risco em Juiz de Fora - MG. Oferecemos assistência especializada nas regiões afetadas, tanto em situações de emergência quanto em momentos de risco iminente durante desastres. Vamos nos unir por Juiz de Fora! Sua doação é essencial para fazer a diferença.
             </p>
 
             {/* Donation Button */}
