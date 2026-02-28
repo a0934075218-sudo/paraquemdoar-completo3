@@ -131,9 +131,10 @@ const DonationPage = () => {
                 ))}
               </div>
             </div>
+            <p className="text-xs text-gray-500 text-center mt-2" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              Imagens da tragédia em Juiz de Fora - MG.
+            </p>
           </div>
-
-          {/* Right Column - Initiative Info */}
           <div className="space-y-4 max-w-xl">
             {/* Tag */}
             <div className="flex items-center space-x-2 text-gray-600">
