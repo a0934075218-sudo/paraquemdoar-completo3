@@ -3,6 +3,46 @@ import { Button } from './ui/button';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft, User, FileText, Phone, Mail } from 'lucide-react';
 
+const validateCPF = (cpf) => {
+  const nums = cpf.replace(/\D/g, '');
+  if (nums.length !== 11) return false;
+  if (/^(\d)\1{10}$/.test(nums)) return false;
+  let sum = 0;
+  for (let i = 0; i < 9; i++) sum += parseInt(nums[i]) * (10 - i);
+  let d1 = 11 - (sum % 11);
+  if (d1 >= 10) d1 = 0;
+  if (parseInt(nums[9]) !== d1) return false;
+  sum = 0;
+  for (let i = 0; i < 10; i++) sum += parseInt(nums[i]) * (11 - i);
+  let d2 = 11 - (sum % 11);
+  if (d2 >= 10) d2 = 0;
+  return parseInt(nums[10]) === d2;
+};
+
+const validateCNPJ = (cnpj) => {
+  const nums = cnpj.replace(/\D/g, '');
+  if (nums.length !== 14) return false;
+  if (/^(\d)\1{13}$/.test(nums)) return false;
+  const weights1 = [5,4,3,2,9,8,7,6,5,4,3,2];
+  const weights2 = [6,5,4,3,2,9,8,7,6,5,4,3,2];
+  let sum = 0;
+  for (let i = 0; i < 12; i++) sum += parseInt(nums[i]) * weights1[i];
+  let d1 = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+  if (parseInt(nums[12]) !== d1) return false;
+  sum = 0;
+  for (let i = 0; i < 13; i++) sum += parseInt(nums[i]) * weights2[i];
+  let d2 = sum % 11 < 2 ? 0 : 11 - (sum % 11);
+  return parseInt(nums[13]) === d2;
+};
+
+const validateName = (name) => {
+  const trimmed = name.trim();
+  if (trimmed.length < 3) return false;
+  const words = trimmed.split(/\s+/).filter(w => w.length >= 2);
+  if (words.length < 2) return false;
+  return /^[A-Za-zÀ-ÿ\s]+$/.test(trimmed);
+};
+
 const DonorDataPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
