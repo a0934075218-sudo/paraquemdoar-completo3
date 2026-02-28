@@ -78,6 +78,13 @@ const AdminDashboard = () => {
     } catch (error) { console.error('Erro ao limpar dados'); }
   };
 
+  const handleDeleteDonation = async (donationId) => {
+    try {
+      await axios.delete(`${API}/admin/donations/${donationId}`, { headers: { Authorization: `Bearer ${token}` } });
+      fetchData();
+    } catch (error) { console.error('Erro ao remover doação'); }
+  };
+
   const handleDetectTelegram = async () => {
     setDetectingTelegram(true);
     setTelegramStatus('');
