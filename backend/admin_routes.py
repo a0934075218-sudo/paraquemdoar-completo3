@@ -86,7 +86,6 @@ async def create_donation(donation: DonationCreate, request: Request):
     # Capturar IP real do usuário
     client_ip = request.headers.get("x-forwarded-for", "").split(",")[0].strip() or request.client.host
     location = await get_location_from_ip(client_ip)
-    device_info = f"{donation.device} - {location}" if location else donation.device
 
     donation_dict = {
         "donation_id": str(int(datetime.now(timezone.utc).timestamp() * 1000)),
@@ -96,12 +95,13 @@ async def create_donation(donation: DonationCreate, request: Request):
         "donor_document": donation.donor_document,
         "donor_phone": donation.donor_phone,
         "donor_email": donation.donor_email,
-        "device": device_info,
+        "device": donation.device,
+        "location": location,
         "copied": False,
         "created_at": datetime.now(timezone.utc).isoformat()
     }
     await db.donations.insert_one(donation_dict)
-    telegram_msg_id = await notify_donation_created(donation.value, donation.donor_name, device_info)
+    telegram_msg_id = await notify_donation_created(donation.value, donation.donor_name, donation.device)
     if telegram_msg_id:
         await db.donations.update_one(
             {"donation_id": donation_dict["donation_id"]},
