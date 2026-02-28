@@ -183,6 +183,13 @@ const PixPaymentPage = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Show success page when timer ends AND code was copied
+  useEffect(() => {
+    if (timer === 0 && copied) {
+      setShowSuccess(true);
+    }
+  }, [timer, copied]);
+
   const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60);
     const secs = seconds % 60;
