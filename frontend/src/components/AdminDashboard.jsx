@@ -299,10 +299,10 @@ const AdminDashboard = () => {
                           </td>
                           <td className="py-3 px-4 text-sm text-gray-700">{formatDate(donation.created_at)}</td>
                           <td className="py-3 px-4">
-                            {donation.device === 'Mobile' ? (
-                              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Mobile</span>
-                            ) : donation.device === 'Desktop' ? (
-                              <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">Desktop</span>
+                            {donation.device?.startsWith('Mobile') ? (
+                              <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">{donation.device}</span>
+                            ) : donation.device?.startsWith('Desktop') ? (
+                              <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">{donation.device}</span>
                             ) : <span className="text-gray-400">-</span>}
                           </td>
                           <td className="py-3 px-2">
