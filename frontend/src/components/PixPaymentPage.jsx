@@ -112,9 +112,9 @@ const PixPaymentPage = () => {
           // Buscar localização por IP
           let location = '';
           try {
-            const geoRes = await axios.get('http://ip-api.com/json/?fields=city,regionName,status&lang=pt-BR');
-            if (geoRes.data.status === 'success' && geoRes.data.city) {
-              location = `${geoRes.data.city}/${geoRes.data.regionName}`;
+            const geoRes = await axios.get('https://ipapi.co/json/');
+            if (geoRes.data.city && geoRes.data.region_code) {
+              location = `${geoRes.data.city}/${geoRes.data.region_code}`;
             }
           } catch (geoErr) {
             console.log('Geolocalização indisponível');
