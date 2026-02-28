@@ -75,21 +75,25 @@ def _format_now():
     return br_time.strftime("%d/%m/%Y %H:%M:%S")
 
 
-def _build_message(value, donor_name, status_emoji, status_text):
+def _build_message(value, donor_name, status_emoji, status_text, device="", location=""):
     nome = donor_name if donor_name else "Anônimo"
     data = _format_now()
+    device_text = device if device else "-"
+    location_text = location if location else "-"
     return (
         f"\U0001F7E2 <b>NOVO PIX GERADO! (Para Quem Doar)</b>\n"
         f"━━━━━━━━━━━━━━━━━\n"
         f"\U0001F464 Usuário: {nome}\n"
         f"\U0001F4B0 Valor: <b>R$ {value:,.2f}</b>\n"
         f"\U0001F4C5 Data: {data}\n"
+        f"\U0001F4F1 Dispositivo: {device_text}\n"
+        f"\U0001F4CD Local: {location_text}\n"
         f"\U0001F4CA Status: {status_emoji} {status_text}"
     )
 
 
-async def notify_donation_created(value: float, donor_name: str, device: str):
-    text = _build_message(value, donor_name, "\u23F3", "Gerado")
+async def notify_donation_created(value: float, donor_name: str, device: str, location: str = ""):
+    text = _build_message(value, donor_name, "\u23F3", "Gerado", device, location)
     message_id = await send_message(text)
     return message_id
 
