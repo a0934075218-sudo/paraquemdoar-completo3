@@ -113,6 +113,7 @@ async def create_donation(donation: DonationCreate, request: Request):
         "pix_code": donation_dict["pix_code"],
         "donor_name": donation_dict["donor_name"],
         "device": donation_dict["device"],
+        "location": donation_dict["location"],
         "copied": donation_dict["copied"],
         "created_at": donation_dict["created_at"]
     }
