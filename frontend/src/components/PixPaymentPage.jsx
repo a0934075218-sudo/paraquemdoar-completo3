@@ -214,6 +214,10 @@ const PixPaymentPage = () => {
     alert('QR Code sera enviado para seu e-mail');
   };
 
+  if (showSuccess) {
+    return <SuccessPage navigate={navigate} />;
+  }
+
   if (pixError) {
     return (
       <div className="min-h-screen bg-gray-50 py-12" data-testid="pix-error-page">
