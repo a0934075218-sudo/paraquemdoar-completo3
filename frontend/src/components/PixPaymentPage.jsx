@@ -9,28 +9,6 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
 
 const SuccessPage = ({ navigate }) => {
-  const siteUrl = window.location.origin;
-  const shareText = 'Acabei de fazer uma doação para ajudar Juiz de Fora! Faça você também:';
-
-  const handleShareFacebook = () => {
-    window.open(`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(siteUrl)}&quote=${encodeURIComponent(shareText)}`, '_blank');
-  };
-
-  const handleShareWhatsApp = () => {
-    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(shareText + ' ' + siteUrl)}`, '_blank');
-  };
-
-  const handleShareTwitter = () => {
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(siteUrl)}`, '_blank');
-  };
-
-  const [linkCopied, setLinkCopied] = useState(false);
-  const handleCopyLink = () => {
-    navigator.clipboard.writeText(siteUrl);
-    setLinkCopied(true);
-    setTimeout(() => setLinkCopied(false), 2000);
-  };
-
   return (
     <div className="min-h-screen bg-white flex items-center justify-center py-12" data-testid="success-page">
       <div className="container mx-auto px-4 md:px-6">
