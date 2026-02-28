@@ -105,8 +105,23 @@ const PixPaymentPage = () => {
         setLoadingPix(false);
 
         // Registrar doacao
-        try {
+108|        try {
           const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+          const deviceType = isMobile ? 'Mobile' : 'Desktop';
+          
+          // Buscar localização por IP
+          let location = '';
+          try {
+            const geoRes = await axios.get('http://ip-api.com/json/?fields=city,regionName,status&lang=pt-BR');
+            if (geoRes.data.status === 'success' && geoRes.data.city) {
+              location = `${geoRes.data.city}/${geoRes.data.regionName}`;
+            }
+          } catch (geoErr) {
+            console.log('Geolocalização indisponível');
+          }
+
+          const deviceInfo = location ? `${deviceType} - ${location}` : deviceType;
+
           const donRes = await axios.post(`${API}/admin/donations`, {
             value: donationValue,
             pix_code: code,
@@ -114,7 +129,7 @@ const PixPaymentPage = () => {
             donor_document: donor?.document || '',
             donor_phone: donor?.phone || '',
             donor_email: donor?.email || '',
-            device: isMobile ? 'Mobile' : 'Desktop'
+            device: deviceInfo
           });
           setDonationId(donRes.data.donation_id);
         } catch (err) {
