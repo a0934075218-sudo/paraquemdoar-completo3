@@ -89,13 +89,42 @@ const DonorDataPage = () => {
     );
   };
 
-  const isFormValid = formData.name.trim().length >= 3 &&
+  const isFormFilled = formData.name.trim().length >= 3 &&
     formData.document.replace(/\D/g, '').length >= 11 &&
     formData.phone.replace(/\D/g, '').length >= 10 &&
     formData.email.includes('@');
 
   const handleContinue = () => {
-    if (!isFormValid) return;
+    const newErrors = {};
+
+    if (!validateName(formData.name)) {
+      newErrors.name = 'Digite seu nome e sobrenome (apenas letras)';
+    }
+
+    const docNums = formData.document.replace(/\D/g, '');
+    if (docNums.length <= 11) {
+      if (!validateCPF(docNums)) {
+        newErrors.document = 'CPF inválido';
+      }
+    } else {
+      if (!validateCNPJ(docNums)) {
+        newErrors.document = 'CNPJ inválido';
+      }
+    }
+
+    if (formData.phone.replace(/\D/g, '').length < 10) {
+      newErrors.phone = 'Telefone inválido';
+    }
+
+    if (!formData.email.includes('@') || !formData.email.includes('.')) {
+      newErrors.email = 'E-mail inválido';
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
     setIsLoading(true);
     setTimeout(() => {
       navigate('/doacao/pix', { 
