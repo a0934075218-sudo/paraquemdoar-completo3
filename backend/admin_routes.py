@@ -1,9 +1,10 @@
-from fastapi import APIRouter, HTTPException, Depends, Query
+from fastapi import APIRouter, HTTPException, Depends, Query, Request
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from pydantic import BaseModel
 from datetime import datetime, timezone
 import jwt
 import os
+import httpx
 from pix_generator import generate_pix_payload
 from telegram_bot import (
     notify_donation_created,
