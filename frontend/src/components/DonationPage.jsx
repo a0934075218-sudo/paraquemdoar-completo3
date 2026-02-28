@@ -8,7 +8,6 @@ const DonationPage = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
   const images = [
-    'https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/gaszwcu9_image.png',
     'https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/8w1y63k5_f7b3961d840bd2acaa18_1170x530_0_0_1_1.jpg',
     'https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/s5l3f7ok_bdmg-3-1-.jpeg',
     'https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/pmmbtu5a_whatsapp-image-2026-02-25-at-10.52.48.jpeg'
