@@ -328,7 +328,7 @@ const PixPaymentPage = () => {
                         className="flex-shrink-0 w-12 h-12 bg-pink-500 hover:bg-pink-600 rounded-full flex items-center justify-center text-white transition-all duration-300"
                         data-testid="copy-pix-code-button"
                       >
-                        {copied ? <Check className="w-6 h-6" /> : <Copy className="w-6 h-6" />}
+                        {copiedVisual ? <Check className="w-6 h-6" /> : <Copy className="w-6 h-6" />}
                       </button>
                     </>
                   )}
