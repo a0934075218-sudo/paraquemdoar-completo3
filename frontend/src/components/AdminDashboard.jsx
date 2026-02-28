@@ -281,7 +281,7 @@ const AdminDashboard = () => {
                   </thead>
                   <tbody>
                     {donations.length === 0 ? (
-                      <tr><td colSpan="10" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
+                      <tr><td colSpan="9" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
                     ) : (
                       donations.map((donation, index) => (
                         <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className="border-b border-gray-100 hover:bg-gray-50">
