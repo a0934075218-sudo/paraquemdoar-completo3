@@ -219,9 +219,10 @@ const DonorDataPage = () => {
                   value={formData.document}
                   onChange={(e) => handleChange('document', formatDocument(e.target.value))}
                   placeholder="000.000.000-00"
-                  className="w-full pl-12 pr-4 py-4 rounded-xl border-2 border-gray-300 focus:border-pink-500 focus:outline-none transition-colors text-base"
+                  className={`w-full pl-12 pr-4 py-4 rounded-xl border-2 ${errors.document ? 'border-red-400' : 'border-gray-300'} focus:border-pink-500 focus:outline-none transition-colors text-base`}
                 />
               </div>
+              {errors.document && <p className="text-red-500 text-sm mt-1">{errors.document}</p>}
             </div>
 
             {/* Telefone */}
