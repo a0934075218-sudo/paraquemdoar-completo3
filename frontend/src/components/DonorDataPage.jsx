@@ -131,7 +131,8 @@ const DonorDataPage = () => {
       navigate('/doacao/pix', { 
         state: { 
           value: donationValue, 
-          donor: formData 
+          donor: formData,
+          taxDeduction: isTaxDeduction
         } 
       });
     }, 800);
@@ -143,7 +144,8 @@ const DonorDataPage = () => {
       navigate('/doacao/pix', { 
         state: { 
           value: donationValue, 
-          donor: null 
+          donor: null,
+          taxDeduction: false 
         } 
       });
     }, 800);
