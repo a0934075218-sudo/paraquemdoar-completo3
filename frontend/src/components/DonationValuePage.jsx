@@ -118,7 +118,7 @@ const DonationValuePage = () => {
           {/* Continue Button */}
           <Button
             onClick={handleContinue}
-            className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white hover:from-pink-600 hover:to-red-600 rounded-full py-6 text-xl font-bold transition-all duration-300 hover:scale-105 shadow-lg mb-8"
+            className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white hover:from-pink-600 hover:to-red-600 rounded-full py-6 text-xl font-bold transition-all duration-300 hover:scale-105 shadow-lg mb-4"
             style={{ fontFamily: "'Nunito', sans-serif" }}
             data-testid="continue-button"
           >
