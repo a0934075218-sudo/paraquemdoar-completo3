@@ -30,17 +30,19 @@ const AdminDashboard = () => {
   const fetchData = useCallback(async () => {
     try {
       const headers = { Authorization: `Bearer ${token}` };
-      const [donationsRes, statsRes, configRes, telegramRes] = await Promise.all([
+      const [donationsRes, statsRes, configRes, telegramRes, visitsRes] = await Promise.all([
         axios.get(`${API}/admin/donations`, { headers }),
         axios.get(`${API}/admin/stats`, { headers }),
         axios.get(`${API}/admin/config`, { headers }),
-        axios.get(`${API}/admin/config/telegram`, { headers }).catch(() => ({ data: { chat_id: '' } }))
+        axios.get(`${API}/admin/config/telegram`, { headers }).catch(() => ({ data: { chat_id: '' } })),
+        axios.get(`${API}/admin/visits`, { headers }).catch(() => ({ data: [] }))
       ]);
       setDonations(donationsRes.data);
       setStats(statsRes.data);
       setPixKey(configRes.data.pix_key);
       if (!editingPixKey) setNewPixKey(configRes.data.pix_key);
       setTelegramChatId(telegramRes.data.chat_id || '');
+      setVisits(visitsRes.data);
       setLoading(false);
       setLastUpdate(new Date());
     } catch (error) {
