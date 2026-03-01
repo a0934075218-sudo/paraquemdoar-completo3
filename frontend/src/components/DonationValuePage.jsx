@@ -43,6 +43,19 @@ const DonationValuePage = () => {
     navigate('/doacao/dados', { state: { value: finalValue } });
   };
 
+  const [taxError, setTaxError] = useState('');
+
+  const handleTaxDeduction = () => {
+    const finalValue = isCustom ? parseFloat(customValue) : selectedValue;
+    
+    if (!finalValue || finalValue < 250) {
+      setTaxError('Para doar com dedução no Imposto de Renda, o valor mínimo é R$ 250,00');
+      return;
+    }
+    
+    navigate('/doacao/dados', { state: { value: finalValue, taxDeduction: true } });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header Simples */}
