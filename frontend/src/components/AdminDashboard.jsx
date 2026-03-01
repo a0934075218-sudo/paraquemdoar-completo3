@@ -287,7 +287,7 @@ const AdminDashboard = () => {
                         <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className="border-b border-gray-100 hover:bg-gray-50">
                           <td className="py-3 px-4 text-sm text-gray-700">
                             {donation.donor_name ? (
-                              donation.tax_deduction ? <span className="font-bold underline">{donation.donor_name}</span> : donation.donor_name
+                              donation.tax_deduction ? <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>{donation.donor_name}</span> : donation.donor_name
                             ) : <span className="text-gray-400 italic">Anônimo</span>}
                           </td>
                           <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_document || '-'}</td>
