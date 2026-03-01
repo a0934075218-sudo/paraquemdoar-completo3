@@ -47,6 +47,7 @@ const DonorDataPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const donationValue = location.state?.value || 50;
+  const isTaxDeduction = location.state?.taxDeduction || false;
 
   const [formData, setFormData] = useState({
     name: '',
