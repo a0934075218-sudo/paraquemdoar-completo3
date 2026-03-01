@@ -230,7 +230,7 @@ const AdminDashboard = () => {
         {activeTab === 'dashboard' && (
           <>
             {/* Stats Cards */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
               <div data-testid="stat-total-value" className="bg-white rounded-xl shadow-md p-5 cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setModal({ title: 'Detalhes - Total Arrecadado', items: donations })}>
                 <div className="flex items-center justify-between">
                   <div>
@@ -256,6 +256,15 @@ const AdminDashboard = () => {
                     <p data-testid="stat-copied-count-value" className="text-2xl md:text-3xl font-bold text-green-500">{stats.copied_count}</p>
                   </div>
                   <Copy className="w-10 h-10 text-green-500 opacity-20" />
+                </div>
+              </div>
+              <div data-testid="stat-visits" className="bg-white rounded-xl shadow-md p-5 cursor-pointer hover:shadow-lg transition-shadow" onClick={() => setVisitsModal(true)}>
+                <div className="flex items-center justify-between">
+                  <div>
+                    <p className="text-sm text-gray-600 mb-1">Acessos</p>
+                    <p data-testid="stat-visits-count" className="text-2xl md:text-3xl font-bold text-blue-500">{visits.length}</p>
+                  </div>
+                  <Eye className="w-10 h-10 text-blue-500 opacity-20" />
                 </div>
               </div>
             </div>
