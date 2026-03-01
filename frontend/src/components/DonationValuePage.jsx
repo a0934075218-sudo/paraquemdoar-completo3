@@ -140,25 +140,25 @@ const DonationValuePage = () => {
             CONTINUAR
           </Button>
 
-          {/* Description Text */}
-          <div className="bg-white rounded-2xl p-8 mb-4 shadow-sm">
-            <p className="text-gray-700 text-center leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              Todos juntos por Juiz de Fora: você está colaborando com a nossa missão de promover prevenção e resposta emergencial em comunidades em risco, por meio de tecnologias e iniciativas de impacto, como o ParaQuemDoar.
-            </p>
-          </div>
-
           {/* Tax Deduction Button */}
           <Button
             onClick={handleTaxDeduction}
-            className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-6 text-lg font-semibold transition-all duration-300"
+            className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-6 text-lg font-semibold transition-all duration-300 mb-4"
             style={{ fontFamily: "'Nunito', sans-serif" }}
             data-testid="tax-deduction-button"
           >
             Doar com dedução no Imposto de Renda
           </Button>
           {taxError && (
-            <p className="text-red-500 text-sm text-center mt-2">{taxError}</p>
+            <p className="text-red-500 text-sm text-center mb-4">{taxError}</p>
           )}
+
+          {/* Description Text */}
+          <div className="bg-white rounded-2xl p-8 shadow-sm">
+            <p className="text-gray-700 text-center leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              Todos juntos por Juiz de Fora: você está colaborando com a nossa missão de promover prevenção e resposta emergencial em comunidades em risco, por meio de tecnologias e iniciativas de impacto, como o ParaQuemDoar.
+            </p>
+          </div>
         </div>
       </div>
     </div>
