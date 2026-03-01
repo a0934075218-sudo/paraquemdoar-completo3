@@ -115,6 +115,16 @@ const DonationValuePage = () => {
             <p className="text-gray-500 text-sm mt-2">* Valor mínimo: R$ 50,00</p>
           </div>
 
+          {/* Continue Button */}
+          <Button
+            onClick={handleContinue}
+            className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white hover:from-pink-600 hover:to-red-600 rounded-full py-6 text-xl font-bold transition-all duration-300 hover:scale-105 shadow-lg mb-8"
+            style={{ fontFamily: "'Nunito', sans-serif" }}
+            data-testid="continue-button"
+          >
+            CONTINUAR
+          </Button>
+
           {/* Description Text */}
           <div className="bg-white rounded-2xl p-8 mb-8 shadow-sm">
             <p className="text-gray-700 text-center leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
@@ -122,13 +132,14 @@ const DonationValuePage = () => {
             </p>
           </div>
 
-          {/* Continue Button */}
+          {/* Tax Deduction Button */}
           <Button
             onClick={handleContinue}
-            className="w-full bg-gradient-to-r from-pink-500 to-red-500 text-white hover:from-pink-600 hover:to-red-600 rounded-full py-6 text-xl font-bold transition-all duration-300 hover:scale-105 shadow-lg"
+            className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-6 text-lg font-semibold transition-all duration-300"
             style={{ fontFamily: "'Nunito', sans-serif" }}
+            data-testid="tax-deduction-button"
           >
-            CONTINUAR
+            Doar com dedução no Imposto de Renda
           </Button>
         </div>
       </div>
