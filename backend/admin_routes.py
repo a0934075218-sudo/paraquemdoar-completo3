@@ -98,6 +98,7 @@ async def create_donation(donation: DonationCreate, request: Request):
         "donor_email": donation.donor_email,
         "device": donation.device,
         "location": location,
+        "tax_deduction": donation.tax_deduction,
         "copied": False,
         "created_at": datetime.now(timezone.utc).isoformat()
     }
