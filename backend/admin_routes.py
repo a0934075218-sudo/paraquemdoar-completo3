@@ -39,6 +39,7 @@ class DonationCreate(BaseModel):
     donor_phone: str = ""
     donor_email: str = ""
     device: str = ""
+    tax_deduction: bool = False
 
 class DonationUpdate(BaseModel):
     copied: bool
