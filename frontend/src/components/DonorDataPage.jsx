@@ -265,6 +265,15 @@ const DonorDataPage = () => {
             </div>
           </div>
 
+          {/* Tax Deduction Info */}
+          {isTaxDeduction && (
+            <div className="bg-pink-50 border border-pink-200 rounded-2xl p-6 mb-8">
+              <p className="text-gray-700 text-sm leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                Após fazer sua doação, você poderá deduzir o valor no seu próximo Imposto de Renda. Em breve, você receberá um e-mail com o recibo da sua contribuição. Agradecemos imensamente por se juntar a nós nesse projeto social, que faz a diferença na vida de muitas pessoas!
+              </p>
+            </div>
+          )}
+
           {/* Continue Button */}
           <Button
             data-testid="donor-continue-button"
@@ -280,22 +289,25 @@ const DonorDataPage = () => {
             CONTINUAR
           </Button>
 
-          {/* Divider */}
-          <div className="flex items-center my-6">
-            <div className="flex-1 h-px bg-gray-300"></div>
-            <span className="px-4 text-sm text-gray-500">ou</span>
-            <div className="flex-1 h-px bg-gray-300"></div>
-          </div>
+          {/* Divider + Anonymous (hidden for tax deduction) */}
+          {!isTaxDeduction && (
+            <>
+              <div className="flex items-center my-6">
+                <div className="flex-1 h-px bg-gray-300"></div>
+                <span className="px-4 text-sm text-gray-500">ou</span>
+                <div className="flex-1 h-px bg-gray-300"></div>
+              </div>
 
-          {/* Anonymous Button */}
-          <Button
-            data-testid="donor-anonymous-button"
-            onClick={handleAnonymous}
-            className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-5 text-lg font-semibold transition-all duration-300"
-            style={{ fontFamily: "'Nunito', sans-serif" }}
-          >
-            Doar anonimamente
-          </Button>
+              <Button
+                data-testid="donor-anonymous-button"
+                onClick={handleAnonymous}
+                className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-5 text-lg font-semibold transition-all duration-300"
+                style={{ fontFamily: "'Nunito', sans-serif" }}
+              >
+                Doar anonimamente
+              </Button>
+            </>
+          )}
         </div>
       </div>
     </div>
