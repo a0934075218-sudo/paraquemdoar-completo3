@@ -284,8 +284,12 @@ const AdminDashboard = () => {
                       <tr><td colSpan="9" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
                     ) : (
                       donations.map((donation, index) => (
-                        <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className={`border-b border-gray-100 hover:bg-gray-50 ${donation.tax_deduction ? 'font-bold underline' : ''}`}>
-                          <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_name || <span className="text-gray-400 italic">Anônimo</span>}</td>
+                        <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className="border-b border-gray-100 hover:bg-gray-50">
+                          <td className="py-3 px-4 text-sm text-gray-700">
+                            {donation.donor_name ? (
+                              donation.tax_deduction ? <span className="font-bold underline">{donation.donor_name}</span> : donation.donor_name
+                            ) : <span className="text-gray-400 italic">Anônimo</span>}
+                          </td>
                           <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_document || '-'}</td>
                           <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_phone || '-'}</td>
                           <td className="py-3 px-4"><span className="font-bold text-pink-500">{formatCurrency(donation.value)}</span></td>
