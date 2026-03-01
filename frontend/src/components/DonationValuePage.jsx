@@ -17,6 +17,7 @@ const DonationValuePage = () => {
     setIsCustom(false);
     setCustomValue('');
     setError('');
+    setTaxError('');
   };
 
   const handleCustomValueChange = (e) => {
