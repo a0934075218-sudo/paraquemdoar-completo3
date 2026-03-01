@@ -22,6 +22,8 @@ const AdminDashboard = () => {
   const [telegramChatId, setTelegramChatId] = useState('');
   const [telegramStatus, setTelegramStatus] = useState('');
   const [detectingTelegram, setDetectingTelegram] = useState(false);
+  const [visits, setVisits] = useState([]);
+  const [visitsModal, setVisitsModal] = useState(false);
 
   const token = localStorage.getItem('admin_token');
 
