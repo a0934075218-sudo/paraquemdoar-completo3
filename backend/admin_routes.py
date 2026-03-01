@@ -275,7 +275,7 @@ async def track_visit(visit: VisitCreate, request: Request):
     await db.visits.insert_one(visit_dict)
     return {"status": "ok"}
 
-@router.get("/admin/visits")
+@router.get("/visits")
 async def get_visits(user=Depends(verify_token)):
     visits = await db.visits.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
     return visits
