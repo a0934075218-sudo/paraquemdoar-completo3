@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from "axios";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
 import InitiativesGrid from "./components/InitiativesGrid";
@@ -13,6 +14,8 @@ import LoginPage from "./components/LoginPage";
 import AdminDashboard from "./components/AdminDashboard";
 
 import DonorDataPage from "./components/DonorDataPage";
+
+const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
 
 const HomePage = () => {
   return (
