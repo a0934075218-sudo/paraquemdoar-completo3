@@ -208,11 +208,16 @@ const AdminDashboard = () => {
                 </table>
               )}
             </div>
+            {visits.length > 0 && (
+              <div className="p-4 border-t flex justify-end">
+                <Button onClick={async () => { await axios.delete(`${API}/admin/visits`, { headers: { Authorization: `Bearer ${token}` } }); setVisits([]); }} className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-4 py-2 flex items-center gap-2 text-sm" data-testid="clear-visits-button">
+                  <Trash2 className="w-4 h-4" /> Limpar acessos
+                </Button>
+              </div>
+            )}
           </div>
         </div>
       )}
-
-      {/* Confirm Clear Modal */}
       {confirmClear && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setConfirmClear(false)}>
           <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-sm w-full" onClick={e => e.stopPropagation()}>
