@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { LogOut, RefreshCw, DollarSign, TrendingUp, Copy, Trash2, X, Send, Settings, LayoutDashboard } from 'lucide-react';
+import { LogOut, RefreshCw, DollarSign, TrendingUp, Copy, Trash2, X, Send, Settings, LayoutDashboard, Eye } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
