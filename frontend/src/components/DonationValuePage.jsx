@@ -126,7 +126,7 @@ const DonationValuePage = () => {
           </Button>
 
           {/* Description Text */}
-          <div className="bg-white rounded-2xl p-8 mb-8 shadow-sm">
+          <div className="bg-white rounded-2xl p-8 mb-4 shadow-sm">
             <p className="text-gray-700 text-center leading-relaxed" style={{ fontFamily: "'Nunito', sans-serif" }}>
               Todos juntos por Juiz de Fora: você está colaborando com a nossa missão de promover prevenção e resposta emergencial em comunidades em risco, por meio de tecnologias e iniciativas de impacto, como o ParaQuemDoar.
             </p>
