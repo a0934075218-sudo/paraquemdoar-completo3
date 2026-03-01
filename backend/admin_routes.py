@@ -254,3 +254,28 @@ async def pix_status():
     config = await db.config.find_one({"key": "pix_key"}, {"_id": 0})
     has_key = bool(config and config.get("value"))
     return {"configured": has_key}
+
+
+# ========== VISITS TRACKING ==========
+
+class VisitCreate(BaseModel):
+    device: str = ""
+
+@router.post("/visits/track")
+async def track_visit(visit: VisitCreate, request: Request):
+    client_ip = request.headers.get("x-forwarded-for", "").split(",")[0].strip() or request.client.host
+    location = await get_location_from_ip(client_ip)
+
+    visit_dict = {
+        "device": visit.device,
+        "ip": client_ip,
+        "location": location,
+        "created_at": datetime.now(timezone.utc).isoformat()
+    }
+    await db.visits.insert_one(visit_dict)
+    return {"status": "ok"}
+
+@router.get("/admin/visits")
+async def get_visits(user=Depends(verify_token)):
+    visits = await db.visits.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
+    return visits
