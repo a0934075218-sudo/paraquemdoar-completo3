@@ -25,6 +25,7 @@ const DonationValuePage = () => {
     setCustomValue(value);
     setIsCustom(true);
     setError('');
+    setTaxError('');
     
     const numValue = parseFloat(value);
     if (value && numValue < 50) {
