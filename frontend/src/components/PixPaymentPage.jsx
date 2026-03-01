@@ -79,6 +79,7 @@ const PixPaymentPage = () => {
   const location = useLocation();
   const donationValue = location.state?.value || 50;
   const donor = location.state?.donor || null;
+  const taxDeduction = location.state?.taxDeduction || false;
 
   const [timer, setTimer] = useState(300);
   const [copied, setCopied] = useState(false);
