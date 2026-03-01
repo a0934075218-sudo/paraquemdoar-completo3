@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, ArrowLeft, Search } from 'lucide-react';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
-
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
-const API = `${BACKEND_URL}/api`;
 
 const DonationPage = () => {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-
-  // Track visit on page load
-  useEffect(() => {
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    axios.post(`${API}/admin/visits/track`, { device: isMobile ? 'Mobile' : 'Desktop' }).catch(() => {});
-  }, []);
   
   const images = [
     'https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/8w1y63k5_f7b3961d840bd2acaa18_1170x530_0_0_1_1.jpg',
