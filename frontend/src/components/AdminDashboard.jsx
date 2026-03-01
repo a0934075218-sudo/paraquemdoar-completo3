@@ -168,6 +168,50 @@ const AdminDashboard = () => {
         </div>
       )}
 
+      {/* Visits Modal */}
+      {visitsModal && (
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setVisitsModal(false)}>
+          <div className="bg-white rounded-2xl shadow-2xl w-full max-w-3xl max-h-[80vh] overflow-hidden" onClick={e => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-5 border-b">
+              <h3 className="text-lg font-bold text-gray-800">Últimos Acessos</h3>
+              <button onClick={() => setVisitsModal(false)} className="text-gray-400 hover:text-gray-600" data-testid="visits-modal-close"><X className="w-5 h-5" /></button>
+            </div>
+            <div className="p-5 overflow-y-auto max-h-[60vh]">
+              {visits.length === 0 ? (
+                <p className="text-gray-500 text-center py-8">Nenhum acesso registrado</p>
+              ) : (
+                <table className="w-full">
+                  <thead>
+                    <tr className="border-b-2 border-gray-200">
+                      <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Dispositivo</th>
+                      <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Data/Hora</th>
+                      <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">IP</th>
+                      <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Local</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {visits.map((v, i) => (
+                      <tr key={i} className="border-b border-gray-100">
+                        <td className="py-2 px-3 text-sm">
+                          {v.device === 'Mobile' ? (
+                            <span className="bg-blue-100 text-blue-700 px-2 py-0.5 rounded-full text-xs font-semibold">Mobile</span>
+                          ) : (
+                            <span className="bg-gray-100 text-gray-700 px-2 py-0.5 rounded-full text-xs font-semibold">Desktop</span>
+                          )}
+                        </td>
+                        <td className="py-2 px-3 text-sm text-gray-500">{formatDate(v.created_at)}</td>
+                        <td className="py-2 px-3 text-sm text-gray-700 font-mono">{v.ip || '-'}</td>
+                        <td className="py-2 px-3 text-sm text-gray-700">{v.location || '-'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Confirm Clear Modal */}
       {confirmClear && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setConfirmClear(false)}>
