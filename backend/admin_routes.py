@@ -279,3 +279,9 @@ async def track_visit(visit: VisitCreate, request: Request):
 async def get_visits(user=Depends(verify_token)):
     visits = await db.visits.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
     return visits
+
+
+@router.delete("/visits")
+async def clear_visits(user=Depends(verify_token)):
+    await db.visits.delete_many({})
+    return {"status": "ok"}
