@@ -154,6 +154,9 @@ const DonationValuePage = () => {
           >
             Doar com dedução no Imposto de Renda
           </Button>
+          {taxError && (
+            <p className="text-red-500 text-sm text-center mt-2">{taxError}</p>
+          )}
         </div>
       </div>
     </div>
