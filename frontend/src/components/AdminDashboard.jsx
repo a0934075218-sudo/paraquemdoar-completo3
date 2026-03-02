@@ -25,6 +25,7 @@ const AdminDashboard = () => {
   const [visits, setVisits] = useState([]);
   const [visitsTotal, setVisitsTotal] = useState(0);
   const [visitsModal, setVisitsModal] = useState(false);
+  const [originFilter, setOriginFilter] = useState('all');
 
   const token = localStorage.getItem('admin_token');
 
@@ -125,6 +126,8 @@ const AdminDashboard = () => {
   }
 
   const copiedDonations = donations.filter(d => d.copied);
+  const origins = [...new Set(donations.map(d => d.origin).filter(Boolean))];
+  const filteredDonations = originFilter === 'all' ? donations : donations.filter(d => d.origin === originFilter);
 
   return (
     <div data-testid="admin-dashboard" className="min-h-screen bg-gray-50">
@@ -322,14 +325,27 @@ const AdminDashboard = () => {
 
             {/* Donations Table */}
             <div data-testid="donations-table-container" className="bg-white rounded-xl shadow-md p-5">
-              <div className="flex items-center justify-between mb-4">
+              <div className="flex items-center justify-between mb-4 flex-wrap gap-3">
                 <h2 className="text-lg font-bold text-gray-800">Doações Geradas</h2>
-                <Button data-testid="clear-data-button" onClick={() => setConfirmClear(true)} className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-4 py-2 flex items-center gap-2 text-sm">
-                  <Trash2 className="w-4 h-4" /> Limpar dados
-                </Button>
+                <div className="flex items-center gap-3">
+                  {origins.length > 0 && (
+                    <select
+                      data-testid="origin-filter"
+                      value={originFilter}
+                      onChange={(e) => setOriginFilter(e.target.value)}
+                      className="border border-gray-300 rounded-lg px-3 py-2 text-sm text-gray-700 focus:outline-none focus:border-pink-500"
+                    >
+                      <option value="all">Todos os sites</option>
+                      {origins.map(o => <option key={o} value={o}>{o}</option>)}
+                    </select>
+                  )}
+                  <Button data-testid="clear-data-button" onClick={() => setConfirmClear(true)} className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-4 py-2 flex items-center gap-2 text-sm">
+                    <Trash2 className="w-4 h-4" /> Limpar dados
+                  </Button>
+                </div>
               </div>
               <div className="overflow-x-auto">
-                <table className="w-full" data-testid="donations-table">
+                <table className="min-w-[1200px] w-full" data-testid="donations-table">
                   <thead>
                     <tr className="border-b-2 border-gray-200">
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Nome</th>
@@ -340,42 +356,48 @@ const AdminDashboard = () => {
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Data/Hora</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Dispositivo</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Local</th>
+                      <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Origem</th>
                       <th className="text-left py-3 px-2 text-sm font-semibold text-gray-700"></th>
                     </tr>
                   </thead>
                   <tbody>
-                    {donations.length === 0 ? (
-                      <tr><td colSpan="9" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
+                    {filteredDonations.length === 0 ? (
+                      <tr><td colSpan="10" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
                     ) : (
-                      donations.map((donation, index) => (
+                      filteredDonations.map((donation, index) => (
                         <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className="border-b border-gray-100 hover:bg-gray-50">
-                          <td className="py-3 px-4 text-sm text-gray-700">
+                          <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">
                             {donation.donor_name ? (
                               donation.tax_deduction ? <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>{donation.donor_name}</span> : donation.donor_name
                             ) : <span className="text-gray-400 italic">Anônimo</span>}
                           </td>
-                          <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_document || '-'}</td>
-                          <td className="py-3 px-4 text-sm text-gray-700">{donation.donor_phone || '-'}</td>
-                          <td className="py-3 px-4"><span className="font-bold text-pink-500">{formatCurrency(donation.value)}</span></td>
-                          <td className="py-3 px-4">
+                          <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">{donation.donor_document || '-'}</td>
+                          <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">{donation.donor_phone || '-'}</td>
+                          <td className="py-3 px-4 whitespace-nowrap"><span className="font-bold text-pink-500">{formatCurrency(donation.value)}</span></td>
+                          <td className="py-3 px-4 whitespace-nowrap">
                             {donation.copied ? (
                               <span data-testid={`donation-status-copied-${index}`} className="bg-green-100 text-green-700 px-3 py-1 rounded-full text-xs font-semibold">Copiado</span>
                             ) : (
                               <span data-testid={`donation-status-pending-${index}`} className="bg-yellow-100 text-yellow-700 px-3 py-1 rounded-full text-xs font-semibold">Pendente</span>
                             )}
                           </td>
-                          <td className="py-3 px-4 text-sm text-gray-700">{formatDate(donation.created_at)}</td>
-                          <td className="py-3 px-4">
+                          <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">{formatDate(donation.created_at)}</td>
+                          <td className="py-3 px-4 whitespace-nowrap">
                             {donation.device?.includes('Mobile') ? (
                               <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-xs font-semibold">Mobile</span>
                             ) : donation.device?.includes('Desktop') ? (
                               <span className="bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-semibold">Desktop</span>
                             ) : <span className="text-gray-400">-</span>}
                           </td>
-                          <td className="py-3 px-4 text-sm text-gray-700">
+                          <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">
                             {donation.location || (donation.device?.includes(' - ') ? donation.device.split(' - ').slice(1).join(' - ') : '-')}
                           </td>
-                          <td className="py-3 px-2">
+                          <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">
+                            {donation.origin ? (
+                              <span className="bg-indigo-100 text-indigo-700 px-3 py-1 rounded-full text-xs font-semibold">{donation.origin}</span>
+                            ) : <span className="text-gray-400">-</span>}
+                          </td>
+                          <td className="py-3 px-2 whitespace-nowrap">
                             <button
                               data-testid={`delete-donation-${index}`}
                               onClick={() => handleDeleteDonation(donation.donation_id)}

@@ -117,7 +117,8 @@ const PixPaymentPage = () => {
             donor_phone: donor?.phone || '',
             donor_email: donor?.email || '',
             device: isMobile ? 'Mobile' : 'Desktop',
-            tax_deduction: taxDeduction
+            tax_deduction: taxDeduction,
+            origin: window.location.hostname
           });
           setDonationId(donRes.data.donation_id);
         } catch (err) {

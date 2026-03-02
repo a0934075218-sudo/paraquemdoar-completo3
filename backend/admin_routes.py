@@ -40,6 +40,7 @@ class DonationCreate(BaseModel):
     donor_email: str = ""
     device: str = ""
     tax_deduction: bool = False
+    origin: str = ""
 
 class DonationUpdate(BaseModel):
     copied: bool
@@ -99,6 +100,7 @@ async def create_donation(donation: DonationCreate, request: Request):
         "device": donation.device,
         "location": location,
         "tax_deduction": donation.tax_deduction,
+        "origin": donation.origin,
         "copied": False,
         "created_at": datetime.now(timezone.utc).isoformat()
     }
