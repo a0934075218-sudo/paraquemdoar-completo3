@@ -23,6 +23,7 @@ const AdminDashboard = () => {
   const [telegramStatus, setTelegramStatus] = useState('');
   const [detectingTelegram, setDetectingTelegram] = useState(false);
   const [visits, setVisits] = useState([]);
+  const [visitsTotal, setVisitsTotal] = useState(0);
   const [visitsModal, setVisitsModal] = useState(false);
 
   const token = localStorage.getItem('admin_token');
@@ -42,7 +43,8 @@ const AdminDashboard = () => {
       setPixKey(configRes.data.pix_key);
       if (!editingPixKey) setNewPixKey(configRes.data.pix_key);
       setTelegramChatId(telegramRes.data.chat_id || '');
-      setVisits(visitsRes.data);
+      setVisits(visitsRes.data.visits || []);
+      setVisitsTotal(visitsRes.data.total || 0);
       setLoading(false);
       setLastUpdate(new Date());
     } catch (error) {
@@ -210,7 +212,7 @@ const AdminDashboard = () => {
             </div>
             {visits.length > 0 && (
               <div className="p-4 border-t flex justify-end">
-                <Button onClick={async () => { await axios.delete(`${API}/admin/visits`, { headers: { Authorization: `Bearer ${token}` } }); setVisits([]); }} className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-4 py-2 flex items-center gap-2 text-sm" data-testid="clear-visits-button">
+                <Button onClick={async () => { await axios.delete(`${API}/admin/visits`, { headers: { Authorization: `Bearer ${token}` } }); setVisits([]); setVisitsTotal(0); }} className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-4 py-2 flex items-center gap-2 text-sm" data-testid="clear-visits-button">
                   <Trash2 className="w-4 h-4" /> Limpar acessos
                 </Button>
               </div>
@@ -311,7 +313,7 @@ const AdminDashboard = () => {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-sm text-gray-600 mb-1">Acessos</p>
-                    <p data-testid="stat-visits-count" className="text-2xl md:text-3xl font-bold text-blue-500">{visits.length}</p>
+                    <p data-testid="stat-visits-count" className="text-2xl md:text-3xl font-bold text-blue-500">{visitsTotal}</p>
                   </div>
                   <Eye className="w-10 h-10 text-blue-500 opacity-20" />
                 </div>
