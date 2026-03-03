@@ -10,7 +10,7 @@ const DonationValuePage = () => {
   const [isCustom, setIsCustom] = useState(false);
   const [error, setError] = useState('');
 
-  const predefinedValues = [50, 100, 200, 300, 500, 1000];
+  const predefinedValues = [100, 200, 300, 500, 1000, 2000];
 
   const handlePredefinedClick = (value) => {
     setSelectedValue(value);
