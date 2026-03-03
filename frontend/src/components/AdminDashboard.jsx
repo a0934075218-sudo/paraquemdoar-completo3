@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { Button } from './ui/button';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import { LogOut, RefreshCw, DollarSign, TrendingUp, Copy, Trash2, X, Send, Settings, LayoutDashboard, Eye } from 'lucide-react';
+import { LogOut, RefreshCw, DollarSign, TrendingUp, Copy, Trash2, X, Send, Settings, LayoutDashboard, Eye, Download } from 'lucide-react';
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const API = `${BACKEND_URL}/api`;
@@ -339,16 +339,40 @@ const AdminDashboard = () => {
                       {origins.map(o => <option key={o} value={o}>{o}</option>)}
                     </select>
                   )}
+                  <Button data-testid="download-data-button" onClick={() => {
+                    const lines = ['DADOS DOS DOADORES', '='.repeat(50), ''];
+                    filteredDonations.forEach((d, i) => {
+                      lines.push(`Doador #${i + 1}`);
+                      lines.push(`Nome: ${d.donor_name || 'Anônimo'}`);
+                      lines.push(`E-mail: ${d.donor_email || '-'}`);
+                      lines.push(`Telefone: ${d.donor_phone || '-'}`);
+                      lines.push(`CPF/CNPJ: ${d.donor_document || '-'}`);
+                      lines.push(`Valor: R$ ${d.value?.toFixed(2)}`);
+                      lines.push(`Origem: ${d.origin || '-'}`);
+                      lines.push('-'.repeat(30));
+                      lines.push('');
+                    });
+                    const blob = new Blob([lines.join('\n')], { type: 'text/plain' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'doadores.txt';
+                    a.click();
+                    URL.revokeObjectURL(url);
+                  }} className="bg-blue-500 text-white hover:bg-blue-600 rounded-lg px-4 py-2 flex items-center gap-2 text-sm">
+                    <Download className="w-4 h-4" /> Baixar dados
+                  </Button>
                   <Button data-testid="clear-data-button" onClick={() => setConfirmClear(true)} className="bg-gray-500 text-white hover:bg-gray-600 rounded-lg px-4 py-2 flex items-center gap-2 text-sm">
                     <Trash2 className="w-4 h-4" /> Limpar dados
                   </Button>
                 </div>
               </div>
-              <div className="overflow-x-auto">
-                <table className="min-w-[1200px] w-full" data-testid="donations-table">
+              <div className="scroll-top">
+                <table className="min-w-[1400px] w-full" data-testid="donations-table">
                   <thead>
                     <tr className="border-b-2 border-gray-200">
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Nome</th>
+                      <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">E-mail</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">CPF/CNPJ</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Telefone</th>
                       <th className="text-left py-3 px-4 text-sm font-semibold text-gray-700">Valor</th>
@@ -362,7 +386,7 @@ const AdminDashboard = () => {
                   </thead>
                   <tbody>
                     {filteredDonations.length === 0 ? (
-                      <tr><td colSpan="10" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
+                      <tr><td colSpan="11" data-testid="no-donations-message" className="text-center py-8 text-gray-500">Nenhuma doação registrada ainda</td></tr>
                     ) : (
                       filteredDonations.map((donation, index) => (
                         <tr key={donation.donation_id || index} data-testid={`donation-row-${index}`} className="border-b border-gray-100 hover:bg-gray-50">
@@ -371,6 +395,7 @@ const AdminDashboard = () => {
                               donation.tax_deduction ? <span style={{ fontWeight: 'bold', textDecoration: 'underline' }}>{donation.donor_name}</span> : donation.donor_name
                             ) : <span className="text-gray-400 italic">Anônimo</span>}
                           </td>
+                          <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">{donation.donor_email || '-'}</td>
                           <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">{donation.donor_document || '-'}</td>
                           <td className="py-3 px-4 text-sm text-gray-700 whitespace-nowrap">{donation.donor_phone || '-'}</td>
                           <td className="py-3 px-4 whitespace-nowrap"><span className="font-bold text-pink-500">{formatCurrency(donation.value)}</span></td>
