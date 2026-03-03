@@ -94,7 +94,7 @@ const DonationValuePage = () => {
                 }`}
               >
                 <div className="text-3xl font-bold text-gray-800">R$</div>
-                <div className="text-4xl font-bold text-pink-500">{value >= 1000 ? '1.000' : value}</div>
+                <div className="text-4xl font-bold text-pink-500">{value.toLocaleString('pt-BR')}</div>
               </button>
             ))}
           </div>
