@@ -34,7 +34,7 @@ const HomePage = () => {
 function App() {
   useEffect(() => {
     const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-    axios.post(`${API}/admin/visits/track`, { device: isMobile ? 'Mobile' : 'Desktop' }).catch(() => {});
+    axios.post(`${API}/admin/visits/track`, { device: isMobile ? 'Mobile' : 'Desktop', origin: window.location.hostname }).catch(() => {});
   }, []);
 
   return (

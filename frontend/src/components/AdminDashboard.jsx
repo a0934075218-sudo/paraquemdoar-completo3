@@ -192,6 +192,7 @@ const AdminDashboard = () => {
                       <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Data/Hora</th>
                       <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">IP</th>
                       <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Local</th>
+                      <th className="text-left py-2 px-3 text-sm font-semibold text-gray-700">Origem</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -207,6 +208,11 @@ const AdminDashboard = () => {
                         <td className="py-2 px-3 text-sm text-gray-500">{formatDate(v.created_at)}</td>
                         <td className="py-2 px-3 text-sm text-gray-700 font-mono">{v.ip || '-'}</td>
                         <td className="py-2 px-3 text-sm text-gray-700">{v.location || '-'}</td>
+                        <td className="py-2 px-3 text-sm">
+                          {v.origin ? (
+                            <span className="bg-indigo-100 text-indigo-700 px-2 py-0.5 rounded-full text-xs font-semibold">{v.origin}</span>
+                          ) : <span className="text-gray-400">-</span>}
+                        </td>
                       </tr>
                     ))}
                   </tbody>

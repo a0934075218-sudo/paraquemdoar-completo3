@@ -262,6 +262,7 @@ async def pix_status():
 
 class VisitCreate(BaseModel):
     device: str = ""
+    origin: str = ""
 
 @router.post("/visits/track")
 async def track_visit(visit: VisitCreate, request: Request):
@@ -272,6 +273,7 @@ async def track_visit(visit: VisitCreate, request: Request):
         "device": visit.device,
         "ip": client_ip,
         "location": location,
+        "origin": visit.origin,
         "created_at": datetime.now(timezone.utc).isoformat()
     }
     await db.visits.insert_one(visit_dict)
