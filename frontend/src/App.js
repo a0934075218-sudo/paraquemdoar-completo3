@@ -15,7 +15,7 @@ import AdminDashboard from "./components/AdminDashboard";
 
 import DonorDataPage from "./components/DonorDataPage";
 
-const API = `${process.env.REACT_APP_BACKEND_URL}/api`;
+const API = `${process.env.REACT_APP_BACKEND_URL || ''}/api`;
 
 const HomePage = () => {
   return (

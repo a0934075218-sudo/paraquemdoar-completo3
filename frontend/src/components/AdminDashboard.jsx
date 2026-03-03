@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import { LogOut, RefreshCw, DollarSign, TrendingUp, Copy, Trash2, X, Send, Settings, LayoutDashboard, Eye, Download } from 'lucide-react';
 
-const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL || '';
 const API = `${BACKEND_URL}/api`;
 
 const AdminDashboard = () => {
