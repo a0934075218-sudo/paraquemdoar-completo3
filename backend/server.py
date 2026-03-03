@@ -90,6 +90,19 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+import logging
+from passlib.context import CryptContext
+
+pwd_context_init = CryptContext(schemes=["bcrypt"], deprecated="auto")
+
+@app.on_event("startup")
+async def init_admin_user():
+    existing = await db.users.find_one({"username": "donas"})
+    if not existing:
+        hashed = pwd_context_init.hash("Seinao10@@")
+        await db.users.insert_one({"username": "donas", "hashed_password": hashed})
+        logging.info("Admin user 'donas' created automatically")
+
 @app.on_event("shutdown")
 async def shutdown_db_client():
     client.close()
