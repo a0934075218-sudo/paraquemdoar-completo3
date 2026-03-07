@@ -82,19 +82,19 @@ const DonationValuePage = () => {
           </h1>
 
           {/* Value Selection Cards */}
-          <div className="grid grid-cols-3 gap-4 mb-8">
+          <div className="grid grid-cols-3 gap-3 mb-8 px-2">
             {predefinedValues.map((value) => (
               <button
                 key={value}
                 onClick={() => handlePredefinedClick(value)}
-                className={`p-6 rounded-2xl border-2 transition-all duration-300 hover:scale-105 ${
+                className={`p-4 md:p-6 rounded-2xl border-2 transition-all duration-300 hover:scale-105 overflow-hidden ${
                   selectedValue === value && !isCustom
                     ? 'border-pink-500 bg-pink-50 shadow-lg'
                     : 'border-gray-300 bg-white hover:border-pink-300'
                 }`}
               >
-                <div className="text-3xl font-bold text-gray-800">R$</div>
-                <div className="text-4xl font-bold text-pink-500">{value.toLocaleString('pt-BR')}</div>
+                <div className="text-sm md:text-lg font-bold text-gray-800">R$</div>
+                <div className="text-2xl md:text-4xl font-bold text-pink-500 whitespace-nowrap">{value.toLocaleString('pt-BR')}</div>
               </button>
             ))}
           </div>
