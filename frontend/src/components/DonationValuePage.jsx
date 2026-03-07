@@ -143,7 +143,7 @@ const DonationValuePage = () => {
           {/* Tax Deduction Button */}
           <Button
             onClick={handleTaxDeduction}
-            className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-6 text-lg font-semibold transition-all duration-300 mb-4"
+            className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full py-4 md:py-6 text-sm md:text-lg font-semibold transition-all duration-300 mb-4 px-4"
             style={{ fontFamily: "'Nunito', sans-serif" }}
             data-testid="tax-deduction-button"
           >
