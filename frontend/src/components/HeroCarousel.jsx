@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from './ui/button';
 import { heroSlides } from '../mockData';
+import { useNavigate } from 'react-router-dom';
 
 const HeroCarousel = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -88,7 +90,7 @@ const HeroCarousel = () => {
             </p>
             <Button 
               className="mt-6 md:mt-8 bg-white text-pink-600 hover:bg-pink-50 rounded-full px-10 md:px-12 py-5 md:py-6 text-base md:text-lg font-normal border-2 border-white shadow-lg transition-all duration-300 hover:scale-105"
-              onClick={() => window.open(slide.buttonLink, '_blank')}
+              onClick={() => slide.buttonLink.startsWith('/') ? navigate(slide.buttonLink) : window.open(slide.buttonLink, '_blank')}
             >
               {slide.buttonText}
             </Button>
