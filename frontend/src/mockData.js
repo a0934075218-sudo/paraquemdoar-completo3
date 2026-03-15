@@ -157,6 +157,102 @@ export const initiatives = [
     description: "A EternamenteSOU é um centro de convivência para os idosos LGBT+, proporcionando acolhimento, respeito, visibilidade e dignidade em São Paulo.",
     image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/ce6mp2a4_imgi_22_esoucardpqd.jpeg",
     link: "#"
+  },
+  {
+    id: 14,
+    name: "Governo do Estado do RS",
+    region: "Rio Grande do Sul",
+    description: "Precisa de muito apoio neste momento e abriu um canal de doações que passará por auditoria e fiscalização do poder público.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/vs4dz3nw_imgi_9_ISBIS29.jpeg",
+    link: "#"
+  },
+  {
+    id: 15,
+    name: "ADRA",
+    region: "Nacional",
+    description: "Agência humanitária que promove o desenvolvimento de ações assistenciais, beneficentes e filantrópicas para atender pessoas em situação de vulnerabilidade.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/7fsw8q97_imgi_10_CVFUsfi.jpeg",
+    link: "#"
+  },
+  {
+    id: 16,
+    name: "Negras Plurais",
+    region: "Nacional",
+    description: "Está na linha de frente auxiliando na reconstrução, mapeamento de espaços, coletando e distribuindo as doações para os afetados pelas enchentes.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/1fdce99i_imgi_11_VqnAR0z.jpeg",
+    link: "#"
+  },
+  {
+    id: 17,
+    name: "Instituto Criança Mais Feliz",
+    region: "Rio Grande do Sul",
+    description: "Organização não-governamental com atuação focada em crianças que se encontram em situação de vulnerabilidade no RS.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/nz2r20cc_imgi_12_1enEQcu.jpeg",
+    link: "#"
+  },
+  {
+    id: 18,
+    name: "Criança Esperança / Unesco",
+    region: "Nacional",
+    description: "Em parceria com a UNESCO, o Criança Esperança busca transformar o futuro de crianças e jovens em situação de vulnerabilidade.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/f97q2gzv_imgi_13_hAhs1RJ.jpeg",
+    link: "#"
+  },
+  {
+    id: 19,
+    name: "Asilo Padre Cacique",
+    region: "Rio Grande do Sul",
+    description: "Instituição filantrópica de longa permanência para idosos que há 126 anos acolhe pessoas idosas em vulnerabilidade social e econômica.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/xqd6r63j_imgi_14_cWSdrVK.jpeg",
+    link: "#"
+  },
+  {
+    id: 20,
+    name: "Habitat para Humanidade",
+    region: "Nacional",
+    description: "Atua para garantir que pessoas em situação de vulnerabilidade tenham acesso a moradias dignas, oferecendo intervenções emergenciais para reparar danos em habitações afetadas por desastres.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/v1nk6995_imgi_15_YK0FJCs.jpeg",
+    link: "#"
+  },
+  {
+    id: 21,
+    name: "Cruz Vermelha Rio Grande do Sul",
+    region: "Rio Grande do Sul",
+    description: "Integrante do Movimento Internacional da Cruz Vermelha, tem atuado desde 2011 no atendimento a famílias vulneráveis vítimas de eventos climáticos.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/rauzijj8_imgi_17_8sZgtil.jpeg",
+    link: "#"
+  },
+  {
+    id: 22,
+    name: "Instituto Brasil Orgânico",
+    region: "Rio Grande do Sul",
+    description: "Fornecerá, de forma gratuita para os agricultores, compostos orgânicos e outros insumos necessários à recuperação da vida dos solos agrícolas do RS.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/50cklzvk_imgi_18_4t9lEgY.jpeg",
+    link: "#"
+  },
+  {
+    id: 23,
+    name: "Instituto Criança com Diabetes",
+    region: "Porto Alegre",
+    description: "Acompanha crianças e jovens com diabetes tipo 1 através da educação, acesso a tratamento, novas tecnologias e assistência social extensiva em Porto Alegre.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/unn5aji8_imgi_19_rECROwb.jpeg",
+    link: "#"
+  },
+  {
+    id: 24,
+    name: "Crioula Curadoria Alimentar",
+    region: "Rio Grande do Sul",
+    description: "Por meio de seu fundo, famílias negras, indígenas, periféricas e animais serão atendidos em suas demandas emergenciais e de reconstrução de vida após enchentes no Rio Grande do Sul.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/si63dsjo_imgi_20_6psKXza.jpeg",
+    link: "#"
+  },
+  {
+    id: 25,
+    name: "Federação de Remo do Rio Grande do Sul",
+    region: "Rio Grande do Sul",
+    description: "Está comprometida em apoiar as famílias do esporte e contribuir para a reestruturação da cidade após a enchente.",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/43mdv9jp_imgi_21_n6gAcO4.jpeg",
+    link: "#"
   }
 ];
 
