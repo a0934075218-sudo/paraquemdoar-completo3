@@ -437,7 +437,7 @@ export const blogPosts = [
     title: "Primeira infância: onde tudo começa",
     slug: "primeira-infancia",
     description: "Os primeiros anos são decisivos para o desenvolvimento infantil. O Nelson, o Nenê apoia famílias e educadores com conteúdos práticos sobre cuidado, alimentação, brincadeiras e mais.",
-    image: "https://images.unsplash.com/photo-1587616211892-e83988b611de?w=800&h=600&fit=crop",
+    image: "https://images.unsplash.com/photo-1504484656217-38f8ffc617f9?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
     images: [
       "https://images.unsplash.com/photo-1587616211892-e83988b611de?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1763013259158-8a8370542ddb?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
