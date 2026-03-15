@@ -67,7 +67,7 @@ const BlogSection = () => {
               <div 
                 key={post.id}
                 className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 cursor-pointer group"
-                onClick={() => navigate('/doacao')}
+                onClick={() => navigate(`/blog/${post.slug}`)}
               >
                 <div className="relative h-48 md:h-56 overflow-hidden">
                   <img 
@@ -86,7 +86,7 @@ const BlogSection = () => {
                   </p>
                   <button 
                     className="text-pink-500 font-semibold hover:text-pink-600 transition-colors duration-300 flex items-center space-x-2 text-sm md:text-base"
-                    onClick={(e) => { e.stopPropagation(); navigate('/doacao'); }}
+                    onClick={(e) => { e.stopPropagation(); navigate(`/blog/${post.slug}`); }}
                   >
                     <span>Saiba mais</span>
                     <span>→</span>

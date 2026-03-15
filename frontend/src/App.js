@@ -13,6 +13,8 @@ import PixPaymentPage from "./components/PixPaymentPage";
 import LoginPage from "./components/LoginPage";
 import AdminDashboard from "./components/AdminDashboard";
 
+import BlogPostPage from "./components/BlogPostPage";
+
 import DonorDataPage from "./components/DonorDataPage";
 
 const API = '/api';
@@ -43,6 +45,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/instituicao/:slug" element={<DonationPage />} />
+          <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/doacao" element={<Navigate to="/instituicao/humus" replace />} />
           <Route path="/doacao/valor" element={<DonationValuePage />} />
           <Route path="/doacao/dados" element={<DonorDataPage />} />

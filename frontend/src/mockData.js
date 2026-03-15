@@ -422,43 +422,79 @@ export const blogPosts = [
   {
     id: 1,
     title: "Mês da Gastronomia Social",
+    slug: "mes-gastronomia-social",
     description: "Em outubro, o GNT celebra um momento importante para falarmos sobre pessoas, oportunidades e comida.",
     image: "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop",
-    link: "#"
+    images: [
+      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1655546366696-d0ccc42ab137?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1595506417208-6b298a3537b7?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85"
+    ],
+    content: "Em outubro, o GNT celebra o Mês da Gastronomia Social, um momento importante para falarmos sobre pessoas, oportunidades e comida. A gastronomia social é um movimento que utiliza a culinária como ferramenta de transformação social, gerando emprego, renda e dignidade para comunidades em situação de vulnerabilidade.\n\nProjetos como cozinhas comunitárias, programas de capacitação profissional e iniciativas de combate ao desperdício alimentar ganham destaque neste mês especial. São histórias de pessoas que encontraram na gastronomia um caminho para mudar suas vidas e as de suas comunidades.\n\nA comida tem o poder de unir pessoas, criar pontes e transformar realidades. Quando cozinhamos juntos, compartilhamos mais do que receitas — compartilhamos cultura, afeto e esperança. Conheça as iniciativas que estão fazendo a diferença e descubra como você pode contribuir para esse movimento."
   },
   {
     id: 2,
     title: "Primeira infância: onde tudo começa",
-    description: "Os primeiros anos são decisivos para o desenvolvimento infantil. O Nelson, o Nenê apoia famílias e educadores com conteúdos práticos sobre cuidado, alimentação, brincadeiras e mais. Acesse e conheça mais sobre a inciativa.",
+    slug: "primeira-infancia",
+    description: "Os primeiros anos são decisivos para o desenvolvimento infantil. O Nelson, o Nenê apoia famílias e educadores com conteúdos práticos sobre cuidado, alimentação, brincadeiras e mais.",
     image: "https://images.unsplash.com/photo-1587616211892-e83988b611de?w=800&h=600&fit=crop",
-    link: "#"
+    images: [
+      "https://images.unsplash.com/photo-1587616211892-e83988b611de?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1763013259158-8a8370542ddb?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1763013259112-15f293b6d481?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85"
+    ],
+    content: "Os primeiros anos de vida são decisivos para o desenvolvimento infantil. É na primeira infância — do nascimento aos seis anos — que o cérebro se desenvolve com maior velocidade, formando as bases para a aprendizagem, a saúde e o comportamento ao longo de toda a vida.\n\nO programa Nelson, o Nenê foi criado para apoiar famílias e educadores com conteúdos práticos e acessíveis sobre cuidado, alimentação, brincadeiras, saúde emocional e desenvolvimento cognitivo. Através de vídeos, cartilhas e orientações especializadas, a iniciativa leva informação de qualidade para quem mais precisa.\n\nInvestir na primeira infância é investir no futuro do Brasil. Cada carinho, cada brincadeira e cada conversa com uma criança pequena contribui para a formação de um ser humano mais saudável, feliz e preparado para os desafios da vida. Conheça o programa e descubra como pequenas atitudes fazem grande diferença."
   },
   {
     id: 3,
     title: "PIX SOS RS",
+    slug: "pix-sos-rs",
     description: "Fortaleça todas organizações apoiadas pela campanha. Doe pela chave pix sos@benfeitoria.com",
     image: "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=800&h=600&fit=crop",
-    link: "#"
+    images: [
+      "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1652149590124-4395d2578ed7?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1710092784814-4a6f158913b8?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85"
+    ],
+    content: "A campanha PIX SOS RS foi criada para fortalecer todas as organizações que atuam no apoio às vítimas das enchentes no Rio Grande do Sul. Com uma única chave PIX — sos@benfeitoria.com — você pode fazer sua doação e ajudar dezenas de instituições que estão na linha de frente do socorro.\n\nOs recursos arrecadados são distribuídos de forma transparente entre as organizações parceiras da campanha, garantindo que sua doação chegue onde é mais necessário. Desde abrigos emergenciais até programas de reconstrução, cada real doado faz a diferença na vida de milhares de gaúchos.\n\nA solidariedade do povo brasileiro tem sido fundamental para a recuperação do estado. Milhões de reais já foram arrecadados, mas a necessidade continua. As enchentes deixaram marcas profundas que levarão anos para serem reparadas. Continue doando e compartilhando esta campanha."
   },
   {
     id: 4,
     title: "Emergência Chuvas em RS",
+    slug: "emergencia-chuvas-rs",
     description: "Veja os pontos de coleta de doações espalhados pelas regiões do país.",
     image: "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&h=600&fit=crop",
-    link: "#"
+    images: [
+      "https://images.unsplash.com/photo-1590523741831-ab7e8b8f9c7f?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1653508310734-d3f4d0f8dd8a?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1652149590124-4395d2578ed7?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85"
+    ],
+    content: "O Rio Grande do Sul enfrenta uma das maiores tragédias climáticas de sua história. As chuvas intensas provocaram enchentes devastadoras que atingiram centenas de municípios, deixando milhares de famílias desabrigadas e causando perdas materiais incalculáveis.\n\nPontos de coleta de doações foram organizados em todas as regiões do Brasil para receber contribuições de roupas, alimentos não perecíveis, produtos de higiene, água potável e outros itens essenciais. A mobilização nacional tem sido impressionante, com voluntários se organizando em igrejas, escolas, clubes e empresas.\n\nAlém das doações materiais, as contribuições financeiras são fundamentais para garantir a compra de itens específicos e o financiamento de ações de longo prazo, como a reconstrução de casas e a recuperação da infraestrutura. Cada gesto de solidariedade conta. Encontre o ponto de coleta mais próximo de você e faça sua parte."
   },
   {
     id: 5,
     title: "Somos parte de um movimento maior",
+    slug: "movimento-maior",
     description: "Conheça as 5 diretrizes para um Brasil + doador, criadas pelo Movimento por uma Cultura de Doação (MCD).",
     image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop",
-    link: "#"
+    images: [
+      "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1657616696869-0e5ad552db02?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1623412912058-4e4552dbc10d?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85"
+    ],
+    content: "O Movimento por uma Cultura de Doação (MCD) acredita que o Brasil pode se tornar um país mais solidário e generoso. Para isso, criou 5 diretrizes que orientam indivíduos, empresas e organizações no caminho para construir uma cultura de doação mais forte e sustentável.\n\nAs diretrizes incluem: tornar a doação acessível para todos, promover a transparência nas organizações sociais, incentivar a doação regular, engajar empresas na filantropia e educar a sociedade sobre o impacto da generosidade. Juntas, essas ações podem transformar a forma como o Brasil lida com a solidariedade.\n\nSomos parte de um movimento maior. Cada doação, por menor que seja, contribui para uma corrente de transformação social que beneficia milhões de brasileiros. Quando doamos, não apenas ajudamos quem recebe — nos transformamos também. A generosidade é contagiante e tem o poder de criar um efeito cascata que alcança muito além do que podemos imaginar."
   },
   {
     id: 6,
     title: "Chuvas no litoral de SP",
+    slug: "chuvas-litoral-sp",
     description: "Veja os pontos de coleta de doações espalhados pelo estado",
     image: "https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=800&h=600&fit=crop",
-    link: "#"
+    images: [
+      "https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1669215946188-1e66b5fe68b4?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+      "https://images.unsplash.com/photo-1650892246898-e18c89df27b5?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85"
+    ],
+    content: "O litoral de São Paulo foi atingido por chuvas intensas que provocaram deslizamentos de terra, alagamentos e destruição em diversas cidades da região. Comunidades inteiras ficaram isoladas e milhares de pessoas perderam suas casas e pertences.\n\nPontos de coleta de doações foram organizados em todo o estado de São Paulo para receber contribuições de roupas, alimentos, colchões, produtos de limpeza e higiene pessoal. A solidariedade paulista se mobilizou rapidamente para ajudar as vítimas dessa tragédia.\n\nAs chuvas intensas são cada vez mais frequentes no litoral brasileiro, evidenciando a necessidade de investimentos em infraestrutura, prevenção e políticas habitacionais que protejam as populações mais vulneráveis. Enquanto trabalhamos por mudanças estruturais, a solidariedade imediata é fundamental. Doe e ajude as famílias afetadas a reconstruírem suas vidas."
   }
 ];
