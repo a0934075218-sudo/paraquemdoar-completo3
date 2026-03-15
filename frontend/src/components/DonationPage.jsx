@@ -1,41 +1,47 @@
 import React, { useState } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, ArrowLeft, Search } from 'lucide-react';
 import { Button } from './ui/button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
+import { initiatives } from '../mockData';
 
 const DonationPage = () => {
   const navigate = useNavigate();
+  const { slug } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  
-  const images = [
-    'https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/8w1y63k5_f7b3961d840bd2acaa18_1170x530_0_0_1_1.jpg',
-    'https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/s5l3f7ok_bdmg-3-1-.jpeg',
-    'https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/pmmbtu5a_whatsapp-image-2026-02-25-at-10.52.48.jpeg'
-  ];
 
-  const nextImage = () => {
-    setCurrentImageIndex((prev) => (prev + 1) % images.length);
-  };
+  const institution = initiatives.find(i => i.slug === slug);
 
-  const prevImage = () => {
-    setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
+  if (!institution) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">Instituição não encontrada</h1>
+          <Button onClick={() => navigate('/')} className="bg-pink-500 text-white rounded-full px-8 py-3">
+            Voltar ao início
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  const images = institution.images && institution.images.length > 0 
+    ? institution.images 
+    : [institution.image];
+
+  const nextImage = () => setCurrentImageIndex((prev) => (prev + 1) % images.length);
+  const prevImage = () => setCurrentImageIndex((prev) => (prev - 1 + images.length) % images.length);
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Header */}
       <header className="bg-white shadow-sm py-4 md:py-6">
         <div className="container mx-auto px-4 md:px-6">
           <div className="flex items-center justify-between relative">
-            {/* Mobile: Globo left | Desktop: Back + Logo */}
             <div className="flex items-center space-x-3">
-              {/* Globo icon - mobile only */}
               <img 
                 src="https://customer-assets.emergentagent.com/job_8d70a88e-5643-4035-93e8-fcb605f0dda7/artifacts/aclmur09_globinho-branco.png" 
                 alt="Globo" 
                 className="w-8 h-8 md:hidden invert"
               />
-              {/* Back + Logo - desktop only */}
               <button 
                 onClick={() => navigate('/')}
                 className="hidden md:block text-gray-600 hover:text-gray-800 transition-colors"
@@ -48,8 +54,6 @@ const DonationPage = () => {
                 className="hidden md:block h-16"
               />
             </div>
-
-            {/* Center: ParaQuemDoar - mobile only */}
             <div className="md:hidden absolute left-1/2 transform -translate-x-1/2">
               <img 
                 src="https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/54mac6cp_logo-horizontal%20%281%29.png" 
@@ -57,8 +61,6 @@ const DonationPage = () => {
                 className="h-6"
               />
             </div>
-
-            {/* Desktop: Search bar */}
             <div className="hidden md:flex flex-1 max-w-xl mx-8">
               <div className="relative w-full">
                 <input
@@ -68,14 +70,10 @@ const DonationPage = () => {
                 />
               </div>
             </div>
-
-            {/* Right: Search on mobile | Globo on desktop */}
             <div className="flex items-center">
-              {/* Search icon - mobile */}
               <button className="text-blue-500 p-1 md:hidden">
                 <Search className="w-5 h-5" />
               </button>
-              {/* Globo - desktop */}
               <div className="hidden md:flex items-center space-x-3">
                 <span className="text-sm md:text-base text-gray-700">Iniciativa:</span>
                 <img 
@@ -89,71 +87,71 @@ const DonationPage = () => {
         </div>
       </header>
 
-      {/* Main Content */}
       <div className="container mx-auto px-4 md:px-6 py-8 md:py-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-          {/* Left Column - Image Carousel */}
+          {/* Carrossel de Imagens */}
           <div className="relative">
             <div className="relative aspect-[4/3] rounded-3xl overflow-hidden shadow-xl">
               <img 
                 src={images[currentImageIndex]} 
-                alt="HUMUS em acao"
+                alt={institution.name}
                 className="w-full h-full object-cover"
               />
-              
-              {/* Navigation Arrows */}
-              <button
-                onClick={prevImage}
-                className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-800 hover:bg-white transition-all duration-300 shadow-lg"
-              >
-                <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
-              </button>
-              <button
-                onClick={nextImage}
-                className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-800 hover:bg-white transition-all duration-300 shadow-lg"
-              >
-                <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
-              </button>
-
-              {/* Dots Indicator */}
-              <div className="absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
-                {images.map((_, index) => (
+              {images.length > 1 && (
+                <>
                   <button
-                    key={index}
-                    onClick={() => setCurrentImageIndex(index)}
-                    className={`h-2.5 md:h-3 rounded-full transition-all duration-300 ${
-                      currentImageIndex === index 
-                        ? 'bg-white w-6 md:w-8' 
-                        : 'bg-white/50 hover:bg-white/70 w-2.5 md:w-3'
-                    }`}
-                  />
-                ))}
-              </div>
+                    onClick={prevImage}
+                    className="absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-800 hover:bg-white transition-all duration-300 shadow-lg"
+                  >
+                    <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
+                  </button>
+                  <button
+                    onClick={nextImage}
+                    className="absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 md:w-12 md:h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-800 hover:bg-white transition-all duration-300 shadow-lg"
+                  >
+                    <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
+                  </button>
+                  <div className="absolute bottom-4 md:bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-2">
+                    {images.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentImageIndex(index)}
+                        className={`h-2.5 md:h-3 rounded-full transition-all duration-300 ${
+                          currentImageIndex === index 
+                            ? 'bg-white w-6 md:w-8' 
+                            : 'bg-white/50 hover:bg-white/70 w-2.5 md:w-3'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
             </div>
-            <p className="text-xs text-gray-500 text-left mt-2" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              Imagens da tragédia em Juiz de Fora - MG.
-            </p>
+            {institution.imageCaption && (
+              <p className="text-xs text-gray-500 text-left mt-2" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                {institution.imageCaption}
+              </p>
+            )}
           </div>
+
+          {/* Info da Instituição */}
           <div className="space-y-4 max-w-xl">
-            {/* Tag */}
             <div className="flex items-center space-x-2 text-gray-600">
               <MapPin className="w-5 h-5" />
-              <span className="text-base">Emergências</span>
+              <span className="text-base">{institution.category}</span>
             </div>
 
-            {/* Title */}
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-pink-500 mb-4" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              HUMUS
+              {institution.name}
             </h1>
 
-            {/* Description */}
             <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              A HUMUS está comprometida em apoiar as comunidades de áreas de risco em Juiz de Fora - MG. Oferecemos assistência especializada nas regiões afetadas, tanto em situações de emergência quanto em momentos de risco iminente durante desastres. Vamos nos unir por Juiz de Fora! Sua doação é essencial para fazer a diferença.
+              {institution.longDescription || institution.description}
             </p>
 
-            {/* Donation Button */}
             <div className="py-4">
               <Button 
+                data-testid="fazer-doacao-btn"
                 className="w-full bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full px-12 py-6 text-lg font-semibold transition-all duration-300 hover:scale-105"
                 onClick={() => navigate('/doacao/valor')}
               >
@@ -161,10 +159,34 @@ const DonationPage = () => {
               </Button>
             </div>
 
-            {/* Info Text */}
-            <p className="text-sm text-pink-500 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              * Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.
-            </p>
+            {institution.disclaimer && (
+              <p className="text-sm text-pink-500 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
+                {institution.disclaimer}
+              </p>
+            )}
+          </div>
+        </div>
+
+        {/* Descrição Longa */}
+        {institution.longDescription && institution.longDescription !== institution.description && (
+          <div className="mt-12 max-w-4xl">
+            <div className="text-base text-gray-700 leading-relaxed whitespace-pre-line" style={{ fontFamily: "'Nunito', sans-serif" }}>
+              {institution.longDescription}
+            </div>
+          </div>
+        )}
+
+        {/* Botão Fazer Doação no rodapé */}
+        <div className="mt-12 flex items-center justify-between border-t pt-8">
+          <Button 
+            className="bg-transparent text-pink-500 border-2 border-pink-500 hover:bg-pink-50 rounded-full px-12 py-5 text-lg font-semibold transition-all duration-300"
+            onClick={() => navigate('/doacao/valor')}
+          >
+            Fazer doação
+          </Button>
+          <div className="flex items-center space-x-2 text-gray-500">
+            <MapPin className="w-4 h-4" />
+            <span className="text-sm">{institution.region}</span>
           </div>
         </div>
       </div>

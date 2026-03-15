@@ -42,6 +42,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/instituicao/:slug" element={<DonationPage />} />
           <Route path="/doacao" element={<DonationPage />} />
           <Route path="/doacao/valor" element={<DonationValuePage />} />
           <Route path="/doacao/dados" element={<DonorDataPage />} />

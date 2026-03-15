@@ -62,7 +62,7 @@ const InitiativesGrid = () => {
             <InitiativeCard 
               key={initiative.id} 
               initiative={initiative} 
-              onClick={() => navigate('/doacao')} 
+              onClick={() => navigate(`/instituicao/${initiative.slug}`)} 
             />
           ))}
         </div>
