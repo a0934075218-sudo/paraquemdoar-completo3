@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import "./App.css";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./components/Header";
 import HeroSection from "./components/HeroSection";
@@ -43,7 +43,7 @@ function App() {
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/instituicao/:slug" element={<DonationPage />} />
-          <Route path="/doacao" element={<DonationPage />} />
+          <Route path="/doacao" element={<Navigate to="/instituicao/humus" replace />} />
           <Route path="/doacao/valor" element={<DonationValuePage />} />
           <Route path="/doacao/dados" element={<DonorDataPage />} />
           <Route path="/doacao/pix" element={<PixPaymentPage />} />
