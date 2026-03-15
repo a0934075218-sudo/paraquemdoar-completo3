@@ -163,7 +163,7 @@ export const initiatives = [
     name: "Governo do Estado do RS",
     region: "Rio Grande do Sul",
     description: "Precisa de muito apoio neste momento e abriu um canal de doações que passará por auditoria e fiscalização do poder público.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/vs4dz3nw_imgi_9_ISBIS29.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/7pxmz07s_ISBIS29.png",
     link: "#"
   },
   {
@@ -171,7 +171,7 @@ export const initiatives = [
     name: "ADRA",
     region: "Nacional",
     description: "Agência humanitária que promove o desenvolvimento de ações assistenciais, beneficentes e filantrópicas para atender pessoas em situação de vulnerabilidade.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/7fsw8q97_imgi_10_CVFUsfi.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/bwfkilmd_CVFUsfi.png",
     link: "#"
   },
   {
@@ -179,7 +179,7 @@ export const initiatives = [
     name: "Negras Plurais",
     region: "Nacional",
     description: "Está na linha de frente auxiliando na reconstrução, mapeamento de espaços, coletando e distribuindo as doações para os afetados pelas enchentes.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/1fdce99i_imgi_11_VqnAR0z.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/qr371glk_VqnAR0z.png",
     link: "#"
   },
   {
@@ -187,7 +187,7 @@ export const initiatives = [
     name: "Instituto Criança Mais Feliz",
     region: "Rio Grande do Sul",
     description: "Organização não-governamental com atuação focada em crianças que se encontram em situação de vulnerabilidade no RS.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/nz2r20cc_imgi_12_1enEQcu.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/awfqskqs_1enEQcu.png",
     link: "#"
   },
   {
@@ -195,7 +195,7 @@ export const initiatives = [
     name: "Criança Esperança / Unesco",
     region: "Nacional",
     description: "Em parceria com a UNESCO, o Criança Esperança busca transformar o futuro de crianças e jovens em situação de vulnerabilidade.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/f97q2gzv_imgi_13_hAhs1RJ.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/bm4deyfx_hAhs1RJ.png",
     link: "#"
   },
   {
