@@ -55,6 +55,23 @@ export const regions = [
 
 export const initiatives = [
   {
+    id: 6,
+    name: "HUMUS",
+    slug: "humus",
+    category: "Emergências",
+    region: "Belo Horizonte",
+    description: "A HUMUS atua com a prevenção em comunidades em áreas de risco iminente e com resposta emergencial em desastres relacionadas a eventos naturais extremos",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/554jq3u9_imgi_16_HUMUS_logo.png.webp",
+    images: [
+      "https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/8w1y63k5_f7b3961d840bd2acaa18_1170x530_0_0_1_1.jpg",
+      "https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/s5l3f7ok_bdmg-3-1-.jpeg",
+      "https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/pmmbtu5a_whatsapp-image-2026-02-25-at-10.52.48.jpeg"
+    ],
+    longDescription: "A HUMUS está comprometida em apoiar as comunidades de áreas de risco em Juiz de Fora - MG. Oferecemos assistência especializada nas regiões afetadas, tanto em situações de emergência quanto em momentos de risco iminente durante desastres. Vamos nos unir por Juiz de Fora! Sua doação é essencial para fazer a diferença.",
+    disclaimer: "* Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.",
+    imageCaption: "Imagens da tragédia em Juiz de Fora - MG."
+  },
+  {
     id: 1,
     name: "Bem Querer Mulher",
     slug: "bem-querer-mulher",
@@ -128,23 +145,6 @@ export const initiatives = [
       "https://images.unsplash.com/photo-1702397874679-ffffe2f74671?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85"
     ],
     longDescription: "A campanha SOS CHUVAS RS reúne organizações comprometidas em apoiar as vítimas das enchentes devastadoras no Rio Grande do Sul. O estado enfrentou uma das maiores tragédias climáticas de sua história, afetando milhares de famílias que perderam suas casas, pertences e meios de subsistência. Sua doação é direcionada a organizações parceiras que atuam diretamente nas comunidades atingidas, oferecendo abrigo, alimentação, assistência médica e apoio na reconstrução das áreas afetadas."
-  },
-  {
-    id: 6,
-    name: "HUMUS",
-    slug: "humus",
-    category: "Emergências",
-    region: "Belo Horizonte",
-    description: "A HUMUS atua com a prevenção em comunidades em áreas de risco iminente e com resposta emergencial em desastres relacionadas a eventos naturais extremos",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/554jq3u9_imgi_16_HUMUS_logo.png.webp",
-    images: [
-      "https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/8w1y63k5_f7b3961d840bd2acaa18_1170x530_0_0_1_1.jpg",
-      "https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/s5l3f7ok_bdmg-3-1-.jpeg",
-      "https://customer-assets.emergentagent.com/job_f5bcd7a8-9528-443f-93d7-f900fc3f2ceb/artifacts/pmmbtu5a_whatsapp-image-2026-02-25-at-10.52.48.jpeg"
-    ],
-    longDescription: "A HUMUS está comprometida em apoiar as comunidades de áreas de risco em Juiz de Fora - MG. Oferecemos assistência especializada nas regiões afetadas, tanto em situações de emergência quanto em momentos de risco iminente durante desastres. Vamos nos unir por Juiz de Fora! Sua doação é essencial para fazer a diferença.",
-    disclaimer: "* Sua doação será realizada por meio da plataforma parceira ParaQuemDoar. A Globo não retém nenhum valor nem dados pessoais; todo o recurso arrecadado será destinado à assistência à população atingida pela tragédia em Juiz de Fora, MG.",
-    imageCaption: "Imagens da tragédia em Juiz de Fora - MG."
   },
   {
     id: 7,
