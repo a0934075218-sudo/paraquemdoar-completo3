@@ -14,7 +14,7 @@ const InitiativeCard = ({ initiative, onClick }) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
     >
-      <div className="relative w-full bg-white flex items-center justify-center" style={{ paddingBottom: '65%' }}>
+      <div className="relative w-full bg-gray-100 flex items-center justify-center" style={{ paddingBottom: '65%' }}>
         <img 
           src={initiative.image} 
           alt={initiative.name}
