@@ -207,14 +207,6 @@ export const initiatives = [
     link: "#"
   },
   {
-    id: 20,
-    name: "Habitat para Humanidade",
-    region: "Nacional",
-    description: "Atua para garantir que pessoas em situação de vulnerabilidade tenham acesso a moradias dignas, oferecendo intervenções emergenciais para reparar danos em habitações afetadas por desastres.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/e551f14p_imgi_15_YK0FJCs%20%281%29.jpeg",
-    link: "#"
-  },
-  {
     id: 21,
     name: "Cruz Vermelha Rio Grande do Sul",
     region: "Rio Grande do Sul",
