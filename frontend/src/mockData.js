@@ -59,7 +59,7 @@ export const initiatives = [
     name: "Bem Querer Mulher",
     region: "São Paulo",
     description: "Único programa 360º de enfrentamento a violência contra mulheres e meninas no Brasil.",
-    image: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/sulg2zyf_imgi_10_card-pqd-%2812%29.jpeg",
     link: "#"
   },
   {
@@ -67,7 +67,7 @@ export const initiatives = [
     name: "Mapa do Acolhimento",
     region: "Nacional",
     description: "Uma rede feminista composta por psicólogas e advogadas de todo o país dispostas a acolher voluntariamente mulheres que sofreram violência de gênero",
-    image: "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/cyevlbet_imgi_11_558ec7e8ad7b-1593610591_Logo_Mapa_Capa_Home.gif",
     link: "#"
   },
   {
@@ -75,7 +75,7 @@ export const initiatives = [
     name: "Instituto Paulo Gontijo",
     region: "São Paulo",
     description: "Contribua com a continuidade e melhoria de projetos que oferecem apoio, atendimento e informações para pessoas diagnosticadas com Esclerose Lateral Amiotrófica (ELA), seus familiares e cuidadores",
-    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/dx5so9y2_imgi_12_card-pqd-%281%29.jpeg",
     link: "#"
   },
   {
@@ -83,7 +83,7 @@ export const initiatives = [
     name: "Instituto Nosso Olhar",
     region: "São Paulo",
     description: "Organização sem fins lucrativos, que apoia crianças e jovens com síndrome de Down, através de projetos que acolhem, incentivam a educação, a inclusão no mercado de trabalho e fornecem informações.",
-    image: "https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/m6eqwsw3_imgi_13_card-pqd.jpeg",
     link: "#"
   },
   {
@@ -91,7 +91,7 @@ export const initiatives = [
     name: "SOS CHUVAS RS",
     region: "Rio Grande do Sul",
     description: "Doe para organizações que apoiam as vítimas das chuvas no estado",
-    image: "https://images.unsplash.com/photo-1547683905-f686c993aae5?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/39qkeiwg_imgi_14_cover-%283%29%5B1%5D.jpeg",
     link: "#"
   },
   {
@@ -99,7 +99,7 @@ export const initiatives = [
     name: "HUMUS",
     region: "Belo Horizonte",
     description: "A HUMUS atua com a prevenção em comunidades em áreas de risco iminente e com resposta emergencial em desastres relacionadas a eventos naturais extremos",
-    image: "https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/n0ewnl2l_imgi_15_HUMUS.jpeg",
     link: "#"
   },
   {
@@ -107,7 +107,7 @@ export const initiatives = [
     name: "Grupo de Resposta a Animais em Desastres",
     region: "Nacional",
     description: "Grupo de voluntários que promove ajuda humanitária aos animais e pessoas em circunstâncias de desastres",
-    image: "https://images.unsplash.com/photo-1450778869180-41d0601e046e?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/0h10lqkn_imgi_16_Desenho-sem-t%C3%ADtulo-%2819%29.jpeg",
     link: "#"
   },
   {
@@ -115,7 +115,7 @@ export const initiatives = [
     name: "Ação da Cidadania",
     region: "Nacional",
     description: "Junte-se a Ação da Cidadania no combate a fome e a desigualdade, mobilizando redes solidárias e levando dignidade a quem mais precisa.",
-    image: "https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/s4rhthn6_imgi_17_Desenho-sem-t%C3%ADtulo-%2820%29.jpeg",
     link: "#"
   },
   {
@@ -123,7 +123,7 @@ export const initiatives = [
     name: "Movimento União BR",
     region: "Nacional",
     description: "O Movimento União BR apoia as comunidades atingidas por catástrofes climáticas em todo o Brasil.",
-    image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/mjn9z23z_imgi_18_card-pqd-%284%29.jpeg",
     link: "#"
   },
   {
@@ -131,7 +131,7 @@ export const initiatives = [
     name: "Gerando Falcões",
     region: "Nacional",
     description: "Com mais de 14 anos, a Gerando Falcões é uma ONG que já impactou mais de 5.500 favelas e 850 mil pessoas com ações para a superação da pobreza nas favelas",
-    image: "https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/b98is1zl_imgi_19_card-pqd-%282%29.jpeg",
     link: "#"
   },
   {
@@ -139,7 +139,7 @@ export const initiatives = [
     name: "Instituto Jô Clemente (IJC)",
     region: "São Paulo",
     description: "Transformando vidas com inovação, excelência e compromisso social para pessoas com Deficiência Intelectual, Autismo e Doenças Raras.",
-    image: "https://images.unsplash.com/photo-1509099836639-18ba1795216d?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/e23b2lyv_imgi_20_card-pqd.jpeg",
     link: "#"
   },
   {
@@ -147,7 +147,7 @@ export const initiatives = [
     name: "CUFA Nacional",
     region: "Nacional",
     description: "Apoie a frente de emergências da CUFA mobiliza lideranças locais e logística própria para levar socorro imediato e eficiente",
-    image: "https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/rh7iabdz_imgi_21_Prancheta-2-c%C3%B3pia.jpeg",
     link: "#"
   },
   {
@@ -155,7 +155,7 @@ export const initiatives = [
     name: "Eternamente Sou",
     region: "São Paulo",
     description: "A EternamenteSOU é um centro de convivência para os idosos LGBT+, proporcionando acolhimento, respeito, visibilidade e dignidade em São Paulo.",
-    image: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/ce6mp2a4_imgi_22_esoucardpqd.jpeg",
     link: "#"
   }
 ];

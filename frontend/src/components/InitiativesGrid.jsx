@@ -14,12 +14,12 @@ const InitiativeCard = ({ initiative, onClick }) => {
       onMouseLeave={() => setIsHovered(false)}
       onClick={onClick}
     >
-      <div className="relative w-full" style={{ paddingBottom: '75%' }}>
+      <div className="relative w-full bg-white flex items-center justify-center" style={{ paddingBottom: '65%' }}>
         <img 
           src={initiative.image} 
           alt={initiative.name}
-          className={`absolute inset-0 w-full h-full object-cover transition-transform duration-500 ${
-            isHovered ? 'scale-110' : 'scale-100'
+          className={`absolute inset-0 w-full h-full object-contain p-4 transition-transform duration-500 ${
+            isHovered ? 'scale-105' : 'scale-100'
           }`}
         />
       </div>
