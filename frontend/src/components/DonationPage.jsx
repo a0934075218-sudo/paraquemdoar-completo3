@@ -8,8 +8,18 @@ const DonationPage = () => {
   const navigate = useNavigate();
   const { slug } = useParams();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [showResults, setShowResults] = useState(false);
 
   const institution = initiatives.find(i => i.slug === slug);
+
+  const searchResults = searchQuery.length >= 2
+    ? initiatives.filter(i =>
+        i.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        i.category.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        i.region.toLowerCase().includes(searchQuery.toLowerCase())
+      )
+    : [];
 
   if (!institution) {
     return (
@@ -65,9 +75,37 @@ const DonationPage = () => {
               <div className="relative w-full">
                 <input
                   type="text"
+                  data-testid="search-input"
                   placeholder="Busca..."
+                  value={searchQuery}
+                  onChange={(e) => { setSearchQuery(e.target.value); setShowResults(true); }}
+                  onFocus={() => setShowResults(true)}
+                  onBlur={() => setTimeout(() => setShowResults(false), 200)}
                   className="w-full px-4 py-3 rounded-full border-2 border-blue-300 focus:border-purple-400 focus:outline-none transition-colors"
                 />
+                {showResults && searchResults.length > 0 && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border overflow-hidden z-50 max-h-80 overflow-y-auto">
+                    {searchResults.map(item => (
+                      <button
+                        key={item.id}
+                        data-testid={`search-result-${item.slug}`}
+                        className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-left"
+                        onMouseDown={() => { navigate(`/instituicao/${item.slug}`); setSearchQuery(''); setShowResults(false); }}
+                      >
+                        <img src={item.image} alt={item.name} className="w-10 h-10 rounded-lg object-contain bg-gray-100 p-1" />
+                        <div>
+                          <p className="font-semibold text-gray-800 text-sm">{item.name}</p>
+                          <p className="text-xs text-gray-500">{item.category} &middot; {item.region}</p>
+                        </div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+                {showResults && searchQuery.length >= 2 && searchResults.length === 0 && (
+                  <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl shadow-xl border p-4 z-50">
+                    <p className="text-gray-500 text-sm text-center">Nenhuma instituição encontrada</p>
+                  </div>
+                )}
               </div>
             </div>
             <div className="flex items-center">
