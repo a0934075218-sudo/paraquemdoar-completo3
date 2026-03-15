@@ -3,7 +3,7 @@ import "./App.css";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import axios from "axios";
 import Header from "./components/Header";
-import HeroSection from "./components/HeroSection";
+import HeroCarousel from "./components/HeroCarousel";
 import InitiativesGrid from "./components/InitiativesGrid";
 import BlogSection from "./components/BlogSection";
 import Footer from "./components/Footer";
@@ -24,7 +24,7 @@ const HomePage = () => {
     <>
       <Header />
       <main>
-        <HeroSection />
+        <HeroCarousel />
         <InitiativesGrid />
         <BlogSection />
       </main>
