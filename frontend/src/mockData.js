@@ -211,7 +211,7 @@ export const initiatives = [
     name: "Habitat para Humanidade",
     region: "Nacional",
     description: "Atua para garantir que pessoas em situação de vulnerabilidade tenham acesso a moradias dignas, oferecendo intervenções emergenciais para reparar danos em habitações afetadas por desastres.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/v1nk6995_imgi_15_YK0FJCs.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/e551f14p_imgi_15_YK0FJCs%20%281%29.jpeg",
     link: "#"
   },
   {
@@ -243,7 +243,7 @@ export const initiatives = [
     name: "Crioula Curadoria Alimentar",
     region: "Rio Grande do Sul",
     description: "Por meio de seu fundo, famílias negras, indígenas, periféricas e animais serão atendidos em suas demandas emergenciais e de reconstrução de vida após enchentes no Rio Grande do Sul.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/si63dsjo_imgi_20_6psKXza.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/46d5t44p_imgi_20_6psKXza%20%281%29.jpeg",
     link: "#"
   },
   {
