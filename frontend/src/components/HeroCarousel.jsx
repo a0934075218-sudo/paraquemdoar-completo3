@@ -66,7 +66,7 @@ const HeroCarousel = () => {
             <div style={{ flexShrink: 0 }}>
               <div style={{
                 width: 'min(420px, 80vw)',
-                height: 'min(560px, 106vw)',
+                height: 'min(420px, 80vw)',
                 borderRadius: '50%',
                 overflow: 'hidden',
                 boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
