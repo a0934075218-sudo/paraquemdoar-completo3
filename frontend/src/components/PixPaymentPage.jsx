@@ -79,6 +79,7 @@ const PixPaymentPage = () => {
   const donationValue = location.state?.value || 50;
   const donor = location.state?.donor || null;
   const taxDeduction = location.state?.taxDeduction || false;
+  const institution = location.state?.institution || '';
 
   const [timer, setTimer] = useState(300);
   const [copied, setCopied] = useState(false);
@@ -117,7 +118,7 @@ const PixPaymentPage = () => {
             donor_email: donor?.email || '',
             device: isMobile ? 'Mobile' : 'Desktop',
             tax_deduction: taxDeduction,
-            origin: window.location.hostname
+            origin: institution || window.location.hostname
           });
           setDonationId(donRes.data.donation_id);
         } catch (err) {

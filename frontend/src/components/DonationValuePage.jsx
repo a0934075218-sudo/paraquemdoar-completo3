@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { Button } from './ui/button';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
 
 const DonationValuePage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const institution = location.state?.institution || '';
   const [selectedValue, setSelectedValue] = useState(50);
   const [customValue, setCustomValue] = useState('');
   const [isCustom, setIsCustom] = useState(false);
@@ -42,7 +44,7 @@ const DonationValuePage = () => {
     }
     
     // Navegar para a página PIX com o valor
-    navigate('/doacao/dados', { state: { value: finalValue } });
+    navigate('/doacao/dados', { state: { value: finalValue, institution } });
   };
 
   const [taxError, setTaxError] = useState('');
@@ -55,7 +57,7 @@ const DonationValuePage = () => {
       return;
     }
     
-    navigate('/doacao/dados', { state: { value: finalValue, taxDeduction: true } });
+    navigate('/doacao/dados', { state: { value: finalValue, taxDeduction: true, institution } });
   };
 
   return (

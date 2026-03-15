@@ -48,6 +48,7 @@ const DonorDataPage = () => {
   const location = useLocation();
   const donationValue = location.state?.value || 50;
   const isTaxDeduction = location.state?.taxDeduction || false;
+  const institution = location.state?.institution || '';
 
   const [formData, setFormData] = useState({
     name: '',
@@ -132,7 +133,8 @@ const DonorDataPage = () => {
         state: { 
           value: donationValue, 
           donor: formData,
-          taxDeduction: isTaxDeduction
+          taxDeduction: isTaxDeduction,
+          institution
         } 
       });
     }, 800);
@@ -145,7 +147,8 @@ const DonorDataPage = () => {
         state: { 
           value: donationValue, 
           donor: null,
-          taxDeduction: false 
+          taxDeduction: false,
+          institution
         } 
       });
     }, 800);
