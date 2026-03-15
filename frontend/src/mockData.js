@@ -203,7 +203,7 @@ export const initiatives = [
     name: "Asilo Padre Cacique",
     region: "Rio Grande do Sul",
     description: "Instituição filantrópica de longa permanência para idosos que há 126 anos acolhe pessoas idosas em vulnerabilidade social e econômica.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/xqd6r63j_imgi_14_cWSdrVK.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/t3i8izlt_cWSdrVK.png",
     link: "#"
   },
   {
@@ -219,7 +219,7 @@ export const initiatives = [
     name: "Cruz Vermelha Rio Grande do Sul",
     region: "Rio Grande do Sul",
     description: "Integrante do Movimento Internacional da Cruz Vermelha, tem atuado desde 2011 no atendimento a famílias vulneráveis vítimas de eventos climáticos.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/rauzijj8_imgi_17_8sZgtil.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/loehb0d0_8sZgtil.png",
     link: "#"
   },
   {
@@ -227,7 +227,7 @@ export const initiatives = [
     name: "Instituto Brasil Orgânico",
     region: "Rio Grande do Sul",
     description: "Fornecerá, de forma gratuita para os agricultores, compostos orgânicos e outros insumos necessários à recuperação da vida dos solos agrícolas do RS.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/50cklzvk_imgi_18_4t9lEgY.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/g3sxqdrh_4t9lEgY.png",
     link: "#"
   },
   {
@@ -235,7 +235,7 @@ export const initiatives = [
     name: "Instituto Criança com Diabetes",
     region: "Porto Alegre",
     description: "Acompanha crianças e jovens com diabetes tipo 1 através da educação, acesso a tratamento, novas tecnologias e assistência social extensiva em Porto Alegre.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/unn5aji8_imgi_19_rECROwb.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/flwla1bx_rECROwb.png",
     link: "#"
   },
   {
@@ -251,7 +251,7 @@ export const initiatives = [
     name: "Federação de Remo do Rio Grande do Sul",
     region: "Rio Grande do Sul",
     description: "Está comprometida em apoiar as famílias do esporte e contribuir para a reestruturação da cidade após a enchente.",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/43mdv9jp_imgi_21_n6gAcO4.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/yycrtdxm_n6gAcO4.png",
     link: "#"
   }
 ];
