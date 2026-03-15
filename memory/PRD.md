@@ -13,7 +13,8 @@ Clone do site https://www.paraquemdoar.com.br/ com painel administrativo, integr
 
 ### Frontend
 - Hero carousel com slides dinâmicos
-- **Seção "Instituições que apoiamos"** - Grid estático 3 colunas com 13 instituições e logos reais (substituiu carrossel "Destaques") - Implementado 15/03/2026
+- **Seção "Instituições que apoiamos"** - Grid estático 3 colunas com 24 instituições e logos reais - Implementado 15/03/2026
+- **Páginas individuais de instituições** - Cada instituição tem sua própria rota `/instituicao/:slug` com carrossel de fotos, descrição detalhada e botão "Fazer doação" - Implementado 15/03/2026
 - Seção Blog
 - Fluxo completo de doação (valor, dados do doador, pagamento PIX)
 - QR Code PIX dinâmico

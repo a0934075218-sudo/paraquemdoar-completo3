@@ -146,7 +146,7 @@ const DonationPage = () => {
             </h1>
 
             <p className="text-base md:text-lg text-gray-700 leading-relaxed max-w-lg" style={{ fontFamily: "'Nunito', sans-serif" }}>
-              {institution.longDescription || institution.description}
+              {institution.description}
             </p>
 
             <div className="py-4">
@@ -168,7 +168,7 @@ const DonationPage = () => {
         </div>
 
         {/* Descrição Longa */}
-        {institution.longDescription && institution.longDescription !== institution.description && (
+        {institution.longDescription && (
           <div className="mt-12 max-w-4xl">
             <div className="text-base text-gray-700 leading-relaxed whitespace-pre-line" style={{ fontFamily: "'Nunito', sans-serif" }}>
               {institution.longDescription}
