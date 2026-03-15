@@ -99,7 +99,7 @@ export const initiatives = [
     name: "HUMUS",
     region: "Belo Horizonte",
     description: "A HUMUS atua com a prevenção em comunidades em áreas de risco iminente e com resposta emergencial em desastres relacionadas a eventos naturais extremos",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/n0ewnl2l_imgi_15_HUMUS.jpeg",
+    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/554jq3u9_imgi_16_HUMUS_logo.png.webp",
     link: "#"
   },
   {
