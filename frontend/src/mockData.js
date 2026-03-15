@@ -1,15 +1,6 @@
 export const heroSlides = [
   {
     id: 1,
-    title: "Descubra sua Causa",
-    description: "Descubra seu propósito e iniciativas incríveis para apoiar em um teste rápido e divertido, idealizado pelo IDIS e Instituto Mol",
-    buttonText: "acesse aqui!",
-    buttonLink: "https://descubrasuacausa.net.br/",
-    image: "https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/z1y4znle_bannerDSC.png",
-    gradient: "from-pink-500 via-purple-500 to-blue-400"
-  },
-  {
-    id: 2,
     title: "Emergência climática",
     description: "Conheça e doe para organizações que apoiam as vítimas da tragédia em MG",
     buttonText: "Doar para Juiz de Fora",
@@ -19,13 +10,22 @@ export const heroSlides = [
     gradient: "from-pink-500 via-orange-400 to-purple-600"
   },
   {
+    id: 2,
+    title: "Chuvas no litoral de SP",
+    description: "Conheça e doe para organizações que estão apoiando as vítimas das chuvas na região.",
+    buttonText: "Veja outras formas de doar",
+    buttonLink: "/blog/chuvas-litoral-sp",
+    image: "https://images.unsplash.com/photo-1771254518872-b1c0adf879ad?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+    gradient: "from-cyan-400 via-blue-500 to-pink-500"
+  },
+  {
     id: 3,
-    title: "Domingo de doação",
-    description: "Conheça os projetos que emocionaram no The Wall e ajude a transformar vidas",
-    buttonText: "doe aqui",
-    buttonLink: "#",
-    image: "https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/j3hskfmj_Group-172-%281%29%5B1%5D%5B1%5D.png",
-    gradient: "from-pink-500 via-orange-400 to-red-500"
+    title: "Chuvas Rio Grande do Sul",
+    description: "Doe para organizações que apoiam as vítimas das chuvas no estado.",
+    buttonText: "quero doar",
+    buttonLink: "/instituicao/sos-chuvas-rs",
+    image: "https://images.unsplash.com/photo-1588032896227-261237a512d9?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
+    gradient: "from-red-600 via-pink-600 to-purple-700"
   }
 ];
 
