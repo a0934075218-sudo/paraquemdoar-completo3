@@ -13,7 +13,7 @@ export const heroSlides = [
     id: 2,
     title: "Chuvas no litoral de SP",
     description: "Conheça e doe para organizações que estão apoiando as vítimas das chuvas na região.",
-    buttonText: "Veja outras formas de doar",
+    buttonText: "Quero doar",
     buttonLink: "/blog/chuvas-litoral-sp",
     image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/n3xwpiry_foto%5B1%5D.png",
     backgroundImage: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/2gv4liop_Group-157%5B1%5D%5B1%5D.png",
