@@ -23,7 +23,7 @@ export const heroSlides = [
     id: 3,
     title: "Chuvas Rio Grande do Sul",
     description: "Doe para organizações que apoiam as vítimas das chuvas no estado.",
-    buttonText: "quero doar",
+    buttonText: "Quero doar",
     buttonLink: "/instituicao/sos-chuvas-rs",
     image: "https://images.unsplash.com/photo-1588032896227-261237a512d9?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
     gradient: "from-red-600 via-pink-600 to-purple-700"
