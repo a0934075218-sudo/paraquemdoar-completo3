@@ -16,7 +16,7 @@ const HeroCarousel = () => {
   }, []);
 
   useEffect(() => {
-    const timer = setInterval(goToNext, 6000);
+    const timer = setInterval(goToNext, 2000);
     return () => clearInterval(timer);
   }, [goToNext]);
 
