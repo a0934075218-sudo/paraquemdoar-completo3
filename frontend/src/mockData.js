@@ -5,7 +5,7 @@ export const heroSlides = [
     description: "Conheça e doe para organizações que apoiam as vítimas da tragédia em MG",
     buttonText: "Doar para Juiz de Fora",
     buttonLink: "/instituicao/humus",
-    image: "https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/30bb6cu7_imagem-%284%29.png",
+    image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/jpx0v66i_Base-para-bolinha-PQD-%2846%29.png",
     backgroundImage: "https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/mu01vg4k_Frame-31-%281%29%5B1%5D%5B1%5D%5B1%5D.png",
     gradient: "from-pink-500 via-orange-400 to-purple-600"
   },
