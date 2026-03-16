@@ -490,9 +490,9 @@ export const blogPosts = [
     title: "Chuvas no litoral de SP",
     slug: "chuvas-litoral-sp",
     description: "Veja os pontos de coleta de doações espalhados pelo estado",
-    image: "https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=800&h=600&fit=crop",
+    image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/9xxd7t50_Capturar.jpg",
     images: [
-      "https://images.unsplash.com/photo-1504805572947-34fad45aed93?w=800&h=600&fit=crop",
+      "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/9xxd7t50_Capturar.jpg",
       "https://images.unsplash.com/photo-1669215946188-1e66b5fe68b4?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
       "https://images.unsplash.com/photo-1650892246898-e18c89df27b5?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85"
     ],
