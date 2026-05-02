@@ -1,32 +1,21 @@
 export const heroSlides = [
   {
     id: 1,
-    title: "Emergência climática",
-    description: "Conheça e doe para organizações que apoiam as vítimas da tragédia em MG",
-    buttonText: "Doar para Juiz de Fora",
+    title: "Emergência em Pernambuco",
+    description: "Agir rápido pode ser vital em momentos críticos. Colabore com organizações que apoiam vítimas da catástrofe climáticas",
+    buttonText: "Quero doar",
     buttonLink: "/instituicao/humus",
-    image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/jpx0v66i_Base-para-bolinha-PQD-%2846%29.png",
-    backgroundImage: "https://customer-assets.emergentagent.com/job_doar-brasil-1/artifacts/mu01vg4k_Frame-31-%281%29%5B1%5D%5B1%5D%5B1%5D.png",
-    gradient: "from-pink-500 via-orange-400 to-purple-600"
+    image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/ri8wtuop_imgi_4_Base-para-bolinha-PQD-%281%29.png",
+    gradient: "from-orange-500 via-pink-500 to-red-500"
   },
   {
     id: 2,
-    title: "Chuvas no litoral de SP",
-    description: "Conheça e doe para organizações que estão apoiando as vítimas das chuvas na região.",
+    title: "PIX Solidariedade PE",
+    description: "Fortaleça todas organizações apoiadas pela campanha. Doe pela chave pix paraquemdoar@benfeitoria.com",
     buttonText: "Quero doar",
-    buttonLink: "/blog/chuvas-litoral-sp",
-    image: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/n3xwpiry_foto%5B1%5D.png",
-    backgroundImage: "https://customer-assets.emergentagent.com/job_fe1a4425-44ca-4642-b599-1cda7088465d/artifacts/2gv4liop_Group-157%5B1%5D%5B1%5D.png",
-    gradient: "from-cyan-400 via-blue-500 to-pink-500"
-  },
-  {
-    id: 3,
-    title: "Chuvas Rio Grande do Sul",
-    description: "Doe para organizações que apoiam as vítimas das chuvas no estado.",
-    buttonText: "Quero doar",
-    buttonLink: "/instituicao/sos-chuvas-rs",
-    image: "https://images.unsplash.com/photo-1588032896227-261237a512d9?crop=entropy&cs=srgb&fm=jpg&ixlib=rb-4.1.0&q=85",
-    gradient: "from-red-600 via-pink-600 to-purple-700"
+    buttonLink: "/instituicao/humus",
+    image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/klj7q5ui_imgi_5_Base-para-bolinha-PQD-%282%29.png",
+    gradient: "from-pink-500 via-purple-500 to-cyan-500"
   }
 ];
 
