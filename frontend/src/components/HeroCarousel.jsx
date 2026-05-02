@@ -50,9 +50,9 @@ const HeroCarousel = () => {
             <div style={{
               width: '100%',
               height: '100%',
-              background: s.id === 3
-                ? 'linear-gradient(to right, #dc2626, #db2777, #7c3aed)'
-                : 'linear-gradient(to right, #ec4899, #f97316, #9333ea)',
+              background: s.id === 1
+                ? 'linear-gradient(to right, #f97316, #ec4899, #ef4444)'
+                : 'linear-gradient(to right, #ec4899, #9333ea, #06b6d4)',
             }} />
           )}
         </div>
@@ -61,7 +61,7 @@ const HeroCarousel = () => {
       {/* Content layer */}
       <div style={{ position: 'relative', zIndex: 10, minHeight: '100vh', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '100px 24px 60px', width: '100%' }}>
-          <div style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', gap: '48px', flexWrap: 'wrap', justifyContent: 'center' }}>
+          <div style={{ display: 'flex', flexDirection: slide.reversed ? 'row-reverse' : 'row', alignItems: 'center', gap: '48px', flexWrap: 'wrap', justifyContent: 'center' }}>
             {/* Oval Image */}
             <div style={{ flexShrink: 0 }}>
               <div style={{

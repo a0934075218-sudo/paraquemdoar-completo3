@@ -15,6 +15,8 @@ export const heroSlides = [
     buttonText: "Quero doar",
     buttonLink: "/instituicao/humus",
     image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/klj7q5ui_imgi_5_Base-para-bolinha-PQD-%282%29.png",
+    backgroundImage: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/3x97scvj_imgi_43_Frame-8-%281%29%5B1%5D%5B1%5D%5B1%5D%5B1%5D.png",
+    reversed: true,
     gradient: "from-pink-500 via-purple-500 to-cyan-500"
   }
 ];
