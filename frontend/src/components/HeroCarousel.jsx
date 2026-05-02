@@ -67,15 +67,11 @@ const HeroCarousel = () => {
               <div style={{
                 width: 'min(420px, 80vw)',
                 height: 'min(420px, 80vw)',
-                borderRadius: '50%',
-                overflow: 'hidden',
-                boxShadow: '0 25px 50px rgba(0,0,0,0.3)',
-                border: '6px solid rgba(255,255,255,0.4)',
               }}>
                 <img
                   src={slide.image}
                   alt={slide.title}
-                  style={{ width: '100%', height: '100%', objectFit: 'cover', transition: 'opacity 0.5s' }}
+                  style={{ width: '100%', height: '100%', objectFit: 'contain', transition: 'opacity 0.5s' }}
                 />
               </div>
             </div>
