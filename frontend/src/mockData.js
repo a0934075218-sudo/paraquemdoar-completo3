@@ -11,7 +11,7 @@ export const heroSlides = [
   {
     id: 2,
     title: "PIX Solidariedade PE",
-    description: "Fortaleça todas organizações apoiadas pela campanha. Doe pela chave pix paraquemdoar@benfeitoria.com",
+    description: "Fortaleça todas organizações que estão apoiando esta campanha. Doe pelo PIX.",
     buttonText: "Quero doar",
     buttonLink: "/instituicao/humus",
     image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/klj7q5ui_imgi_5_Base-para-bolinha-PQD-%282%29.png",

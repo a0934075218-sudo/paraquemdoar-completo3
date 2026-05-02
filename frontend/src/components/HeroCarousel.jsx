@@ -80,7 +80,7 @@ const HeroCarousel = () => {
             <div style={{ color: 'white', maxWidth: '500px', flex: 1, minWidth: '280px' }}>
               <h1 style={{
                 fontFamily: "'Nunito', sans-serif",
-                fontSize: 'clamp(2rem, 5vw, 3.5rem)',
+                fontSize: 'clamp(1.8rem, 4vw, 2.8rem)',
                 fontWeight: 700,
                 lineHeight: 1.1,
                 marginBottom: '16px',
