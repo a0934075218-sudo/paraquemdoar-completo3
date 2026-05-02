@@ -5,6 +5,7 @@ import { initiatives } from '../mockData';
 const CampanhaPernambuco = () => {
   const navigate = useNavigate();
   const doacaoRef = useRef(null);
+  const cardsRef = useRef(null);
 
   const scrollToDoacao = () => {
     doacaoRef.current?.scrollIntoView({ behavior: 'smooth' });
@@ -39,122 +40,137 @@ const CampanhaPernambuco = () => {
   ];
 
   const donationValues = [
-    { value: null, label: 'Doação livre', sublabel: 'a partir de R$ 10.', hasVerItens: true },
-    { value: 50, label: 'Apoie esta causa urgente com R$ 50', display: 'R$ 50' },
-    { value: 100, label: 'Apoie esta causa urgente com R$ 100', display: 'R$ 100' },
-    { value: 500, label: 'Apoie esta causa urgente com R$ 500', display: 'R$ 500' },
-    { value: 1000, label: 'Apoie esta causa urgente com R$ 1000', display: 'R$ 1.000' },
-    { value: 5000, label: 'Apoie esta causa urgente com R$ 5000', display: 'R$ 5.000' },
-    { value: 10000, label: 'Apoie esta causa urgente com R$ 10.000', display: 'R$ 10.000' },
+    { value: null, label: 'Doação livre a\npartir de R$ 10.', hasInput: true },
+    { value: 50, label: 'Apoie esta causa\nurgente com R$ 50', display: 'R$ 50' },
+    { value: 100, label: 'Apoie esta causa\nurgente com R$ 100', display: 'R$ 100' },
+    { value: 500, label: 'Apoie esta causa\nurgente com R$ 500', display: 'R$ 500' },
+    { value: 1000, label: 'Apoie esta causa\nurgente com R$ 1000', display: 'R$ 1.000' },
+    { value: 5000, label: 'Apoie esta causa\nurgente com R$ 5000', display: 'R$ 5.000' },
+    { value: 10000, label: 'Apoie esta causa\nurgente com R$ 10.000', display: 'R$ 10.000' },
   ];
 
   const handleDonate = (value) => {
     navigate('/doacao/valor', { state: { institution: 'Campanha Pernambuco', presetValue: value } });
   };
 
+  const HeartIcon = () => (
+    <svg width="60" height="60" viewBox="0 0 64 64" fill="none">
+      <path d="M32 56s-2-1.5-4-3.5C18 43.5 8 34 8 24c0-7 5.5-12 12-12 4.5 0 8.5 2.5 12 7 3.5-4.5 7.5-7 12-7 6.5 0 12 5 12 12 0 10-10 19.5-20 28.5-2 2-4 3.5-4 3.5z" stroke="#7c3aed" strokeWidth="3" fill="none"/>
+      <path d="M20 32c-3 0-6 2-6 5s3 5 6 5h24c3 0 6-2 6-5s-3-5-6-5" stroke="#7c3aed" strokeWidth="2.5" fill="none"/>
+      <path d="M26 37v8M32 35v10M38 37v8" stroke="#7c3aed" strokeWidth="2.5" strokeLinecap="round"/>
+    </svg>
+  );
+
   return (
     <div data-testid="campanha-pernambuco-page" style={{ fontFamily: "'Nunito', sans-serif" }}>
-      {/* Hero Section */}
+      {/* Hero Section - foto de fundo com overlay roxo */}
       <section style={{
-        background: 'linear-gradient(135deg, #f97316, #ec4899, #ef4444)',
-        minHeight: '80vh',
+        position: 'relative',
+        minHeight: '300px',
         display: 'flex',
         alignItems: 'center',
-        justifyContent: 'center',
-        textAlign: 'center',
-        padding: '120px 24px 60px',
+        padding: '60px 40px',
+        overflow: 'hidden',
       }}>
-        <div style={{ maxWidth: '700px' }}>
-          <h1 style={{
-            color: 'white',
-            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
-            fontWeight: 700,
-            lineHeight: 1.2,
-            marginBottom: '16px',
-          }}>
-            Agir rápido pode ser vital em momentos críticos.
-          </h1>
-          <p style={{
-            color: 'rgba(255,255,255,0.9)',
-            fontSize: 'clamp(1rem, 2vw, 1.3rem)',
-            lineHeight: 1.6,
-            marginBottom: '32px',
-          }}>
-            Colabore com organizações que apoiam vítimas de catástrofes que atingem o Brasil.
-          </p>
-          <button
-            data-testid="hero-doe-agora-btn"
-            onClick={scrollToDoacao}
-            style={{
-              background: 'white',
-              color: '#db2777',
-              fontWeight: 700,
-              fontSize: '1.1rem',
-              padding: '14px 48px',
-              borderRadius: '50px',
-              border: 'none',
-              cursor: 'pointer',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.2)',
-              transition: 'transform 0.2s',
-            }}
-            onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
-            onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
-          >
-            doe agora
-          </button>
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          backgroundImage: 'url(https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/ri8wtuop_imgi_4_Base-para-bolinha-PQD-%281%29.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          filter: 'brightness(0.5)',
+        }} />
+        <div style={{
+          position: 'absolute',
+          inset: 0,
+          background: 'rgba(88, 28, 135, 0.6)',
+        }} />
+        <div style={{ position: 'relative', zIndex: 2, display: 'flex', alignItems: 'center', gap: '40px', maxWidth: '1200px', margin: '0 auto', width: '100%', flexWrap: 'wrap' }}>
+          {/* Logo */}
+          <div style={{ textAlign: 'center' }}>
+            <div style={{ display: 'flex', gap: '8px', justifyContent: 'center', marginBottom: '8px' }}>
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="white">
+                <path d="M15 25c0-8 6-14 14-14s14 6 14 14c0 12-14 22-14 22S15 37 15 25z"/>
+              </svg>
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="white">
+                <path d="M15 25c0-8 6-14 14-14s14 6 14 14c0 12-14 22-14 22S15 37 15 25z"/>
+              </svg>
+            </div>
+            <p style={{ color: 'white', fontSize: '1.2rem', fontWeight: 700, margin: 0 }}>ParaQuemDoar</p>
+            <p style={{ color: '#f9a8d4', fontSize: '1rem', margin: 0 }}>emergência</p>
+          </div>
+          {/* Text */}
+          <div style={{ flex: 1, minWidth: '280px' }}>
+            <p style={{ color: 'white', fontSize: 'clamp(1.2rem, 2.5vw, 1.6rem)', lineHeight: 1.5, margin: '0 0 20px' }}>
+              Agir rápido pode ser vital em momentos críticos. Colabore com organizações que apoiam vítimas de catástrofes que atingem o Brasil.
+            </p>
+            <button
+              data-testid="hero-doe-agora-btn"
+              onClick={scrollToDoacao}
+              style={{
+                background: 'transparent',
+                color: 'white',
+                fontWeight: 600,
+                fontSize: '1rem',
+                padding: '10px 24px',
+                borderRadius: '4px',
+                border: '2px solid white',
+                cursor: 'pointer',
+                transition: 'background 0.2s',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.2)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; }}
+            >
+              doe agora
+            </button>
+          </div>
         </div>
       </section>
 
       {/* Donation Section */}
-      <section ref={doacaoRef} id="doacao" style={{
-        padding: '60px 24px',
-        maxWidth: '1100px',
-        margin: '0 auto',
-      }}>
-        <h2 style={{
-          textAlign: 'center',
-          fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-          fontWeight: 700,
-          color: '#1f2937',
-          marginBottom: '8px',
-        }}>
+      <section ref={doacaoRef} id="doacao" style={{ padding: '50px 40px', maxWidth: '1200px', margin: '0 auto' }}>
+        <h2 style={{ fontSize: '1.6rem', fontWeight: 700, color: '#1f2937', marginBottom: '4px' }}>
           Escolha o valor da sua doação e colabore!
         </h2>
-        <p style={{
-          textAlign: 'center',
-          color: '#6b7280',
-          fontSize: '1rem',
-          marginBottom: '40px',
-        }}>
-          Doe por Pix, boleto ou cartão. For international donations, <a href="https://benfei.to/sosdonation" target="_blank" rel="noreferrer" style={{ color: '#db2777', textDecoration: 'underline' }}>click here</a>
+        <p style={{ color: '#4b5563', fontSize: '0.95rem', marginBottom: '30px' }}>
+          Doe por Pix, boleto ou cartão. For international donations, <a href="https://benfei.to/sosdonation" target="_blank" rel="noreferrer" style={{ color: '#1f2937', textDecoration: 'underline' }}>click here</a>
         </p>
 
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '20px',
+        {/* Horizontal scrolling cards */}
+        <div ref={cardsRef} style={{
+          display: 'flex',
+          gap: '16px',
+          overflowX: 'auto',
+          paddingBottom: '16px',
+          scrollSnapType: 'x mandatory',
         }}>
           {donationValues.map((item, idx) => (
             <div key={idx} style={{
+              minWidth: '200px',
+              maxWidth: '220px',
               background: 'white',
-              borderRadius: '16px',
-              padding: '24px',
-              boxShadow: '0 2px 12px rgba(0,0,0,0.08)',
-              border: '1px solid #f3f4f6',
+              borderRadius: '8px',
+              padding: '24px 16px',
+              border: '1px solid #e5e7eb',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'center',
               textAlign: 'center',
-              gap: '12px',
+              gap: '10px',
+              scrollSnapAlign: 'start',
+              flexShrink: 0,
             }}>
-              <p style={{ color: '#374151', fontSize: '0.95rem', margin: 0 }}>
+              <HeartIcon />
+              <p style={{ color: '#374151', fontSize: '0.9rem', margin: 0, whiteSpace: 'pre-line', lineHeight: 1.4 }}>
                 {item.label}
               </p>
-              {item.sublabel && (
-                <p style={{ color: '#6b7280', fontSize: '0.85rem', margin: 0 }}>{item.sublabel}</p>
+              {item.hasInput && (
+                <div style={{ width: '100%', borderBottom: '1px solid #ccc', padding: '4px', marginTop: '4px' }}>
+                  <span style={{ color: '#9ca3af', fontSize: '0.9rem' }}>R$</span>
+                </div>
               )}
               {item.display && (
-                <p style={{ fontSize: '1.5rem', fontWeight: 700, color: '#1f2937', margin: 0 }}>
+                <p style={{ fontSize: '1.4rem', fontWeight: 700, color: '#7c3aed', margin: 0 }}>
                   {item.display}
                 </p>
               )}
@@ -162,195 +178,199 @@ const CampanhaPernambuco = () => {
                 data-testid={`donate-btn-${item.value || 'livre'}`}
                 onClick={() => handleDonate(item.value || 10)}
                 style={{
-                  background: '#db2777',
-                  color: 'white',
-                  fontWeight: 600,
-                  fontSize: '0.95rem',
-                  padding: '10px 32px',
-                  borderRadius: '50px',
+                  width: '100%',
+                  background: 'linear-gradient(to right, #84cc16, #eab308)',
+                  color: '#1f2937',
+                  fontWeight: 700,
+                  fontSize: '0.85rem',
+                  padding: '10px 20px',
+                  borderRadius: '4px',
                   border: 'none',
                   cursor: 'pointer',
-                  transition: 'background 0.2s',
+                  textTransform: 'uppercase',
+                  letterSpacing: '0.5px',
+                  marginTop: 'auto',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = '#be185d'}
-                onMouseLeave={e => e.currentTarget.style.background = '#db2777'}
               >
-                doar
+                DOAR
               </button>
             </div>
           ))}
         </div>
       </section>
 
-      {/* Por que doar? */}
-      <section style={{
-        background: '#fdf2f8',
-        padding: '60px 24px',
-      }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{
-            fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-            fontWeight: 700,
-            color: '#db2777',
-            marginBottom: '24px',
-          }}>
-            Por que doar?
-          </h2>
-          <div style={{ color: '#374151', lineHeight: 1.8, fontSize: '1rem' }}>
-            <p style={{ marginBottom: '16px' }}>
-              Essa é uma oportunidade simples, segura, efetiva e solidária de apoiar pessoas e comunidades impactadas por emergências climáticas em todo o Brasil.
-            </p>
-            <p style={{ marginBottom: '16px' }}>
-              Em momentos de desastre, milhares de famílias podem perder acesso ao básico: moradia, alimentação, água potável, itens de higiene, medicamentos e proteção. Sua doação ajuda a fortalecer organizações preparadas para agir com rapidez, capilaridade e responsabilidade nesses contextos.
-            </p>
-            <p style={{ marginBottom: '16px' }}>
-              Mais do que uma contribuição financeira, doar é um gesto de cidadania, cuidado e compromisso com a vida. Em contextos de emergência, tempo é vida.
-            </p>
-            <p style={{ fontWeight: 600 }}>
-              Se isso faz sentido para você, doe agora.
-            </p>
-          </div>
+      {/* POR QUE DOAR? */}
+      <section style={{ padding: '40px 40px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{
+          background: 'linear-gradient(to right, #22c55e, #eab308, #f97316)',
+          borderRadius: '8px',
+          padding: '16px 24px',
+          marginBottom: '24px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '12px',
+        }}>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+          </svg>
+          <span style={{ color: 'white', fontWeight: 700, fontSize: '1.3rem', textTransform: 'uppercase' }}>POR QUE DOAR?</span>
+        </div>
+        <div style={{ color: '#374151', lineHeight: 1.8, fontSize: '1rem' }}>
+          <p style={{ marginBottom: '16px' }}>
+            Essa é uma oportunidade simples, segura, efetiva e solidária de apoiar pessoas e comunidades impactadas por emergências climáticas em todo o Brasil.
+          </p>
+          <p style={{ marginBottom: '16px' }}>
+            Em momentos de desastre, milhares de famílias podem perder acesso ao básico: moradia, alimentação, água potável, itens de higiene, medicamentos e proteção. Sua doação ajuda a fortalecer organizações preparadas para agir com rapidez, capilaridade e responsabilidade nesses contextos.
+          </p>
+          <p style={{ marginBottom: '16px' }}>
+            Mais do que uma contribuição financeira, doar é um gesto de cidadania, cuidado e compromisso com a vida. Em contextos de emergência, tempo é vida.
+          </p>
+          <p style={{ fontWeight: 600 }}>
+            Se isso faz sentido para você, doe agora.
+          </p>
         </div>
       </section>
 
-      {/* Pra quem doar? */}
-      <section style={{
-        padding: '60px 24px',
-        maxWidth: '900px',
-        margin: '0 auto',
-      }}>
-        <h2 style={{
-          fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-          fontWeight: 700,
-          color: '#db2777',
-          marginBottom: '16px',
+      {/* PRA QUEM DOAR? */}
+      <section style={{ padding: '40px 40px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{
+          background: 'linear-gradient(to right, #22c55e, #eab308, #f97316)',
+          borderRadius: '8px',
+          padding: '16px 24px',
+          marginBottom: '24px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '12px',
         }}>
-          Pra quem doar?
-        </h2>
-        <p style={{ color: '#374151', lineHeight: 1.7, marginBottom: '32px' }}>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+          </svg>
+          <span style={{ color: 'white', fontWeight: 700, fontSize: '1.3rem', textTransform: 'uppercase' }}>PRA QUEM DOAR?</span>
+        </div>
+
+        <p style={{ color: '#374151', lineHeight: 1.7, marginBottom: '16px' }}>
           O ParaQuemDoar reúne e divulga organizações da sociedade civil com atuação relevante em apoio humanitário e resposta a emergências. Nesta campanha, destacamos organizações que atuam no atendimento a vítimas de desastres e emergências climáticas em diferentes regiões do país.
         </p>
-        <p style={{ color: '#374151', lineHeight: 1.7, marginBottom: '40px' }}>
-          Ao doar, você apoia organizações com experiência em mobilização, ajuda emergencial, articulação em rede e resposta em territórios afetados. A depender da natureza e da localização de cada emergência, outras organizações também poderão ser beneficiadas pela campanha, de acordo com sua atuação local e capacidade de resposta.
+        <p style={{ color: '#374151', lineHeight: 1.7, marginBottom: '32px' }}>
+          Ao doar, você apoia organizações com experiência em mobilização, ajuda emergencial, articulação em rede e resposta em territórios afetados.
         </p>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        {/* Org grid - 3 columns */}
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(250px, 1fr))',
+          gap: '24px',
+          marginBottom: '32px',
+        }}>
           {campaignOrgs.map((org, idx) => {
             const orgData = initiatives.find(i => i.slug === org.slug);
             return (
-              <div key={idx} style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '20px',
-                padding: '20px',
-                background: '#fff',
-                borderRadius: '12px',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-                border: '1px solid #f3f4f6',
-                cursor: 'pointer',
-                transition: 'box-shadow 0.2s',
-              }}
-              onClick={scrollToDoacao}
-              onMouseEnter={e => e.currentTarget.style.boxShadow = '0 4px 16px rgba(0,0,0,0.12)'}
-              onMouseLeave={e => e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.06)'}
-              >
-                <img
-                  src={orgData?.image}
-                  alt={org.name}
-                  style={{ width: '70px', height: '70px', borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
-                />
-                <p style={{ color: '#374151', lineHeight: 1.6, margin: 0 }}>
-                  <strong>{org.name}</strong>: {org.description}
+              <div key={idx} onClick={scrollToDoacao} style={{ cursor: 'pointer', textAlign: 'center' }}>
+                <div style={{
+                  width: '160px',
+                  height: '160px',
+                  borderRadius: '50%',
+                  background: '#f3f4f6',
+                  margin: '0 auto 16px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  overflow: 'hidden',
+                }}>
+                  <img
+                    src={orgData?.image}
+                    alt={org.name}
+                    style={{ width: '70%', height: '70%', objectFit: 'contain' }}
+                  />
+                </div>
+                <p style={{ color: '#374151', fontSize: '0.9rem', lineHeight: 1.5, textAlign: 'left' }}>
+                  <strong>{org.name}</strong> : {org.description}
                 </p>
               </div>
             );
           })}
         </div>
 
-        <p style={{ color: '#374151', lineHeight: 1.7, marginTop: '32px' }}>
-          Ao clicar em <button onClick={scrollToDoacao} style={{ color: '#db2777', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', fontWeight: 600 }}>doar</button>, basta escolher o valor da sua doação e para qual organização ela deve ser direcionada. Você poderá doar por pix, boleto ou cartão de crédito.
+        <p style={{ color: '#374151', lineHeight: 1.7, marginBottom: '16px' }}>
+          Ao clicar em <button onClick={scrollToDoacao} style={{ color: '#374151', textDecoration: 'underline', background: 'none', border: 'none', cursor: 'pointer', font: 'inherit', fontWeight: 600 }}>doar</button>, basta escolher o valor da sua doação e para qual organização ela deve ser direcionada. Você poderá doar por pix, boleto ou cartão de crédito.
         </p>
-        <p style={{ color: '#374151', lineHeight: 1.7, marginTop: '16px' }}>
+        <p style={{ color: '#374151', lineHeight: 1.7, marginBottom: '16px' }}>
           Sua doação pode se transformar em água potável, alimentação, itens de higiene, apoio logístico, acolhimento, proteção animal, reconstrução e outras respostas urgentes que cada contexto exigir.
         </p>
+        <p style={{ color: '#374151', lineHeight: 1.7 }}>
+          Outras organizações também poderão ser beneficiadas pela campanha, a depender da atuação local em cada emergência climática.
+        </p>
       </section>
 
-      {/* A Campanha */}
-      <section style={{
-        background: '#f9fafb',
-        padding: '60px 24px',
-      }}>
-        <div style={{ maxWidth: '800px', margin: '0 auto' }}>
-          <h2 style={{
-            fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-            fontWeight: 700,
-            color: '#db2777',
-            marginBottom: '24px',
-          }}>
-            A Campanha
-          </h2>
-          <p style={{ color: '#374151', lineHeight: 1.8 }}>
-            Essa é uma campanha promovida pela Globo, através da sua plataforma de fomento à cultura de doação ParaQuemDoar. A tecnologia digital e social de arrecadação é do Grupo Benfeitoria, ecossistema propulsor de impacto com mais de 15 anos de experiência, que desenvolveu e opera a plataforma ParaQuemDoar. Nesta campanha, através do Instituto Benfeitoria, o Grupo também é responsável por receber e repassar todas as doações aos projetos e produzir e divulgar relatório final com toda transparência que uma mobilização dessa precisa.
-          </p>
+      {/* QUEM SOMOS? / A Campanha */}
+      <section style={{ padding: '40px 40px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{
+          background: 'linear-gradient(to right, #22c55e, #eab308, #f97316)',
+          borderRadius: '8px',
+          padding: '16px 24px',
+          marginBottom: '24px',
+          display: 'inline-flex',
+          alignItems: 'center',
+          gap: '12px',
+        }}>
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white">
+            <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/>
+          </svg>
+          <span style={{ color: 'white', fontWeight: 700, fontSize: '1.3rem', textTransform: 'uppercase' }}>QUEM SOMOS?</span>
         </div>
+        <p style={{ color: '#374151', lineHeight: 1.8 }}>
+          Essa é uma campanha promovida pela Globo, através da sua plataforma de fomento à cultura de doação ParaQuemDoar. A tecnologia digital e social de arrecadação é do <a href="https://www.grupobenfeitoria.org/" target="_blank" rel="noreferrer" style={{ color: '#374151', textDecoration: 'underline' }}>Grupo Benfeitoria</a>, ecossistema propulsor de impacto com mais de 15 anos de experiência, que desenvolveu e opera a plataforma ParaQuemDoar. Nesta campanha, através do Instituto Benfeitoria, o Grupo também é responsável por receber e repassar todas as doações aos projetos e produzir e divulgar relatório final com toda transparência que uma mobilização dessa precisa.
+        </p>
       </section>
 
-      {/* PIX Section */}
-      <section style={{
-        background: 'linear-gradient(135deg, #db2777, #9333ea)',
-        padding: '60px 24px',
-        textAlign: 'center',
-      }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto' }}>
-          <p style={{ color: 'rgba(255,255,255,0.9)', fontSize: '1rem', marginBottom: '8px' }}>
-            Em contextos emergenciais...
-          </p>
-          <h2 style={{
-            color: 'white',
-            fontSize: 'clamp(1.4rem, 3vw, 2rem)',
-            fontWeight: 700,
-            marginBottom: '24px',
-          }}>
-            Tempo é vida. Doe agora mesmo:
-          </h2>
-          <div style={{
-            background: 'rgba(255,255,255,0.15)',
-            borderRadius: '12px',
-            padding: '20px',
-            backdropFilter: 'blur(10px)',
-          }}>
-            <p style={{ color: 'white', fontWeight: 600, fontSize: '0.9rem', marginBottom: '8px' }}>Chave PIX:</p>
-            <p style={{
-              color: 'white',
-              fontSize: 'clamp(1rem, 2.5vw, 1.3rem)',
-              fontWeight: 700,
-              wordBreak: 'break-all',
-              margin: 0,
-            }}>
-              paraquemdoar@benfeitoria.com
+      {/* YouTube + PIX Section */}
+      <section style={{ padding: '40px 40px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'flex', gap: '40px', flexWrap: 'wrap', alignItems: 'flex-start' }}>
+          {/* YouTube */}
+          <div style={{ flex: 1, minWidth: '300px' }}>
+            <iframe
+              width="100%"
+              height="320"
+              src="https://www.youtube.com/embed/3jHs_Tg_C-o"
+              title="SOS CHUVAS RS"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              style={{ borderRadius: '8px' }}
+            />
+          </div>
+          {/* PIX Info */}
+          <div style={{ flex: 1, minWidth: '280px' }}>
+            <h3 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#1f2937', marginBottom: '12px' }}>
+              Em contextos emergenciais...
+            </h3>
+            <p style={{ color: '#374151', fontSize: '1rem', marginBottom: '16px' }}>
+              Tempo é vida. Doe agora mesmo:
+            </p>
+            <p style={{ color: '#374151', fontSize: '1rem', marginBottom: '16px' }}>
+              Chave PIX: <strong>paraquemdoar@benfeitoria.com</strong>
             </p>
           </div>
         </div>
       </section>
 
-      {/* Footer */}
+      {/* Footer roxo */}
       <footer style={{
-        padding: '40px 24px',
-        textAlign: 'center',
-        background: '#1f2937',
+        padding: '40px',
+        background: '#581c87',
       }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '40px', flexWrap: 'wrap' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', maxWidth: '1000px', margin: '0 auto', flexWrap: 'wrap', gap: '24px' }}>
           <div>
-            <p style={{ color: '#9ca3af', fontSize: '0.8rem', marginBottom: '8px' }}>Iniciativa</p>
-            <p style={{ color: 'white', fontWeight: 700, fontSize: '1.1rem' }}>ParaQuemDoar</p>
+            <p style={{ color: '#c4b5fd', fontSize: '0.8rem', marginBottom: '8px' }}>Iniciativa</p>
+            <p style={{ color: 'white', fontWeight: 700, fontSize: '1.2rem', margin: 0 }}>ParaQuemDoar</p>
           </div>
           <div>
-            <p style={{ color: '#9ca3af', fontSize: '0.8rem', marginBottom: '8px' }}>Um projeto</p>
-            <p style={{ color: 'white', fontWeight: 700, fontSize: '1.1rem' }}>Globo</p>
+            <p style={{ color: '#c4b5fd', fontSize: '0.8rem', marginBottom: '8px' }}>Um projeto</p>
+            <p style={{ color: 'white', fontWeight: 700, fontSize: '1.2rem', margin: 0 }}>globo</p>
           </div>
           <div>
-            <p style={{ color: '#9ca3af', fontSize: '0.8rem', marginBottom: '8px' }}>Tecnologia</p>
-            <p style={{ color: 'white', fontWeight: 700, fontSize: '1.1rem' }}>Benfeitoria</p>
+            <p style={{ color: '#c4b5fd', fontSize: '0.8rem', marginBottom: '8px' }}>Tecnologia</p>
+            <p style={{ color: 'white', fontWeight: 700, fontSize: '1.2rem', margin: 0 }}>benfeitoria</p>
           </div>
         </div>
       </footer>
