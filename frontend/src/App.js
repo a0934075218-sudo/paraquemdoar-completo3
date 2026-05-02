@@ -14,6 +14,7 @@ import LoginPage from "./components/LoginPage";
 import AdminDashboard from "./components/AdminDashboard";
 
 import BlogPostPage from "./components/BlogPostPage";
+import CampanhaPernambuco from "./components/CampanhaPernambuco";
 
 import DonorDataPage from "./components/DonorDataPage";
 
@@ -44,6 +45,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
+          <Route path="/campanha-pernambuco" element={<CampanhaPernambuco />} />
           <Route path="/instituicao/:slug" element={<DonationPage />} />
           <Route path="/blog/:slug" element={<BlogPostPage />} />
           <Route path="/doacao" element={<Navigate to="/instituicao/humus" replace />} />

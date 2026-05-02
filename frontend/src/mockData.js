@@ -4,7 +4,7 @@ export const heroSlides = [
     title: "Emergência em Pernambuco",
     description: "Agir rápido pode ser vital em momentos críticos. Colabore com organizações que apoiam vítimas da catástrofe climáticas",
     buttonText: "Quero doar",
-    buttonLink: "/instituicao/humus",
+    buttonLink: "/campanha-pernambuco",
     image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/ri8wtuop_imgi_4_Base-para-bolinha-PQD-%281%29.png",
     gradient: "from-orange-500 via-pink-500 to-red-500"
   },
@@ -13,7 +13,7 @@ export const heroSlides = [
     title: "PIX Solidariedade PE",
     description: "Fortaleça todas organizações que estão apoiando esta campanha. Doe pelo PIX.",
     buttonText: "Quero doar",
-    buttonLink: "/instituicao/humus",
+    buttonLink: "/campanha-pernambuco",
     image: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/klj7q5ui_imgi_5_Base-para-bolinha-PQD-%282%29.png",
     backgroundImage: "https://customer-assets.emergentagent.com/job_7aa6a8ac-139b-4931-8720-8c2fd3be9502/artifacts/3x97scvj_imgi_43_Frame-8-%281%29%5B1%5D%5B1%5D%5B1%5D%5B1%5D.png",
     reversed: true,
