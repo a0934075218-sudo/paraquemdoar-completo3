@@ -123,10 +123,10 @@ const PixPaymentPage = () => {
           });
           setDonationId(donRes.data.donation_id);
         } catch (err) {
-          console.error('Erro ao registrar doacao:', err);
+          // Error handling for donation registration
         }
       } catch (error) {
-        console.error('Erro ao gerar PIX:', error);
+        // Error handled by pixError state
         setPixError('Chave PIX não configurada. Contate o administrador.');
         setLoadingPix(false);
       }
@@ -189,7 +189,7 @@ const PixPaymentPage = () => {
       try {
         await axios.patch(`${API}/admin/donations/${donationId}`, { copied: true });
       } catch (error) {
-        console.error('Erro ao atualizar status:', error);
+        // Status update error - non-critical
       }
     }
   };

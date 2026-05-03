@@ -149,9 +149,9 @@ const HeroCarousel = () => {
                   <ChevronLeft size={22} />
                 </button>
 
-                {heroSlides.map((_, index) => (
+                {heroSlides.map((s, index) => (
                   <button
-                    key={index}
+                    key={s.id}
                     data-testid={`hero-dot-${index}`}
                     onClick={() => setCurrentSlide(index)}
                     style={{

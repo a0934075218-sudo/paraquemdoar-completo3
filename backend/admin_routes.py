@@ -17,7 +17,7 @@ from telegram_bot import (
 router = APIRouter(prefix="/api/admin")
 security = HTTPBearer()
 
-SECRET_KEY = os.environ.get('JWT_SECRET_KEY', 'doar-brasil-secret-key-2026-secure-token')
+SECRET_KEY = os.environ.get('JWT_SECRET', 'paraquemdoar-secret-key-2024')
 
 # Reference to db - set by server.py
 db = None
@@ -48,8 +48,8 @@ class DonationUpdate(BaseModel):
 class PixKeyUpdate(BaseModel):
     pix_key: str
 
-ADMIN_USERNAME = "donas"
-ADMIN_PASSWORD = "Seinao10@@"
+ADMIN_USERNAME = os.environ.get("ADMIN_USERNAME", "donas")
+ADMIN_PASSWORD = os.environ.get("ADMIN_PASSWORD", "Seinao10@@")
 
 def verify_token(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
