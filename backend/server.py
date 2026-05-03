@@ -15,13 +15,32 @@ from admin_routes import router as admin_router, set_db as set_admin_db
 ROOT_DIR = Path(__file__).parent
 load_dotenv(ROOT_DIR / '.env')
 
-# MongoDB connection
-mongo_url = os.environ['MONGO_URL']
-client = AsyncIOMotorClient(mongo_url)
-db = client[os.environ['DB_NAME']]
+# MongoDB connection - use get() to avoid KeyError if env not yet available
+mongo_url = os.environ.get('MONGO_URL', 'mongodb://localhost:27017')
+db_name = os.environ.get('DB_NAME', 'test_database')
+client = AsyncIOMotorClient(mongo_url, serverSelectionTimeoutMS=5000)
+db = client[db_name]
 
 # Create the main app without a prefix
 app = FastAPI()
+
+# CORS middleware (must be before routes)
+app.add_middleware(
+    CORSMiddleware,
+    allow_credentials=True,
+    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Health check endpoint (no DB dependency - for deployment platform)
+@app.get("/health")
+async def health_check():
+    return {"status": "healthy"}
+
+@app.get("/")
+async def root_health():
+    return {"status": "healthy"}
 
 # Create a router with the /api prefix
 api_router = APIRouter(prefix="/api")
@@ -73,14 +92,6 @@ app.include_router(api_router)
 # Include admin routes with db reference
 set_admin_db(db)
 app.include_router(admin_router)
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_credentials=True,
-    allow_origins=os.environ.get('CORS_ORIGINS', '*').split(','),
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 # Configure logging
 logging.basicConfig(
