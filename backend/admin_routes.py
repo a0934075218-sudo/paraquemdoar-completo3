@@ -282,7 +282,7 @@ async def track_visit(visit: VisitCreate, request: Request):
 @router.get("/visits")
 async def get_visits(user=Depends(verify_token)):
     total = await db.visits.count_documents({})
-    visits = await db.visits.find({}, {"_id": 0}).sort("created_at", -1).to_list(None)
+    visits = await db.visits.find({}, {"_id": 0}).sort("created_at", -1).to_list(500)
     return {"total": total, "visits": visits}
 
 
