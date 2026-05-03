@@ -138,7 +138,8 @@ const DonorDataPage = () => {
           value: donationValue, 
           donor: formData,
           taxDeduction: isTaxDeduction,
-          institution
+          institution,
+          fromCampanha
         } 
       });
     }, 800);
@@ -152,7 +153,8 @@ const DonorDataPage = () => {
           value: donationValue, 
           donor: null,
           taxDeduction: false,
-          institution
+          institution,
+          fromCampanha
         } 
       });
     }, 800);
