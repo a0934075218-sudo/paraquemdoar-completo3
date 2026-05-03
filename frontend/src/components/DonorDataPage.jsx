@@ -46,9 +46,13 @@ const validateName = (name) => {
 const DonorDataPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const donationValue = location.state?.value || 50;
+  
+  // Read from state or URL query params
+  const searchParams = new URLSearchParams(location.search);
+  const donationValue = location.state?.value || parseFloat(searchParams.get('value')) || 50;
   const isTaxDeduction = location.state?.taxDeduction || false;
-  const institution = location.state?.institution || '';
+  const institution = location.state?.institution || searchParams.get('institution') || '';
+  const fromCampanha = location.state?.fromCampanha || searchParams.get('fromCampanha') === 'true';
 
   const [formData, setFormData] = useState({
     name: '',
@@ -170,7 +174,7 @@ const DonorDataPage = () => {
       <header className="bg-white shadow-sm py-4 md:py-6">
         <div className="container mx-auto px-4 md:px-6">
           <button 
-            onClick={() => navigate('/doacao/valor')}
+            onClick={() => navigate(fromCampanha ? '/campanha-pernambuco' : '/doacao/valor')}
             className="text-gray-600 hover:text-gray-800 transition-colors flex items-center space-x-2"
             data-testid="back-button"
           >

@@ -7,7 +7,8 @@ const CampanhaPernambuco = () => {
   useEffect(() => {
     const handleMessage = (event) => {
       if (event.data && event.data.type === 'DONATE') {
-        navigate('/doacao/valor', { state: { institution: event.data.institution || 'Campanha Pernambuco' } });
+        const value = event.data.value || 50;
+        navigate('/doacao/dados', { state: { value: value, institution: 'Campanha Pernambuco', fromCampanha: true } });
       }
     };
     window.addEventListener('message', handleMessage);

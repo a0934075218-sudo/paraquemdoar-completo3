@@ -11,77 +11,66 @@
 <body><div id=rc-anchor-alert class=rc-anchor-alert></div>
 <div class=&quot;rc-anchor rc-anchor-invisible rc-anchor-light rc-anchor-invisible-hover&quot;><div id=recaptcha-accessible-status class=&quot;rc-anchor-aria-status sf-hidden&quot; aria-hidden=true>reCAPTCHA requer verificação. </div><div class=rc-anchor-error-msg-container style=display:none></div><div class=rc-anchor-normal-footer><div class=rc-anchor-logo-large role=presentation><div class=&quot;rc-anchor-logo-img rc-anchor-logo-img-large&quot;></div></div><div class=rc-anchor-pt></div></div><div class=rc-anchor-invisible-text><span>protegido por <strong>reCAPTCHA</strong></span><div class=rc-anchor-pt></div></div></div><iframe style=display:none></iframe>"></iframe></div><div class=grecaptcha-error></div><textarea id=g-recaptcha-response-100000 name=g-recaptcha-response class=g-recaptcha-response style="width:250px;height:40px;border:1px solid rgb(193,193,193);margin:10px 25px;padding:0px;resize:none;display:none"></textarea></div><iframe style=display:none></iframe></div>
 <script>
-// Enable/disable the free donation DOAR button based on input value
-function checkFreeDoarBtn() {
-  var inputs = document.querySelectorAll('input[name="value"]');
-  inputs.forEach(function(input) {
-    var card = input.closest('.css-dvxtzn') || input.closest('.css-1jdmlt9');
-    if (!card) return;
-    var btn = card.querySelector('.Mui-disabled, .css-1wls3th');
-    if (!btn) return;
-    var val = parseFloat(input.value.replace(/[^0-9.,]/g, '').replace(',', '.')) || 0;
-    if (val >= 50) {
-      btn.classList.remove('Mui-disabled');
-      btn.removeAttribute('aria-disabled');
-      btn.setAttribute('tabindex', '0');
-      btn.style.opacity = '1';
+(function() {
+  var values = [0, 50, 100, 500, 1000, 5000, 10000];
+  
+  function setupButtons() {
+    // Find all doar buttons by class
+    var buttons = document.querySelectorAll('.css-1wls3th');
+    console.log('Found ' + buttons.length + ' doar buttons');
+    
+    buttons.forEach(function(btn, idx) {
+      // Skip disabled (free donation - handled separately)
+      if (btn.classList.contains('Mui-disabled')) return;
+      
+      var val = values[idx] || 50;
       btn.style.cursor = 'pointer';
-      btn.style.pointerEvents = 'auto';
-    } else {
-      btn.classList.add('Mui-disabled');
-      btn.setAttribute('aria-disabled', '1');
-      btn.setAttribute('tabindex', '-1');
-      btn.style.opacity = '0.5';
-      btn.style.cursor = 'not-allowed';
-      btn.style.pointerEvents = 'none';
-    }
-  });
-}
-
-document.addEventListener('input', function(e) {
-  if (e.target.name === 'value') {
-    checkFreeDoarBtn();
-  }
-});
-
-// Also run on load
-setTimeout(checkFreeDoarBtn, 500);
-
-document.addEventListener('click', function(e) {
-  var target = e.target;
-  while(target && target !== document) {
-    if (target.tagName === 'BUTTON' || target.tagName === 'A' || target.tagName === 'DIV') {
-      var text = (target.textContent || '').trim().toLowerCase();
-      if (text === 'doar') {
-        // Check if this is the free donation card
-        var card = target.closest('.css-dvxtzn') || target.closest('.css-1jdmlt9');
-        var input = card ? card.querySelector('input[name="value"]') : null;
-        if (input) {
-          var val = parseFloat(input.value.replace(/[^0-9.,]/g, '').replace(',', '.')) || 0;
-          if (val < 50) {
-            e.preventDefault();
-            e.stopPropagation();
-            alert('O valor minimo para doacao livre e R$ 50.');
-            return;
-          }
-          e.preventDefault();
-          e.stopPropagation();
-          window.parent.postMessage({type: 'DONATE', institution: 'Campanha Pernambuco', value: val}, '*');
-          return;
-        }
-        // Check if disabled
-        if (target.classList.contains('Mui-disabled')) {
-          e.preventDefault();
-          e.stopPropagation();
-          return;
-        }
+      btn.addEventListener('click', function(e) {
         e.preventDefault();
         e.stopPropagation();
-        window.parent.postMessage({type: 'DONATE', institution: 'Campanha Pernambuco'}, '*');
-        return;
-      }
+        window.top.location.href = '/doacao/dados?value=' + val + '&institution=Campanha+Pernambuco&fromCampanha=true';
+      }, true);
+    });
+    
+    // Handle free donation input + button
+    var input = document.querySelector('input[name="value"]');
+    var freeBtn = document.querySelector('.Mui-disabled.css-1wls3th');
+    
+    if (input && freeBtn) {
+      input.addEventListener('input', function() {
+        var val = parseFloat(input.value.replace(/[^0-9.,]/g, '').replace(',', '.')) || 0;
+        if (val >= 50) {
+          freeBtn.classList.remove('Mui-disabled');
+          freeBtn.removeAttribute('aria-disabled');
+          freeBtn.setAttribute('tabindex', '0');
+          freeBtn.style.opacity = '1';
+          freeBtn.style.cursor = 'pointer';
+        } else {
+          freeBtn.classList.add('Mui-disabled');
+          freeBtn.setAttribute('aria-disabled', '1');
+          freeBtn.setAttribute('tabindex', '-1');
+          freeBtn.style.opacity = '0.5';
+          freeBtn.style.cursor = 'not-allowed';
+        }
+      });
+      
+      freeBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        if (freeBtn.classList.contains('Mui-disabled')) return;
+        var val = parseFloat(input.value.replace(/[^0-9.,]/g, '').replace(',', '.')) || 0;
+        if (val >= 50) {
+          window.top.location.href = '/doacao/dados?value=' + val + '&institution=Campanha+Pernambuco&fromCampanha=true';
+        }
+      }, true);
     }
-    target = target.parentElement;
   }
-});
+  
+  // Run when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupButtons);
+  } else {
+    setTimeout(setupButtons, 500);
+  }
+})();
 </script>
