@@ -10,7 +10,7 @@ BOT_TOKEN = None
 
 def _get_token():
     global BOT_TOKEN
-    if BOT_TOKEN == None:
+    if BOT_TOKEN is None:
         BOT_TOKEN = os.environ.get("TELEGRAM_BOT_TOKEN", "")
     return BOT_TOKEN
 
@@ -22,7 +22,7 @@ def set_db(database):
 
 
 async def get_chat_id():
-    if db == None:
+    if db is None:
         return None
     config = await db.config.find_one({"key": "telegram_chat_id"}, {"_id": 0})
     if config and config.get("value"):
@@ -101,7 +101,7 @@ async def notify_donation_created(value: float, donor_name: str, device: str, lo
 
 
 async def notify_donation_copied(donation_id: str):
-    if db == None:
+    if db is None:
         return
     donation = await db.donations.find_one({"donation_id": donation_id}, {"_id": 0})
     if not donation or not donation.get("telegram_message_id"):
